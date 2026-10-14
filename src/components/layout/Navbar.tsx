@@ -16,13 +16,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
     { id: 'home', label: 'Home' },
     { id: 'booking', label: 'Book Stay' },
     { id: 'ticket', label: 'My Ticket' },
-    { id: 'scanner', label: 'Gate Scanner', badge: 'Officers' },
+    { id: 'scanner', label: 'Gate Scanner' },
     { id: 'map', label: 'Campus Map' },
     { id: 'services', label: 'Live Services' },
     { id: 'testimonies', label: 'Testimonies' },
-    { id: 'prayer', label: 'Prayer Request' },
+    { id: 'prayer', label: 'Prayer Requests' },
     { id: 'transport', label: 'Transport & Fares' },
-    { id: 'admin', label: 'Admin Portal', badge: 'Staff' },
+    { id: 'admin', label: 'Staff Portal' },
   ];
 
   const handleNavClick = (tabId: string) => {
@@ -39,8 +39,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-300"></span>
           </span>
-          <span className="font-bold text-amber-200 uppercase tracking-wider shrink-0">Gilgil Altar:</span>
-          <span className="hidden sm:inline text-orange-100 truncate">Strict Fasting Grounds • Gate Hours: 5:00 AM — 8:00 PM</span>
+          <span className="text-orange-100 font-medium truncate">
+            Strict Fasting Grounds • Gate Hours: 5:00 AM — 8:00 PM Daily
+          </span>
         </div>
         <div className="flex items-center space-x-3 shrink-0">
           <a
@@ -74,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
                 </span>
               </div>
               <p className="text-[11px] text-orange-100 font-medium tracking-tight whitespace-nowrap">
-                Prayer Mountain Digital Management System
+                Prayer Mountain • Gilgil, Kenya
               </p>
             </div>
           </div>
@@ -89,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
               Book Stay
             </button>
 
-            {/* Natural Visitor Inquiries Button (replaces pulsing AI sparkles) */}
+            {/* Natural Visitor Inquiries Button */}
             <button
               onClick={onOpenAi}
               className="flex items-center space-x-1.5 bg-orange-700/80 hover:bg-orange-700 text-white border border-white/30 px-3 py-1.5 rounded-xl text-xs font-semibold transition shadow-sm"
@@ -140,20 +141,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-normal transition flex items-center space-x-1.5 whitespace-nowrap shrink-0 ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-normal transition whitespace-nowrap shrink-0 ${
                   active
                     ? 'bg-white text-orange-600 shadow-sm font-bold'
                     : 'text-white/90 hover:text-white hover:bg-white/15'
                 }`}
               >
-                <span>{item.label}</span>
-                {item.badge && (
-                  <span className={`text-[9px] px-1.5 py-0.5 rounded-md uppercase font-mono font-bold ${
-                    active ? 'bg-orange-100 text-orange-700' : 'bg-white/20 text-white'
-                  }`}>
-                    {item.badge}
-                  </span>
-                )}
+                {item.label}
               </button>
             );
           })}
@@ -164,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
       {mobileMenuOpen && (
         <div className="lg:hidden bg-orange-700 border-t border-orange-500/50 px-4 pt-3 pb-6 space-y-1 shadow-2xl animate-fade-in text-white">
           <div className="text-[11px] font-bold text-orange-200 uppercase tracking-wider px-3 py-1">
-            Platform Modules
+            Campus Navigation
           </div>
           {navItems.map(item => {
             const active = currentTab === item.id;
@@ -179,11 +173,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
                 }`}
               >
                 <span>{item.label}</span>
-                {item.badge && (
-                  <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full font-mono font-bold uppercase">
-                    {item.badge}
-                  </span>
-                )}
               </button>
             );
           })}
