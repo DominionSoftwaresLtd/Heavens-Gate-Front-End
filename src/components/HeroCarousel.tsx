@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   ChevronLeft, ChevronRight, Calendar, ShieldCheck, MapPin, 
   Tv, Clock, CheckCircle2, ArrowRight, BookOpen, Coffee, Flame,
-  Play, Pause, Sparkles, Bed, Key, Compass, Volume2
+  Play, Pause, Bed, Key, Compass, Volume2
 } from 'lucide-react';
 
 import slideMountainDawn from '../assets/slide_mountain_dawn.jpg';

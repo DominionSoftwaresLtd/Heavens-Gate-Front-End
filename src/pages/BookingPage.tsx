@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { 
   Calendar, Users, Bed, CreditCard, ShieldCheck, CheckCircle2, 
-  Clock, AlertCircle, ArrowRight, Loader2, Sparkles, Phone
+  Clock, AlertCircle, ArrowRight, Loader2, Phone
 } from 'lucide-react';
 import { api } from '../services/api.js';
 import { AccommodationCategory, Booking } from '../types/index.js';
@@ -446,7 +446,7 @@ export const BookingPage: React.FC<BookingPageProps> = ({ onBookingSuccess }) =>
 
             {paymentMessage && (
               <div className="p-3 rounded-xl bg-orange-50 border border-orange-200 text-orange-800 text-xs flex items-start space-x-2">
-                <Sparkles className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
                 <span>{paymentMessage}</span>
               </div>
             )}
@@ -467,7 +467,7 @@ export const BookingPage: React.FC<BookingPageProps> = ({ onBookingSuccess }) =>
                 disabled={paymentLoading}
                 className="w-full py-2.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-700 font-bold text-xs border border-orange-300 transition"
               >
-                ⚡ Instant Simulator (Developer Test Sandbox)
+                Instant Simulator (Developer Test Sandbox)
               </button>
             </div>
 

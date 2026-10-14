@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bot, Sparkles, Send, X } from 'lucide-react';
+import { HelpCircle, BookOpen, Send, X, CheckCircle2 } from 'lucide-react';
 import { api } from '../services/api.js';
 
 interface Message {
@@ -17,7 +17,7 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
     {
       id: 'msg-welcome',
       sender: 'assistant',
-      text: 'Shalom and welcome! I am the Heavens Gate Digital Assistant, grounded in the official guidelines and policies of our prayer mountain in Gilgil, Nakuru County. How may I guide your visit today?'
+      text: 'Shalom and welcome! I am the Heavens Gate Visitor Information Guide, grounded in the official guidelines and policies of our prayer mountain in Gilgil, Nakuru County. How may I assist your visit today?'
     }
   ]);
 
@@ -71,7 +71,7 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
         <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 p-3.5 sm:p-4 flex items-center justify-between text-white shadow-md">
           <div className="flex items-center space-x-3">
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white shrink-0">
-              <Bot className="w-5 h-5 sm:w-6 sm:h-6" />
+              <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
@@ -94,7 +94,7 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
         {/* Quick prompt pills */}
         <div className="p-2 sm:p-2.5 bg-orange-50/60 border-b border-orange-100 flex items-center space-x-1.5 overflow-x-auto text-xs no-scrollbar">
           <span className="text-orange-800 text-[11px] shrink-0 font-bold flex items-center pl-1">
-            <Sparkles className="w-3 h-3 text-orange-600 mr-1" /> Quick:
+            <BookOpen className="w-3.5 h-3.5 text-orange-600 mr-1" /> Quick Guidelines:
           </span>
           {quickQuestions.map((q, idx) => (
             <button
@@ -123,8 +123,8 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
               >
                 {msg.sender === 'assistant' && (
                   <div className="flex items-center space-x-1.5 text-orange-600 text-xs font-bold mb-1">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Heavens Gate Assistant</span>
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Heavens Gate Visitor Guide</span>
                     {msg.category && (
                       <span className="text-[10px] bg-orange-100 text-orange-800 px-2 py-0.2 rounded font-semibold ml-1">
                         {msg.category}

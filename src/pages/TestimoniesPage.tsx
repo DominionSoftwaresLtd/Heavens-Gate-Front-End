@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   MessageSquareQuote, Heart, MessageCircle, Plus, Send, 
-  Sparkles, CheckCircle2, User, MapPin, X
+  CheckCircle2, User, MapPin, X
 } from 'lucide-react';
 import { api } from '../services/api.js';
 import { Testimony } from '../types/index.js';
