@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  ChevronLeft, ChevronRight, Calendar, ShieldCheck, MapPin, 
-  Clock, ArrowRight, Flame, Play, Pause, Coffee, Navigation
+  ShieldCheck, ArrowRight
 } from 'lucide-react';
 
 // Authentic Campus Roots & High-Fidelity Assets:
@@ -133,8 +132,6 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
     touchEndX.current = null;
   };
 
-  const active = slides[currentSlide];
-
   const tickerItems = [
     '24/7 CONTINUOUS PRAYER WATCHES',
     'STRICT MOUNTAIN FASTING SANCTUARY',
@@ -162,7 +159,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
         {/* ======================================================== */}
         {/* LEFT SECTION (~64% on Desktop): PHOTO CAROUSEL + TEXT   */}
         {/* ======================================================== */}
-        <div className="relative w-full lg:w-[64%] min-h-[440px] sm:min-h-[480px] lg:min-h-[560px] overflow-hidden flex items-center">
+        <div className="relative w-full lg:w-[64%] min-h-[440px] sm:min-h-[480px] lg:min-h-[560px] overflow-hidden flex items-center justify-center">
           {slides.map((slide, idx) => {
             const isCurrent = idx === currentSlide;
             return (
@@ -200,20 +197,20 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
             );
           })}
 
-          {/* Left Hero Content: The Sole Majestic Sentence (Genesis 28:17) */}
-          <div className="relative z-20 max-w-2xl px-6 sm:px-10 lg:pl-12 lg:pr-8 py-12 sm:py-16 space-y-6 sm:space-y-7">
+          {/* Left Hero Content: The Sole Majestic Sentence (Genesis 28:17) - Centered */}
+          <div className="relative z-20 max-w-2xl px-6 sm:px-10 py-12 sm:py-16 space-y-6 sm:space-y-7 text-center flex flex-col items-center justify-center mx-auto">
             {/* The Sole Majestic Sentence */}
-            <div className="space-y-3.5">
-              <blockquote className="font-cinzel text-2xl sm:text-4xl lg:text-[44px] font-black text-white leading-[1.22] tracking-tight drop-shadow-2xl">
+            <div className="space-y-3.5 text-center">
+              <blockquote className="font-cinzel text-2xl sm:text-4xl lg:text-[42px] font-black text-white leading-[1.25] tracking-tight drop-shadow-2xl text-center mx-auto">
                 “...THIS IS NONE OTHER THAN THE HOUSE OF GOD, AND THIS IS THE GATE OF HEAVEN.”
               </blockquote>
-              <div className="font-mono text-base sm:text-lg font-black text-orange-400 tracking-widest uppercase drop-shadow-md">
+              <div className="font-mono text-base sm:text-lg font-black text-orange-400 tracking-widest uppercase drop-shadow-md text-center">
                 GENESIS 28:17
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+            {/* Action Buttons - Centered */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 w-full">
               {/* Primary Solid Orange Button */}
               <button
                 onClick={() => onNavigate('booking')}
@@ -232,30 +229,6 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
                 <span>Access QR Ticket</span>
               </button>
             </div>
-          </div>
-
-          {/* Slide Navigation Controls & Counter at Bottom Left */}
-          <div className="absolute bottom-5 left-6 sm:left-10 z-20 flex items-center space-x-2">
-            <button
-              onClick={handlePrev}
-              aria-label="Previous slide"
-              className="w-8 h-8 rounded-full bg-black/60 hover:bg-orange-600 text-white border border-white/30 backdrop-blur-md flex items-center justify-center transition active:scale-90"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={handleNext}
-              aria-label="Next slide"
-              className="w-8 h-8 rounded-full bg-black/60 hover:bg-orange-600 text-white border border-white/30 backdrop-blur-md flex items-center justify-center transition active:scale-90"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-            <span className="text-[11px] font-mono text-white/90 bg-black/60 px-2.5 py-1 rounded-md border border-white/20">
-              0{currentSlide + 1} / 0{slides.length}
-            </span>
-            <span className="hidden sm:inline-block text-[11px] text-white/75 font-medium pl-2 drop-shadow">
-              {active.tag}
-            </span>
           </div>
         </div>
 
