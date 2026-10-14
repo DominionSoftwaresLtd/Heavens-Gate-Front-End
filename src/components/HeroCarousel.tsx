@@ -201,40 +201,26 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
             );
           })}
 
-          {/* Left Hero Foreground Content */}
-          <div className="relative z-20 max-w-2xl px-6 sm:px-10 lg:pl-12 lg:pr-6 py-12 sm:py-16 space-y-4 sm:space-y-5">
-            {/* Slide Tag Pill */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-xs font-bold text-orange-400">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-              </span>
-              <span className="uppercase tracking-wider font-mono text-[11px] sm:text-xs">
-                {active.tag}
-              </span>
+          {/* Left Hero Foreground Content (Dedicated to Genesis 28:17 Cornerstone) */}
+          <div className="relative z-20 max-w-2xl px-6 sm:px-10 lg:pl-12 lg:pr-6 py-12 sm:py-16 space-y-5 sm:space-y-6">
+            {/* The Sole Majestic Sentence */}
+            <div className="space-y-3">
+              <blockquote className="font-cinzel text-2xl sm:text-4xl lg:text-[42px] font-black text-white leading-[1.22] tracking-tight drop-shadow-2xl">
+                “...THIS IS NONE OTHER THAN THE HOUSE OF GOD, AND THIS IS THE GATE OF HEAVEN.”
+              </blockquote>
+              <div className="font-mono text-sm sm:text-base font-black text-orange-400 tracking-widest uppercase drop-shadow-md">
+                GENESIS 28:17
+              </div>
             </div>
 
-            {/* Bold Headline */}
-            <h1 className="font-cinzel text-3xl sm:text-5xl lg:text-[54px] font-black text-white leading-[1.08] tracking-tight drop-shadow-lg">
-              {active.headlineMain} <br />
-              <span className="text-orange-400">
-                {active.headlineAccent}
-              </span>
-            </h1>
-
-            {/* Subtitle / Scripture */}
-            <p className="text-slate-100 text-sm sm:text-base lg:text-lg font-medium leading-relaxed max-w-xl drop-shadow-md">
-              {active.subtitle}
-            </p>
-
-            {/* Two Action Buttons (Just like reference: Orange button + Dark button with white border) */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-3">
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
               {/* Primary Solid Orange Button */}
               <button
-                onClick={() => onNavigate(active.ctaAction)}
+                onClick={() => onNavigate('booking')}
                 className="px-7 py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-orange-600/30 hover:scale-105 active:scale-95 transition flex items-center justify-center space-x-2 min-h-[46px]"
               >
-                <span>{active.ctaText}</span>
+                <span>Reserve Accommodation</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
