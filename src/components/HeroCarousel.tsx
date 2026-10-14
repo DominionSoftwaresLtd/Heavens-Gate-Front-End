@@ -197,15 +197,15 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
             );
           })}
 
-          {/* Left Hero Content: The Sole Majestic Sentence (Genesis 28:17) - Centered */}
-          <div className="relative z-20 max-w-2xl px-6 sm:px-10 py-12 sm:py-16 space-y-6 sm:space-y-7 text-center flex flex-col items-center justify-center mx-auto">
-            {/* The Sole Majestic Sentence - 2 Balanced Lines */}
-            <div className="space-y-3.5 text-center">
-              <blockquote className="font-cinzel text-2xl sm:text-4xl lg:text-[40px] font-black text-white leading-[1.28] tracking-tight drop-shadow-2xl text-center mx-auto max-w-xl">
-                <span>“...THIS IS NONE OTHER THAN THE HOUSE OF GOD,</span>
-                <span className="block mt-1 sm:mt-2 text-white">AND THIS IS THE GATE OF HEAVEN.”</span>
+          {/* Left Hero Content: The Sole Majestic Sentence (Genesis 28:17) - Strictly 2 Lines */}
+          <div className="relative z-20 max-w-4xl w-full px-4 sm:px-8 py-10 sm:py-16 space-y-5 sm:space-y-6 text-center flex flex-col items-center justify-center mx-auto">
+            {/* The Sole Majestic Sentence - Strictly 2 Lines */}
+            <div className="space-y-3 sm:space-y-4 text-center w-full">
+              <blockquote className="font-cinzel text-sm sm:text-lg md:text-2xl lg:text-[25px] xl:text-[31px] font-black text-white leading-tight drop-shadow-2xl text-center mx-auto tracking-tight">
+                <span className="block whitespace-nowrap">“...THIS IS NONE OTHER THAN THE HOUSE OF GOD,</span>
+                <span className="block whitespace-nowrap mt-1 sm:mt-2 text-white">AND THIS IS THE GATE OF HEAVEN.”</span>
               </blockquote>
-              <div className="font-mono text-base sm:text-lg font-black text-orange-400 tracking-widest uppercase drop-shadow-md text-center pt-1">
+              <div className="font-mono text-xs sm:text-base font-black text-orange-400 tracking-widest uppercase drop-shadow-md text-center pt-0.5">
                 GENESIS 28:17
               </div>
             </div>
