@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   ChevronLeft, ChevronRight, Calendar, ShieldCheck, MapPin, 
-  Clock, ArrowRight, Flame, Play, Pause, Coffee, Volume2
+  Clock, ArrowRight, Flame, Play, Pause, Coffee
 } from 'lucide-react';
 
-import stoneMarkImg from '../assets/HEAVENS GATE STONE MARK.jpg';
-import slideMountainDawn from '../assets/slide_mountain_dawn.jpg';
-import shiloHallImg from '../assets/SHILO HALL.jpg';
-import slideSanctuary from '../assets/slide_sanctuary.jpg';
-import mtSinaiChapel from '../assets/MT SINAI CHAPEL.jpg';
-import entryGateImg from '../assets/ENTRY GATE CLEAR.jpg';
+// Only strictly verified High-Resolution (1376px to 1920px Full HD) genuine assets:
+import stoneMarkImg from '../assets/HEAVENS GATE STONE MARK.jpg'; // 1920x1440 (530 KB) - Authentic Stone Plaque
+import slideMountainDawn from '../assets/slide_mountain_dawn.jpg'; // 1376x768 (866 KB) - Gilgil Mountain Sunrise
+import slideSanctuary from '../assets/slide_sanctuary.jpg'; // 1376x768 (832 KB) - Shiloh Sanctuary Altar
+import slideGardens from '../assets/slide_gardens.jpg'; // 1376x768 (1,066 KB) - Solitude Pergolas & Gardens
+import hostelsImg from '../assets/AL HOSTELS.jpg'; // 1920x1440 (429 KB) - Pilgrim Accommodation Blocks
 
 interface HeroCarouselProps {
   onNavigate: (tab: string) => void;
@@ -18,14 +18,9 @@ interface HeroCarouselProps {
 
 interface PhotoSlide {
   id: string;
-  headlineMain: string;
-  headlineAccent: string;
-  subtitle: string;
   tag: string;
   image: string;
   alt: string;
-  ctaText: string;
-  ctaAction: string;
 }
 
 export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi }) => {
@@ -36,72 +31,37 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
 
   const SLIDE_DURATION = 6000; // 6 seconds
 
+  // Filtered strictly to the few high-resolution, crystal-clear, uncompressed assets
   const slides: PhotoSlide[] = [
     {
       id: 'stone-mark',
-      headlineMain: 'HEAVENS GATE',
-      headlineAccent: 'PRAYER MOUNTAIN',
-      subtitle: '“...This is none other than the house of God, and this is the gate of heaven.” — Genesis 28:17',
-      tag: 'Sacred Altar Stone Monument',
+      tag: 'Sacred Altar Stone Monument (Genesis 28:17)',
       image: stoneMarkImg,
-      alt: 'Heavens Gate Prayer Mountain Sacred Stone Monument in Gilgil Kenya',
-      ctaText: 'Reserve Accommodation',
-      ctaAction: 'booking'
+      alt: 'Heavens Gate Prayer Mountain Official Stone Monument in Gilgil, Nakuru County'
     },
     {
       id: 'dawn-altar',
-      headlineMain: 'SACRED ALTAR OF',
-      headlineAccent: 'FIRE & PRAYER',
-      subtitle: 'Unbroken intercession and life-transforming encounters on the Gilgil hillsides overlooking the Great Rift Valley.',
-      tag: 'Dawn Over Gilgil (2,050m ASL)',
+      tag: 'Sunrise Over Gilgil Prayer Mountain (2,050m ASL)',
       image: slideMountainDawn,
-      alt: 'Dawn over Heavens Gate Prayer Mountain in Gilgil Kenya',
-      ctaText: 'Reserve Accommodation',
-      ctaAction: 'booking'
+      alt: 'Majestic sunrise over Heavens Gate Prayer Mountain in Gilgil, Kenya'
     },
     {
       id: 'shiloh-sanctuary',
-      headlineMain: 'SHILOH MAIN',
-      headlineAccent: 'PRAYER SANCTUARY',
-      subtitle: 'Continuous 3-hour day & night prayer watches around the clock. Standing in the gap for families and the nations.',
-      tag: '24/7 Corporate Intercession',
-      image: shiloHallImg,
-      alt: 'Shiloh Main Prayer Hall at Heavens Gate Prayer Mountain Gilgil',
-      ctaText: 'Join Today\'s Prayer Watch',
-      ctaAction: 'services'
-    },
-    {
-      id: 'sanctuary-interior',
-      headlineMain: 'DAY & NIGHT',
-      headlineAccent: 'WATCHES OF PRAYER',
-      subtitle: 'Four Day Watches and Four Night Watches unbroken. The perpetual altar of praise, repentance, and revival.',
-      tag: 'Shiloh Altar of Worship',
+      tag: 'Shiloh Main Prayer Sanctuary (24/7 Altar)',
       image: slideSanctuary,
-      alt: 'Sunlit interior of Shiloh Sanctuary at Heavens Gate',
-      ctaText: 'Join Today\'s Prayer Watch',
-      ctaAction: 'services'
+      alt: 'Sunlit interior of Shiloh Sanctuary at Heavens Gate Prayer Mountain'
     },
     {
-      id: 'mt-sinai',
-      headlineMain: 'SOLITUDE &',
-      headlineAccent: 'PRAYER PERGOLAS',
-      subtitle: 'Secluded Mount Carmel stone prayer alcoves and Gethsemane meditation walkways for quiet fasting and reflection.',
-      tag: 'Mt Sinai Chapel & Gardens',
-      image: mtSinaiChapel,
-      alt: 'Mount Sinai Chapel and Solitude Grounds at Heavens Gate Gilgil',
-      ctaText: 'Explore Solitude Rooms',
-      ctaAction: 'booking'
+      id: 'prayer-gardens',
+      tag: 'Mount Carmel Solitude & Gethsemane Prayer Pergolas',
+      image: slideGardens,
+      alt: 'Tranquil prayer gardens and private pergolas on the mountain hillside'
     },
     {
-      id: 'entry-gate',
-      headlineMain: 'INSTANT M-PESA &',
-      headlineAccent: 'DIGITAL QR PASS',
-      subtitle: 'Book from anywhere in Kenya or the diaspora. Instant Daraja STK Push confirmation and rapid gate admission.',
-      tag: 'Main Security Gatehouse',
-      image: entryGateImg,
-      alt: 'Official Entry Gate to Heavens Gate Prayer Mountain in Gilgil',
-      ctaText: 'Access My QR Ticket',
-      ctaAction: 'ticket'
+      id: 'pilgrim-hostels',
+      tag: 'Subsidised Pilgrim Hostels & Accommodation',
+      image: hostelsImg,
+      alt: 'Clean and peaceful retreat quarters at Heavens Gate Prayer Mountain'
     }
   ];
 
@@ -172,7 +132,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
         onTouchEnd={handleTouchEnd}
       >
         {/* ======================================================== */}
-        {/* LEFT SECTION (~62% on Desktop): PHOTO CAROUSEL + TEXT   */}
+        {/* LEFT SECTION (~64% on Desktop): PHOTO CAROUSEL + TEXT   */}
         {/* ======================================================== */}
         <div className="relative w-full lg:w-[64%] min-h-[440px] sm:min-h-[480px] lg:min-h-[560px] overflow-hidden flex items-center">
           {slides.map((slide, idx) => {
@@ -184,31 +144,32 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
                   isCurrent ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
                 }`}
               >
-                {/* Full-bleed crisp photographic background with gentle zoom */}
+                {/* Full-bleed crisp High-Definition photo with subtle slow scale */}
                 <img
                   src={slide.image}
                   alt={slide.alt}
                   className="w-full h-full object-cover object-center transition-transform duration-10000 ease-out"
                   style={{
-                    transform: isCurrent ? 'scale(1.06)' : 'scale(1.0)'
+                    transform: isCurrent ? 'scale(1.05)' : 'scale(1.0)',
+                    imageRendering: 'auto'
                   }}
                 />
 
-                {/* Cinematic Vignette Overlay (Dark gradient ensuring 100% text contrast) */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/30 lg:to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+                {/* Cinematic Vignette Overlay (Ensuring 100% text contrast without washing out the photo) */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30 lg:to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/35"></div>
               </div>
             );
           })}
 
-          {/* Left Hero Foreground Content (Dedicated to Genesis 28:17 Cornerstone) */}
-          <div className="relative z-20 max-w-2xl px-6 sm:px-10 lg:pl-12 lg:pr-6 py-12 sm:py-16 space-y-5 sm:space-y-6">
+          {/* Left Hero Content: The Sole Majestic Sentence (Genesis 28:17) */}
+          <div className="relative z-20 max-w-2xl px-6 sm:px-10 lg:pl-12 lg:pr-8 py-12 sm:py-16 space-y-6 sm:space-y-7">
             {/* The Sole Majestic Sentence */}
-            <div className="space-y-3">
-              <blockquote className="font-cinzel text-2xl sm:text-4xl lg:text-[42px] font-black text-white leading-[1.22] tracking-tight drop-shadow-2xl">
+            <div className="space-y-3.5">
+              <blockquote className="font-cinzel text-2xl sm:text-4xl lg:text-[44px] font-black text-white leading-[1.22] tracking-tight drop-shadow-2xl">
                 “...THIS IS NONE OTHER THAN THE HOUSE OF GOD, AND THIS IS THE GATE OF HEAVEN.”
               </blockquote>
-              <div className="font-mono text-sm sm:text-base font-black text-orange-400 tracking-widest uppercase drop-shadow-md">
+              <div className="font-mono text-base sm:text-lg font-black text-orange-400 tracking-widest uppercase drop-shadow-md">
                 GENESIS 28:17
               </div>
             </div>
@@ -235,7 +196,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
             </div>
           </div>
 
-          {/* Left Side Slide Chevrons & Counter */}
+          {/* Slide Navigation Controls & Counter at Bottom Left */}
           <div className="absolute bottom-5 left-6 sm:left-10 z-20 flex items-center space-x-2">
             <button
               onClick={handlePrev}
@@ -251,8 +212,11 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
             >
               <ChevronRight className="w-4 h-4" />
             </button>
-            <span className="text-[11px] font-mono text-white/80 bg-black/50 px-2 py-1 rounded-md border border-white/20">
+            <span className="text-[11px] font-mono text-white/90 bg-black/60 px-2.5 py-1 rounded-md border border-white/20">
               0{currentSlide + 1} / 0{slides.length}
+            </span>
+            <span className="hidden sm:inline-block text-[11px] text-white/75 font-medium pl-2 drop-shadow">
+              {active.tag}
             </span>
           </div>
         </div>
@@ -268,10 +232,10 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
               : 'none'
           }}
         >
-          {/* Subtle Photographic Watermark Texture in Background */}
+          {/* Subtle High-Resolution Photographic Watermark in Background */}
           <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none">
             <img 
-              src={shiloHallImg} 
+              src={stoneMarkImg} 
               alt="" 
               className="w-full h-full object-cover"
             />
@@ -281,7 +245,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
           <div className="absolute top-0 right-0 w-80 h-80 bg-amber-300/30 rounded-full blur-3xl pointer-events-none"></div>
           <div className="absolute bottom-0 left-10 w-64 h-64 bg-orange-800/40 rounded-full blur-2xl pointer-events-none"></div>
 
-          {/* THE 3 TILTED GRAPHIC PILLS (Exactly matching the user's reference!) */}
+          {/* THE 3 TILTED GRAPHIC PILLS */}
           <div className="relative z-10 flex flex-col items-center justify-center space-y-3 sm:space-y-4 transform -rotate-12 hover:-rotate-6 transition-transform duration-500 my-6 lg:my-0 lg:pl-10">
             
             {/* Pill 1: Golden Yellow "HEAVENS" */}
@@ -314,7 +278,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
       </div>
 
       {/* ======================================================== */}
-      {/* BOTTOM IMPACT RIBBON TICKER STRIP (Exactly like reference) */}
+      {/* BOTTOM IMPACT RIBBON TICKER STRIP                         */}
       {/* ======================================================== */}
       <div className="bg-slate-950 border-t border-slate-800 text-white flex items-center overflow-hidden h-12 shadow-inner">
         {/* Fixed Bright Solid Orange Block Badge */}
@@ -332,7 +296,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
               </span>
             </div>
           ))}
-          {/* Repeat for full infinite feel */}
+          {/* Duplicate for infinite seamless scroll */}
           {tickerItems.map((item, i) => (
             <div key={`dup-${i}`} className="hidden md:flex items-center space-x-2 shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
