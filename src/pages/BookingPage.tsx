@@ -401,21 +401,21 @@ export const BookingPage: React.FC<BookingPageProps> = ({ onBookingSuccess }) =>
         </div>
       </form>
 
-      {/* M-Pesa Payment Modal */}
+      {/* M-Pesa Payment Modal (Fully Responsive & Scrollable on Mobile) */}
       {isPaymentModalOpen && createdBooking && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white border-2 border-orange-500 rounded-3xl max-w-md w-full p-6 shadow-2xl relative space-y-5 animate-fade-in">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white border-2 border-orange-500 rounded-2xl sm:rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl relative space-y-4 sm:space-y-5 animate-fade-in max-h-[92vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center space-x-2 text-slate-900">
                 <CreditCard className="w-5 h-5 text-emerald-600" />
-                <h3 className="font-cinzel font-bold text-base">M-Pesa Express Checkout</h3>
+                <h3 className="font-cinzel font-bold text-sm sm:text-base">M-Pesa Express Checkout</h3>
               </div>
-              <span className="text-[11px] font-mono text-orange-700 bg-orange-100 px-2 py-0.5 rounded font-bold">
+              <span className="text-[10px] sm:text-[11px] font-mono text-orange-700 bg-orange-100 px-2 py-0.5 rounded font-bold">
                 Ref: {createdBooking.bookingReference}
               </span>
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
               <div className="flex justify-between text-slate-600">
                 <span>Pilgrim:</span>
                 <span className="font-bold text-slate-900">{createdBooking.visitorName}</span>
@@ -426,7 +426,7 @@ export const BookingPage: React.FC<BookingPageProps> = ({ onBookingSuccess }) =>
               </div>
               <div className="flex justify-between text-slate-600">
                 <span>Total Due:</span>
-                <span className="font-mono font-black text-slate-900 text-base">KES {createdBooking.totalAmountKES.toLocaleString()}</span>
+                <span className="font-mono font-black text-slate-900 text-sm sm:text-base">KES {createdBooking.totalAmountKES.toLocaleString()}</span>
               </div>
             </div>
 
@@ -439,7 +439,7 @@ export const BookingPage: React.FC<BookingPageProps> = ({ onBookingSuccess }) =>
                   value={mpesaPhone}
                   onChange={e => setMpesaPhone(e.target.value)}
                   placeholder="07XXXXXXXX"
-                  className="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-orange-500"
+                  className="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-sm sm:text-xs text-slate-900 focus:outline-none focus:border-orange-500"
                 />
               </div>
             </div>

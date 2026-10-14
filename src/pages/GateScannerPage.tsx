@@ -213,8 +213,8 @@ export const GateScannerPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Room Allocation Banner */}
-          <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 flex items-center justify-between">
+          {/* Room Allocation Banner (Stacks on mobile) */}
+          <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center shrink-0 shadow-sm">
                 <Bed className="w-5 h-5" />
@@ -228,7 +228,7 @@ export const GateScannerPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="text-right text-xs text-slate-600">
+            <div className="text-left sm:text-right text-xs text-slate-600">
               Phone: <span className="font-mono font-bold text-slate-900">{scanResult.ticket.phone}</span>
             </div>
           </div>

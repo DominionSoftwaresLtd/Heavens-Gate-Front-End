@@ -223,31 +223,31 @@ export const TestimoniesPage: React.FC = () => {
         ))}
       </div>
 
-      {/* Submit Testimony Modal */}
+      {/* Submit Testimony Modal (Fully Responsive on Mobile) */}
       {isSubmitModalOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white border-2 border-orange-500 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative space-y-5 animate-fade-in">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white border-2 border-orange-500 rounded-2xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-8 shadow-2xl relative space-y-4 sm:space-y-5 animate-fade-in max-h-[92vh] overflow-y-auto">
             <button
               onClick={() => setIsSubmitModalOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600"
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="flex items-center space-x-2 text-orange-600">
-              <Sparkles className="w-5 h-5" />
-              <h3 className="font-cinzel text-lg font-bold text-slate-900">Share Your Testimony</h3>
+              <MessageSquareQuote className="w-5 h-5" />
+              <h3 className="font-cinzel text-base sm:text-lg font-bold text-slate-900">Share Your Testimony</h3>
             </div>
 
             <form onSubmit={handleSubmitTestimony} className="space-y-4 text-xs">
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-slate-700 font-bold mb-1">Your Name (or Anonymous)</label>
                   <input
                     type="text"
                     value={authorName}
                     onChange={e => setAuthorName(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm sm:text-xs text-slate-900 focus:outline-none focus:border-orange-500"
                     required
                   />
                 </div>
@@ -258,7 +258,7 @@ export const TestimoniesPage: React.FC = () => {
                     value={countyOrCity}
                     onChange={e => setCountyOrCity(e.target.value)}
                     placeholder="e.g. Nakuru / Nairobi"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm sm:text-xs text-slate-900 focus:outline-none focus:border-orange-500"
                     required
                   />
                 </div>

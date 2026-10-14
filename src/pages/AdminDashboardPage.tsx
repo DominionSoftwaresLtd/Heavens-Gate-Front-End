@@ -71,7 +71,7 @@ export const AdminDashboardPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={loadStats}
             className="p-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 shadow-sm transition"
@@ -82,7 +82,7 @@ export const AdminDashboardPage: React.FC = () => {
 
           <button
             onClick={handleExportCSV}
-            className="px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider transition flex items-center space-x-2 shadow-lg shadow-orange-500/20"
+            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg shadow-orange-500/20"
           >
             <Download className="w-4 h-4" />
             <span>Export CSV Report</span>
@@ -90,8 +90,8 @@ export const AdminDashboardPage: React.FC = () => {
         </div>
       </div>
 
-      {/* KPI Cards Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* KPI Cards Grid (Responsive 1-col on mobile, 2-col on tablet, 4-col on desktop) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
         {/* Checked In */}
         <div className="glass-panel p-5 rounded-2xl space-y-2 border-t-4 border-t-emerald-500 shadow-sm">
           <div className="flex justify-between items-center text-slate-500 text-xs font-bold">

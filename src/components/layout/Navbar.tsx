@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
 
           {/* Right-Hand Tools: Book CTA, Visitor Inquiries, Role Switcher, Mobile Menu */}
           <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
-            {/* Primary Book Stay CTA Button */}
+            {/* Primary Book Stay CTA Button (Desktop/Tablet) */}
             <button
               onClick={() => handleNavClick('booking')}
               className="hidden md:flex items-center bg-white text-orange-600 hover:bg-orange-50 font-bold text-xs px-4 py-2 rounded-xl shadow-md transition hover:scale-105 active:scale-95"
@@ -100,8 +100,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
               <span className="hidden sm:inline">Inquiries</span>
             </button>
 
-            {/* Role Switcher without emoji clutter */}
-            <div className="relative shrink-0">
+            {/* Desktop Role Switcher (Hidden on Mobile, Moved to Drawer for Full Accessibility) */}
+            <div className="relative shrink-0 hidden md:block">
               <select
                 value={user?.role || 'registered_pilgrim'}
                 onChange={(e) => switchRole(e.target.value as any)}
@@ -118,12 +118,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
               </select>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button with clear accessible tap target (min 44px) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-white p-2 rounded-lg hover:bg-white/15 focus:outline-none"
+              aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+              className="lg:hidden text-white p-2.5 rounded-xl bg-orange-700/80 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-white transition"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -154,28 +155,74 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
         </div>
       </div>
 
-      {/* 4. Mobile Drawer Menu */}
+      {/* 4. Enhanced Mobile Drawer Menu (Accessible, High-Contrast, Touch-Friendly) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-orange-700 border-t border-orange-500/50 px-4 pt-3 pb-6 space-y-1 shadow-2xl animate-fade-in text-white">
-          <div className="text-[11px] font-bold text-orange-200 uppercase tracking-wider px-3 py-1">
+        <div className="lg:hidden bg-orange-800 border-t border-orange-600/50 px-4 pt-4 pb-8 space-y-3 shadow-2xl animate-fade-in text-white max-h-[calc(100vh-100px)] overflow-y-auto">
+          {/* Quick Mobile Action CTA */}
+          <button
+            onClick={() => handleNavClick('booking')}
+            className="w-full bg-white text-orange-600 hover:bg-orange-50 font-black text-sm py-3 px-4 rounded-xl shadow-lg flex items-center justify-center space-x-2 transition"
+          >
+            <span>Book Accommodation</span>
+          </button>
+
+          <div className="text-[11px] font-bold text-orange-200 uppercase tracking-wider px-1 pt-2">
             Campus Navigation
           </div>
-          {navItems.map(item => {
-            const active = currentTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition ${
-                  active
-                    ? 'bg-white text-orange-600 shadow-sm font-bold'
-                    : 'text-white hover:bg-white/10'
-                }`}
-              >
-                <span>{item.label}</span>
-              </button>
-            );
-          })}
+
+          <div className="space-y-1">
+            {navItems.map(item => {
+              const active = currentTab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold min-h-[44px] transition ${
+                    active
+                      ? 'bg-white text-orange-600 shadow-md font-bold'
+                      : 'text-white hover:bg-white/10 active:bg-white/15'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Mobile Role Switcher (Fully Accessible) */}
+          <div className="pt-3 border-t border-orange-700/60 space-y-1.5">
+            <label className="block text-[11px] font-bold text-orange-200 uppercase tracking-wider px-1">
+              Test System Role:
+            </label>
+            <select
+              value={user?.role || 'registered_pilgrim'}
+              onChange={(e) => {
+                switchRole(e.target.value as any);
+                setMobileMenuOpen(false);
+              }}
+              aria-label="Switch User Role on Mobile"
+              className="w-full bg-orange-900 border border-orange-500/60 text-white text-xs font-semibold rounded-xl px-3.5 py-3 focus:outline-none focus:ring-2 focus:ring-white"
+            >
+              <option value="registered_pilgrim" className="text-slate-900 bg-white">Pilgrim: John Kamau</option>
+              <option value="gate_officer" className="text-slate-900 bg-white">Gate Officer: David</option>
+              <option value="reception_officer" className="text-slate-900 bg-white">Reception: Mary</option>
+              <option value="accommodation_officer" className="text-slate-900 bg-white">Accommodation: Samuel</option>
+              <option value="finance_officer" className="text-slate-900 bg-white">Finance Officer: James</option>
+              <option value="prayer_admin" className="text-slate-900 bg-white">Prayer Admin: Grace</option>
+              <option value="system_admin" className="text-slate-900 bg-white">System Admin: Pastor Peter</option>
+            </select>
+          </div>
+
+          {/* Quick Clinic Emergency Dial */}
+          <div className="pt-2">
+            <a
+              href="tel:+254700999111"
+              className="w-full flex items-center justify-center space-x-2 bg-orange-900/60 border border-orange-500/40 text-amber-200 py-2.5 px-3 rounded-xl text-xs font-bold"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span>Emergency Clinic: 0700 999 111</span>
+            </a>
+          </div>
         </div>
       )}
     </header>

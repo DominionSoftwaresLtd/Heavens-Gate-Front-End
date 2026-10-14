@@ -164,8 +164,8 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
                 </div>
               </div>
 
-              {/* Room Assignment */}
-              <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 flex items-center justify-between">
+              {/* Room Assignment (Stacks gracefully on mobile) */}
+              <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center shrink-0 shadow-sm">
                     <Bed className="w-5 h-5" />
@@ -181,7 +181,7 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
                 {onNavigateToMap && (
                   <button
                     onClick={onNavigateToMap}
-                    className="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs transition flex items-center space-x-1 shadow-sm"
+                    className="w-full sm:w-auto px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs transition flex items-center justify-center space-x-1 shadow-sm"
                   >
                     <span>View Room Route</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -202,16 +202,16 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
             </div>
           </div>
 
-          {/* Ticket Footer Actions */}
+          {/* Ticket Footer Actions (Stacks gracefully on mobile) */}
           <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-[11px] text-slate-500 font-medium">
+            <div className="text-[11px] text-slate-500 font-medium text-center sm:text-left">
               Heavens Gate Security Desk: 0711 000 002 • Emergency Clinic: 0700 999 111
             </div>
 
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 w-full sm:w-auto">
               <button
                 onClick={handlePrint}
-                className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center space-x-2 transition shadow-sm"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center justify-center space-x-2 transition shadow-sm"
               >
                 <Printer className="w-3.5 h-3.5" />
                 <span>Print Pass</span>

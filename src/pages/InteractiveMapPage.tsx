@@ -99,8 +99,8 @@ export const InteractiveMapPage: React.FC = () => {
       </div>
 
       {/* Interactive 2D Vector Campus Canvas */}
-      <div className="glass-panel p-4 sm:p-6 rounded-3xl relative overflow-hidden border-2 border-slate-200">
-        <div className="relative w-full aspect-[16/10] bg-gradient-to-br from-amber-50/60 via-orange-50/30 to-slate-100 rounded-2xl border-2 border-orange-200 overflow-hidden shadow-inner">
+      <div className="glass-panel p-3 sm:p-6 rounded-2xl sm:rounded-3xl relative overflow-hidden border-2 border-slate-200">
+        <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] min-h-[360px] sm:min-h-[440px] bg-gradient-to-br from-amber-50/60 via-orange-50/30 to-slate-100 rounded-xl sm:rounded-2xl border-2 border-orange-200 overflow-hidden shadow-inner">
           {/* Subtle Grid and Topographical Contours */}
           <svg className="absolute inset-0 w-full h-full opacity-40 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
             <defs>

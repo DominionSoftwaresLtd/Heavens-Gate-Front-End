@@ -65,34 +65,34 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white border-2 border-orange-500 rounded-3xl max-w-xl w-full h-[620px] flex flex-col shadow-2xl overflow-hidden relative">
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-white border-2 border-orange-500 rounded-2xl sm:rounded-3xl max-w-xl w-full h-[90vh] sm:h-[620px] max-h-[100dvh] flex flex-col shadow-2xl overflow-hidden relative">
         {/* Header in Vivid Orange */}
-        <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 p-4 flex items-center justify-between text-white shadow-md">
+        <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 p-3.5 sm:p-4 flex items-center justify-between text-white shadow-md">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white">
-              <Bot className="w-6 h-6" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white shrink-0">
+              <Bot className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <h3 className="font-cinzel font-bold text-white text-base">Ask Heavens Gate AI</h3>
+                <h3 className="font-cinzel font-bold text-white text-sm sm:text-base">Campus Inquiries & Visitor Guide</h3>
                 <span className="text-[10px] bg-white text-orange-700 px-2 py-0.5 rounded-full font-bold">
-                  Official Gilgil Rules
+                  Gilgil Altar
                 </span>
               </div>
-              <p className="text-xs text-orange-100">Grounded institutional visitor knowledge base</p>
+              <p className="text-[11px] sm:text-xs text-orange-100">Grounded institutional guidelines & regulations</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-white/80 hover:text-white p-1 rounded-lg hover:bg-white/10 transition"
+            className="text-white/80 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Quick prompt pills */}
-        <div className="p-2.5 bg-orange-50/60 border-b border-orange-100 flex items-center space-x-1.5 overflow-x-auto text-xs no-scrollbar">
+        <div className="p-2 sm:p-2.5 bg-orange-50/60 border-b border-orange-100 flex items-center space-x-1.5 overflow-x-auto text-xs no-scrollbar">
           <span className="text-orange-800 text-[11px] shrink-0 font-bold flex items-center pl-1">
             <Sparkles className="w-3 h-3 text-orange-600 mr-1" /> Quick:
           </span>

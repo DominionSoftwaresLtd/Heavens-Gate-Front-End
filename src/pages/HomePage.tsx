@@ -13,65 +13,65 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
   return (
     <div className="space-y-16 pb-16">
       {/* Hero Section with Vivid Orange Dawn Accent */}
-      <section className="relative overflow-hidden pt-10 pb-16 lg:py-20 bg-gradient-to-b from-orange-100/70 via-orange-50/40 to-slate-50 border-b border-orange-100">
+      <section className="relative overflow-hidden pt-6 pb-12 sm:pt-10 sm:pb-16 lg:py-20 bg-gradient-to-b from-orange-100/70 via-orange-50/40 to-slate-50 border-b border-orange-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center max-w-3xl mx-auto space-y-6">
+          <div className="text-center max-w-3xl mx-auto space-y-4 sm:space-y-6">
             {/* Live Service Pill */}
             <div 
               onClick={() => onNavigate('services')}
-              className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white border border-orange-300 text-xs text-orange-700 hover:border-orange-500 cursor-pointer shadow-sm hover:shadow transition font-semibold"
+              className="inline-flex max-w-full items-center space-x-2 px-3 sm:px-4 py-1.5 rounded-full bg-white border border-orange-300 text-[11px] sm:text-xs text-orange-700 hover:border-orange-500 cursor-pointer shadow-sm hover:shadow transition font-semibold"
             >
-              <span className="flex h-2 w-2 relative">
+              <span className="flex h-2 w-2 relative shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
               </span>
-              <span>Shiloh Main Sanctuary: Daily Services & Prayer Watches</span>
-              <ArrowRight className="w-3.5 h-3.5 text-orange-600" />
+              <span className="truncate">Shiloh Sanctuary: Daily Services & Prayer Watches</span>
+              <ArrowRight className="w-3.5 h-3.5 text-orange-600 shrink-0" />
             </div>
 
             {/* Title */}
-            <h1 className="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-tight">
+            <h1 className="font-cinzel text-2xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-tight">
               An Altar of Fire, Prayer & <span className="orange-gradient-text">Divine Encounter</span>
             </h1>
 
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-medium">
+            <p className="text-slate-600 text-xs sm:text-base leading-relaxed max-w-2xl mx-auto font-medium">
               Official digital management portal for <strong>Heavens Gate Prayer Mountain</strong> in Gilgil, Nakuru County, Kenya. Reserve clean accommodation, generate your QR gate pass, and seek God in solemn prayer and fasting.
             </p>
 
-            {/* Primary Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3">
+            {/* Primary Action Buttons (Responsive Stacking for Mobile) */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 pt-2 sm:pt-3">
               <button
                 onClick={() => onNavigate('booking')}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm shadow-xl shadow-orange-500/30 hover:scale-105 active:scale-95 transition flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs sm:text-sm shadow-xl shadow-orange-500/30 hover:scale-105 active:scale-95 transition flex items-center justify-center space-x-2 min-h-[44px]"
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-4 h-4 shrink-0" />
                 <span>Reserve Accommodation Now</span>
               </button>
 
               <button
                 onClick={() => onNavigate('ticket')}
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border-2 border-orange-200 hover:border-orange-400 text-sm font-bold shadow-sm transition flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border-2 border-orange-200 hover:border-orange-400 text-xs sm:text-sm font-bold shadow-sm transition flex items-center justify-center space-x-2 min-h-[44px]"
               >
-                <ShieldCheck className="w-4 h-4 text-orange-600" />
+                <ShieldCheck className="w-4 h-4 text-orange-600 shrink-0" />
                 <span>Access My QR Ticket</span>
               </button>
 
               <button
                 onClick={onOpenAi}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-800 border border-orange-300 text-sm font-bold transition flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-800 border border-orange-300 text-xs sm:text-sm font-bold transition flex items-center justify-center space-x-2 min-h-[44px]"
               >
-                <Sparkles className="w-4 h-4 text-orange-600" />
-                <span>Ask AI Guide</span>
+                <BookOpen className="w-4 h-4 text-orange-600 shrink-0" />
+                <span>Visitor Guide & Rules</span>
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Stats / Highlights Bar */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="glass-panel p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-orange-500">
+      {/* Quick Stats / Highlights Bar (Grid adjusts gracefully from 1 col on mobile to 4 on desktop) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 sm:-mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-orange-500">
             <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
               <Clock className="w-5 h-5" />
             </div>
@@ -81,7 +81,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
             </div>
           </div>
 
-          <div className="glass-panel p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-emerald-500">
+          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-emerald-500">
             <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
               <Coffee className="w-5 h-5" />
             </div>
@@ -91,7 +91,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
             </div>
           </div>
 
-          <div className="glass-panel p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-blue-500">
+          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-blue-500">
             <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
               <Users className="w-5 h-5" />
             </div>
@@ -101,7 +101,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
             </div>
           </div>
 
-          <div className="glass-panel p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-purple-500">
+          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-purple-500">
             <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
               <MapPin className="w-5 h-5" />
             </div>
