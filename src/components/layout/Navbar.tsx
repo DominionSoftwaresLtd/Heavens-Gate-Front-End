@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, PhoneCall, HelpCircle } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.js';
+import logoImg from '../../assets/LOGO.jpg';
 
 interface NavbarProps {
   currentTab: string;
@@ -62,9 +63,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
             onClick={() => handleNavClick('home')}
             className="flex items-center space-x-3 cursor-pointer group shrink-0"
           >
-            <div className="w-10 h-10 rounded-xl bg-white text-orange-600 flex items-center justify-center font-black font-cinzel text-xl shadow-md group-hover:scale-105 transition shrink-0">
-              HG
-            </div>
+            <img 
+              src={logoImg} 
+              alt="Heavens Gate Prayer Mountain Official Logo" 
+              className="w-10 h-10 rounded-xl object-contain bg-white p-0.5 shadow-md border border-white/40 group-hover:scale-105 transition shrink-0" 
+            />
             <div className="shrink-0 leading-tight">
               <div className="flex items-center space-x-1.5 whitespace-nowrap">
                 <span className="font-cinzel font-black text-lg sm:text-xl text-white tracking-wide">

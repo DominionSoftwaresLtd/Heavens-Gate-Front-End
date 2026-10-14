@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, ShieldCheck, Heart, Clock, AlertTriangle } from 'lucide-react';
+import logoImg from '../../assets/LOGO.jpg';
 
 export const Footer: React.FC = () => {
   return (
@@ -8,10 +9,12 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Col 1: Ministry Info */}
           <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold font-cinzel shadow-sm">
-                HG
-              </div>
+            <div className="flex items-center space-x-2.5">
+              <img 
+                src={logoImg} 
+                alt="Heavens Gate Prayer Mountain Official Logo" 
+                className="w-9 h-9 rounded-xl object-contain bg-orange-50 p-0.5 border border-orange-200 shadow-sm"
+              />
               <span className="font-cinzel font-bold text-slate-900 text-base">Heavens Gate</span>
             </div>
             <p className="text-slate-600 text-xs leading-relaxed">

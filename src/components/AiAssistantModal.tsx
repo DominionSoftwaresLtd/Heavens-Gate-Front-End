@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HelpCircle, BookOpen, Send, X, CheckCircle2 } from 'lucide-react';
 import { api } from '../services/api.js';
+import logoImg from '../assets/LOGO.jpg';
 
 interface Message {
   id: string;
@@ -70,9 +71,11 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
         {/* Header in Vivid Orange */}
         <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 p-3.5 sm:p-4 flex items-center justify-between text-white shadow-md">
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white shrink-0">
-              <HelpCircle className="w-5 h-5 sm:w-6 sm:h-6" />
-            </div>
+            <img 
+              src={logoImg} 
+              alt="Heavens Gate Prayer Mountain Official Logo" 
+              className="w-10 h-10 rounded-xl object-contain bg-white p-0.5 shadow-md border border-white/40 shrink-0" 
+            />
             <div>
               <div className="flex items-center space-x-2">
                 <h3 className="font-cinzel font-bold text-white text-sm sm:text-base">Campus Inquiries & Visitor Guide</h3>

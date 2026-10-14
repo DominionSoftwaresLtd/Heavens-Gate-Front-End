@@ -7,6 +7,7 @@ import {
 import { api } from '../services/api.js';
 import { AccommodationCategory, Booking } from '../types/index.js';
 import { useAuth } from '../context/AuthContext.js';
+import logoImg from '../assets/LOGO.jpg';
 
 interface BookingPageProps {
   onBookingSuccess: (bookingRef: string, ticketRef?: string) => void;
@@ -148,7 +149,12 @@ export const BookingPage: React.FC<BookingPageProps> = ({ onBookingSuccess }) =>
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Page Header */}
-      <div className="mb-8 text-center max-w-2xl mx-auto">
+      <div className="mb-8 text-center max-w-2xl mx-auto flex flex-col items-center">
+        <img 
+          src={logoImg} 
+          alt="Heavens Gate Official Logo" 
+          className="w-14 h-14 rounded-2xl object-contain bg-white p-1 border-2 border-orange-400 shadow-md mb-3" 
+        />
         <span className="text-orange-600 text-xs font-bold uppercase tracking-wider bg-orange-100 px-3 py-1 rounded-full">
           Online Reservation & M-Pesa Gate Pass
         </span>

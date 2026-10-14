@@ -32,6 +32,7 @@ import compoundImg from '../assets/COMPOND.jpg';
 import environmentImg from '../assets/ENVIRONMENT.jpg';
 import environment2Img from '../assets/ENVIRONMENT2.jpg';
 import billboardImg from '../assets/BILL BOARD.jpg';
+import logoImg from '../assets/LOGO.jpg';
 
 export interface GalleryPhoto {
   id: string;
@@ -47,6 +48,14 @@ export const CampusRootsGallery: React.FC = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryPhoto | null>(null);
 
   const authenticPhotos: GalleryPhoto[] = [
+    {
+      id: 'official-logo',
+      title: 'Heavens Gate Official Ministry Seal',
+      category: 'roots',
+      image: logoImg,
+      description: 'The official sacred emblem and seal of Heavens Gate Prayer Mountain, representing the altar of continuous prayer and the open heavens over Gilgil, Nakuru County, Kenya.',
+      badge: 'Official Seal'
+    },
     {
       id: 'stone-mark',
       title: 'Sacred Altar Stone Monument',
@@ -268,17 +277,24 @@ export const CampusRootsGallery: React.FC = () => {
       {/* SECTION HEADER: SPIRITUAL ROOTS & HISTORY                 */}
       {/* ======================================================== */}
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-5 gap-4">
-        <div>
-          <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-100 px-3 py-1 rounded-full mb-2">
-            <Flame className="w-3.5 h-3.5 text-orange-600" />
-            <span>Spiritual Roots & Authentic Campus Archive</span>
+        <div className="flex items-start sm:items-center space-x-4">
+          <img 
+            src={logoImg} 
+            alt="Heavens Gate Prayer Mountain Official Seal" 
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-contain bg-white p-1 shadow-md border-2 border-orange-400 shrink-0" 
+          />
+          <div>
+            <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-100 px-3 py-1 rounded-full mb-2">
+              <Flame className="w-3.5 h-3.5 text-orange-600" />
+              <span>Spiritual Roots & Authentic Campus Archive</span>
+            </div>
+            <h2 className="font-cinzel text-2xl sm:text-3xl font-black text-slate-900">
+              The Roots of Heavens Gate Prayer Mountain
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mt-1 leading-relaxed">
+              Founded in 2011 by Apostle John Kimani William under divine mandate, Heavens Gate is a consecrated altar of continuous day-and-night prayer overlooking the Great Rift Valley in Gilgil, Kenya.
+            </p>
           </div>
-          <h2 className="font-cinzel text-2xl sm:text-3xl font-black text-slate-900">
-            The Roots of Heavens Gate Prayer Mountain
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mt-1 leading-relaxed">
-            Founded in 2011 by Apostle John Kimani William under divine mandate, Heavens Gate is a consecrated altar of continuous day-and-night prayer overlooking the Great Rift Valley in Gilgil, Kenya.
-          </p>
         </div>
 
         {/* Filter Navigation Tabs */}
