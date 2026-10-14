@@ -131,9 +131,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
         </div>
       </div>
 
-      {/* 3. Secondary Nav Bar Row (Spacious & Clean Horizontal Links) */}
+      {/* 3. Secondary Nav Bar Row (Spacious & Clean Horizontal Links, No Scrollbars) */}
       <div className="hidden lg:block bg-orange-700 border-t border-orange-500/40 text-white px-4 sm:px-6 lg:px-8 py-1.5">
-        <div className="max-w-7xl mx-auto flex items-center space-x-1.5 overflow-x-auto no-scrollbar">
+        <div 
+          className="max-w-7xl mx-auto flex items-center gap-1 xl:gap-1.5 overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {navItems.map(item => {
             const active = currentTab === item.id;
             const Icon = item.icon;
@@ -141,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap shrink-0 ${
+                className={`px-2.5 py-1.5 xl:px-3 xl:py-1.5 rounded-lg text-[11px] xl:text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap shrink-0 ${
                   active
                     ? 'bg-white text-orange-600 shadow-sm'
                     : 'text-white/90 hover:text-white hover:bg-white/15'
