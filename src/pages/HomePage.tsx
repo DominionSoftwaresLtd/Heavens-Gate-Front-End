@@ -4,6 +4,7 @@ import {
   ArrowRight, CheckCircle2, AlertTriangle, Coffee, BookOpen, Users
 } from 'lucide-react';
 import { HeroCarousel } from '../components/HeroCarousel.js';
+import { CampusRootsGallery } from '../components/CampusRootsGallery.js';
 
 interface HomePageProps {
   onNavigate: (tab: string) => void;
@@ -242,6 +243,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
           </div>
         </div>
       </section>
+
+      {/* Foundational Roots, Spiritual History & Authentic Campus Gallery */}
+      <CampusRootsGallery />
 
       {/* Mandatory Mountain Orientation & Rules Callout Area in Vivid Orange */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

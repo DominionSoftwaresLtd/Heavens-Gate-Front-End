@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Bus, MapPin, Calculator, CheckSquare, Square, Clock
+  Bus, MapPin, Calculator, CheckSquare, Square, Clock, Navigation, ShieldCheck
 } from 'lucide-react';
 import { api } from '../services/api.js';
 import { TransportRoute } from '../types/index.js';
+
+// Authentic Route Landmarks
+import billboardImg from '../assets/BILL BOARD.jpg';
+import entryGateImg from '../assets/ENTRY GATE CLEAR.jpg';
+import gateViewImg from '../assets/GATE VIEW.jpg';
 
 export const TransportEstimatorPage: React.FC = () => {
   const [routes, setRoutes] = useState<TransportRoute[]>([]);
@@ -126,6 +131,79 @@ export const TransportEstimatorPage: React.FC = () => {
                 </div>
               </div>
             )}
+
+            {/* Visual Highway Route Landmarks ("Remember the Routes") */}
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 text-white border border-slate-800 space-y-4">
+              <div className="flex items-center space-x-2 text-orange-400 text-xs font-bold uppercase tracking-wider">
+                <Navigation className="w-4 h-4 text-orange-500" />
+                <span>Visual Route Milestones • Highway Landmarks</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed font-light">
+                When alighting at the Gilgil weighbridge junction along the Nairobi-Nakuru Highway (A104), look out for these exact authentic physical landmarks to guide your arrival:
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                {/* Milestone 1: Billboard */}
+                <div className="rounded-xl overflow-hidden bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <img 
+                      src={billboardImg} 
+                      alt="Official Heavens Gate Highway Billboard" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] font-bold text-orange-300">
+                      Step 1
+                    </div>
+                  </div>
+                  <div className="p-3">
+                    <strong className="text-white text-xs block font-bold">Highway Billboard</strong>
+                    <p className="text-[11px] text-slate-300 mt-0.5 leading-snug">
+                      Official signpost along A104 at the Gilgil weighbridge turn-off.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Milestone 2: Approach Road */}
+                <div className="rounded-xl overflow-hidden bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <img 
+                      src={gateViewImg} 
+                      alt="Approach Road to Heavens Gate" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] font-bold text-orange-300">
+                      Step 2
+                    </div>
+                  </div>
+                  <div className="p-3">
+                    <strong className="text-white text-xs block font-bold">1.5 km Hillside Approach</strong>
+                    <p className="text-[11px] text-slate-300 mt-0.5 leading-snug">
+                      Short Boda Boda transfer (KES 100-150) or peaceful 15-min prayer walk.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Milestone 3: Gate */}
+                <div className="rounded-xl overflow-hidden bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <img 
+                      src={entryGateImg} 
+                      alt="Official Security Gatehouse" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] font-bold text-orange-300">
+                      Step 3
+                    </div>
+                  </div>
+                  <div className="p-3">
+                    <strong className="text-white text-xs block font-bold">Security Gatehouse</strong>
+                    <p className="text-[11px] text-slate-300 mt-0.5 leading-snug">
+                      Present National ID & scanned QR Pass. Open 5:00 AM — 8:00 PM.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Interactive Packing Checklist */}

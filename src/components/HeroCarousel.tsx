@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   ChevronLeft, ChevronRight, Calendar, ShieldCheck, MapPin, 
-  Clock, ArrowRight, Flame, Play, Pause, Coffee
+  Clock, ArrowRight, Flame, Play, Pause, Coffee, Navigation
 } from 'lucide-react';
 
-// Only strictly verified High-Resolution (1376px to 1920px Full HD) genuine assets:
-import stoneMarkImg from '../assets/HEAVENS GATE STONE MARK.jpg'; // 1920x1440 (530 KB) - Authentic Stone Plaque
-import slideMountainDawn from '../assets/slide_mountain_dawn.jpg'; // 1376x768 (866 KB) - Gilgil Mountain Sunrise
-import slideSanctuary from '../assets/slide_sanctuary.jpg'; // 1376x768 (832 KB) - Shiloh Sanctuary Altar
-import slideGardens from '../assets/slide_gardens.jpg'; // 1376x768 (1,066 KB) - Solitude Pergolas & Gardens
-import hostelsImg from '../assets/AL HOSTELS.jpg'; // 1920x1440 (429 KB) - Pilgrim Accommodation Blocks
+// Authentic Campus Roots & High-Fidelity Assets:
+import stoneMarkImg from '../assets/HEAVENS GATE STONE MARK.jpg'; // Groundbreaking 2011 & Genesis 28:17
+import shiloHallImg from '../assets/SHILO HALL.jpg'; // Shiloh Main Sanctuary
+import shiloFrontImg from '../assets/SHILO FRONT VIEW 2.jpg'; // Shiloh Front Sanctuary & Steps
+import mtSinaiChapel from '../assets/MT SINAI CHAPEL.jpg'; // Mount Sinai Chapel & Solitude
+import hostelsImg from '../assets/AL HOSTELS.jpg'; // Pilgrim Hostels
+import entryGateImg from '../assets/ENTRY GATE CLEAR.jpg'; // Official Security Gatehouse
+import kitchenImg from '../assets/KITCHEN AREA.webp'; // Pilgrim Fasting Tea & Kitchen
+import fullViewImg from '../assets/HEAVENS GATE FULL VIEW.jpg'; // Mountain Panoramic Grounds
+import billboardImg from '../assets/BILL BOARD.jpg'; // Highway Route Landmark & Billboard
 
 interface HeroCarouselProps {
   onNavigate: (tab: string) => void;
@@ -29,39 +33,63 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
-  const SLIDE_DURATION = 6000; // 6 seconds
+  const SLIDE_DURATION = 6000; // 6 seconds per slide
 
-  // Filtered strictly to the few high-resolution, crystal-clear, uncompressed assets
+  // Curated authentic deck honoring the spiritual roots and pilgrimage grounds
   const slides: PhotoSlide[] = [
     {
       id: 'stone-mark',
-      tag: 'Sacred Altar Stone Monument (Genesis 28:17)',
+      tag: 'Foundational Altar Stone Monument • Genesis 28:17 Dedication',
       image: stoneMarkImg,
       alt: 'Heavens Gate Prayer Mountain Official Stone Monument in Gilgil, Nakuru County'
     },
     {
-      id: 'dawn-altar',
-      tag: 'Sunrise Over Gilgil Prayer Mountain (2,050m ASL)',
-      image: slideMountainDawn,
-      alt: 'Majestic sunrise over Heavens Gate Prayer Mountain in Gilgil, Kenya'
+      id: 'shiloh-hall',
+      tag: 'Shiloh Main Prayer Sanctuary • 24/7 Corporate Intercession',
+      image: shiloHallImg,
+      alt: 'Shiloh Main Sanctuary Hall at Heavens Gate Prayer Mountain'
     },
     {
-      id: 'shiloh-sanctuary',
-      tag: 'Shiloh Main Prayer Sanctuary (24/7 Altar)',
-      image: slideSanctuary,
-      alt: 'Sunlit interior of Shiloh Sanctuary at Heavens Gate Prayer Mountain'
+      id: 'shiloh-front',
+      tag: 'Shiloh Sanctuary Altar & Entrance • House of Continuous Worship',
+      image: shiloFrontImg,
+      alt: 'Shiloh Sanctuary Front View at Heavens Gate'
     },
     {
-      id: 'prayer-gardens',
-      tag: 'Mount Carmel Solitude & Gethsemane Prayer Pergolas',
-      image: slideGardens,
-      alt: 'Tranquil prayer gardens and private pergolas on the mountain hillside'
+      id: 'mt-sinai',
+      tag: 'Mount Sinai Chapel • Sacred Solitude & Personal Fasting Grounds',
+      image: mtSinaiChapel,
+      alt: 'Mount Sinai Chapel and Solitude Grounds at Heavens Gate'
     },
     {
-      id: 'pilgrim-hostels',
-      tag: 'Subsidised Pilgrim Hostels & Accommodation',
+      id: 'hostels',
+      tag: 'Subsidised Pilgrim Hostels • Clean & Serene Accommodation Blocks',
       image: hostelsImg,
-      alt: 'Clean and peaceful retreat quarters at Heavens Gate Prayer Mountain'
+      alt: 'Clean and serene accommodation blocks at Heavens Gate Prayer Mountain'
+    },
+    {
+      id: 'entry-gate',
+      tag: 'Official Security Gatehouse • Verified Admission & Registration',
+      image: entryGateImg,
+      alt: 'Official Main Entrance Gate at Heavens Gate Prayer Mountain'
+    },
+    {
+      id: 'kitchen-area',
+      tag: 'Pilgrim Fasting Refectory • Free Continuous Hot Water & Tea Station',
+      image: kitchenImg,
+      alt: 'Pilgrim tea and hot water kitchen station at Heavens Gate'
+    },
+    {
+      id: 'full-view',
+      tag: 'Mountain Panoramic Compound • 2,050m ASL Sacred Elevation',
+      image: fullViewImg,
+      alt: 'Panoramic view of Heavens Gate Prayer Mountain compound in Gilgil Kenya'
+    },
+    {
+      id: 'billboard-route',
+      tag: 'Highway Route Landmark • Nairobi-Nakuru Highway Turn-off Billboard',
+      image: billboardImg,
+      alt: 'Official highway billboard directing pilgrims to Heavens Gate Prayer Mountain'
     }
   ];
 
@@ -144,18 +172,28 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
                   isCurrent ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
                 }`}
               >
-                {/* Full-bleed crisp High-Definition photo with subtle slow scale */}
+                {/* 1. Ambient Blurred Backdrop (Fills widescreen borders naturally without stretching artifacts) */}
                 <img
                   src={slide.image}
-                  alt={slide.alt}
-                  className="w-full h-full object-cover object-center transition-transform duration-10000 ease-out"
-                  style={{
-                    transform: isCurrent ? 'scale(1.05)' : 'scale(1.0)',
-                    imageRendering: 'auto'
-                  }}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full h-full object-cover object-center filter blur-xl opacity-40 scale-110 pointer-events-none"
                 />
 
-                {/* Cinematic Vignette Overlay (Ensuring 100% text contrast without washing out the photo) */}
+                {/* 2. Main Crisp Centered Image (Sharp aspect ratio preserved) */}
+                <div className="absolute inset-0 flex items-center justify-center p-0">
+                  <img
+                    src={slide.image}
+                    alt={slide.alt}
+                    className="w-full h-full object-cover object-center transition-transform duration-10000 ease-out"
+                    style={{
+                      transform: isCurrent ? 'scale(1.04)' : 'scale(1.0)',
+                      imageRendering: 'auto'
+                    }}
+                  />
+                </div>
+
+                {/* 3. Cinematic Vignette Overlay (Ensures 100% text contrast without obscuring the photo) */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30 lg:to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/35"></div>
               </div>
