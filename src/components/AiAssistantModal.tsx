@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { HelpCircle, BookOpen, Send, X, CheckCircle2 } from 'lucide-react';
 import { api } from '../services/api.js';
-import logoImg from '../assets/LOGO.jpg';
+import logoImg from '../assets/LOGO.png';
 
 interface Message {
   id: string;
@@ -74,7 +74,7 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
             <img 
               src={logoImg} 
               alt="Heavens Gate Prayer Mountain Official Logo" 
-              className="w-10 h-10 rounded-xl object-contain bg-white p-0.5 shadow-md border border-white/40 shrink-0" 
+              className="w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow-md shrink-0" 
             />
             <div>
               <div className="flex items-center space-x-2">

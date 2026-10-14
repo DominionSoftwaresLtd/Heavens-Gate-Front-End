@@ -5,7 +5,7 @@ import {
   AlertTriangle, Bed, User, CheckCircle2, Search, ArrowRight
 } from 'lucide-react';
 import { api } from '../services/api.js';
-import logoImg from '../assets/LOGO.jpg';
+import logoImg from '../assets/LOGO.png';
 
 interface TicketViewPageProps {
   initialTicketRef?: string;
@@ -96,11 +96,11 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
         <div className="bg-white border-2 border-orange-500 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden print:border-black print:text-black">
           {/* Top Seal & Status */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-slate-200 gap-4">
-            <div className="flex items-center space-x-3.5">
+            <div className="flex items-center space-x-4">
               <img 
                 src={logoImg} 
                 alt="Heavens Gate Prayer Mountain Official Seal" 
-                className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl object-contain bg-white p-1 shadow-md border-2 border-orange-400 shrink-0" 
+                className="w-20 h-20 sm:w-24 sm:h-24 object-contain drop-shadow-md shrink-0" 
               />
               <div>
                 <h1 className="font-cinzel text-xl font-bold text-slate-900 tracking-wide">

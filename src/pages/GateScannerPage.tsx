@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import { api } from '../services/api.js';
 import { useAuth } from '../context/AuthContext.js';
-import logoImg from '../assets/LOGO.jpg';
+import logoImg from '../assets/LOGO.png';
 
 export const GateScannerPage: React.FC = () => {
   const { user } = useAuth();
@@ -110,11 +110,11 @@ export const GateScannerPage: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
       {/* Header and Gate Status Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
-        <div className="flex items-center space-x-3.5">
+        <div className="flex items-center space-x-4">
           <img 
             src={logoImg} 
             alt="Heavens Gate Official Logo" 
-            className="w-12 h-12 rounded-2xl object-contain bg-white p-1 border-2 border-orange-400 shadow-md shrink-0" 
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-md shrink-0" 
           />
           <div>
             <div className="flex items-center space-x-2 text-xs text-orange-600 font-bold uppercase tracking-wider">

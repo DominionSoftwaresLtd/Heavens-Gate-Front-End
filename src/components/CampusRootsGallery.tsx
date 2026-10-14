@@ -32,7 +32,7 @@ import compoundImg from '../assets/COMPOND.jpg';
 import environmentImg from '../assets/ENVIRONMENT.jpg';
 import environment2Img from '../assets/ENVIRONMENT2.jpg';
 import billboardImg from '../assets/BILL BOARD.jpg';
-import logoImg from '../assets/LOGO.jpg';
+import logoImg from '../assets/LOGO.png';
 
 export interface GalleryPhoto {
   id: string;
@@ -277,11 +277,11 @@ export const CampusRootsGallery: React.FC = () => {
       {/* SECTION HEADER: SPIRITUAL ROOTS & HISTORY                 */}
       {/* ======================================================== */}
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-5 gap-4">
-        <div className="flex items-start sm:items-center space-x-4">
+        <div className="flex items-start sm:items-center space-x-4 sm:space-x-5">
           <img 
             src={logoImg} 
             alt="Heavens Gate Prayer Mountain Official Seal" 
-            className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-contain bg-white p-1 shadow-md border-2 border-orange-400 shrink-0" 
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-md shrink-0" 
           />
           <div>
             <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-100 px-3 py-1 rounded-full mb-2">
