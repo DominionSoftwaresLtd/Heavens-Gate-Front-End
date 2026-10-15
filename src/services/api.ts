@@ -14,6 +14,14 @@ export const api = {
     });
     return res.json();
   },
+  async loginWithGoogle(data: { email: string; name: string; googleId?: string; avatar?: string }) {
+    const res = await fetch(`${API_BASE}/auth/google`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  },
   async register(data: any) {
     const res = await fetch(`${API_BASE}/auth/register`, {
       method: 'POST',
@@ -188,6 +196,75 @@ export const api = {
   // Admin
   async getAdminStats() {
     const res = await fetch(`${API_BASE}/admin/dashboard-stats`);
+    return res.json();
+  },
+  async getAdminBookings(status?: string, q?: string) {
+    const params = new URLSearchParams();
+    if (status) params.append('status', status);
+    if (q) params.append('q', q);
+    const res = await fetch(`${API_BASE}/admin/bookings?${params.toString()}`);
+    return res.json();
+  },
+  async updateBookingStatus(id: string, status: string, notes?: string, officerName?: string) {
+    const res = await fetch(`${API_BASE}/admin/bookings/${id}/status`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status, notes, officerName })
+    });
+    return res.json();
+  },
+  async createWalkInBooking(data: any) {
+    const res = await fetch(`${API_BASE}/admin/bookings/walk-in`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  },
+  async getAdminUsers() {
+    const res = await fetch(`${API_BASE}/admin/users`);
+    return res.json();
+  },
+  async updateUserRole(id: string, role: string) {
+    const res = await fetch(`${API_BASE}/admin/users/${id}/role`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ role })
+    });
+    return res.json();
+  },
+  async getAdminPrayerRequests() {
+    const res = await fetch(`${API_BASE}/admin/prayer-requests`);
+    return res.json();
+  },
+  async updatePrayerRequestStatus(id: string, status: string, assignedIntercessor?: string, responseNote?: string) {
+    const res = await fetch(`${API_BASE}/admin/prayer-requests/${id}/status`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status, assignedIntercessor, responseNote })
+    });
+    return res.json();
+  },
+  async getAnnouncements() {
+    const res = await fetch(`${API_BASE}/admin/announcements`);
+    return res.json();
+  },
+  async broadcastAnnouncement(data: { title: string; message: string; type?: string; author?: string }) {
+    const res = await fetch(`${API_BASE}/admin/announcements`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  },
+  async deleteAnnouncement(id: string) {
+    const res = await fetch(`${API_BASE}/admin/announcements/${id}`, {
+      method: 'DELETE'
+    });
+    return res.json();
+  },
+  async getGateEvents() {
+    const res = await fetch(`${API_BASE}/admin/gate-events`);
     return res.json();
   }
 };

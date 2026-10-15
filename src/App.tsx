@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { AuthProvider } from './context/AuthContext.js';
-import { EmergencyBanner } from './components/EmergencyBanner.js';
 import { Navbar } from './components/layout/Navbar.js';
 import { Footer } from './components/layout/Footer.js';
 import { AiAssistantModal } from './components/AiAssistantModal.js';
+import { AuthModal } from './components/AuthModal.js';
 
 // Application Pages
 import { HomePage } from './pages/HomePage.js';
@@ -21,6 +21,7 @@ export function App() {
   const [currentTab, setCurrentTab] = useState<string>('home');
   const [activeTicketRef, setActiveTicketRef] = useState<string>('TKT-2026-9821');
   const [isAiModalOpen, setIsAiModalOpen] = useState<boolean>(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
 
   // When a booking completes, transition directly to the issued QR ticket pass
   const handleBookingSuccess = (bookingRef: string, ticketRef?: string) => {
@@ -30,10 +31,19 @@ export function App() {
     setCurrentTab('ticket');
   };
 
+  const handleAdminLoginSuccess = () => {
+    setCurrentTab('admin');
+  };
+
   const renderCurrentPage = () => {
     switch (currentTab) {
       case 'home':
-        return <HomePage onNavigate={setCurrentTab} onOpenAi={() => setIsAiModalOpen(true)} />;
+        return (
+          <HomePage 
+            onNavigate={setCurrentTab} 
+            onOpenAi={() => setIsAiModalOpen(true)} 
+          />
+        );
       case 'booking':
         return <BookingPage onBookingSuccess={handleBookingSuccess} />;
       case 'ticket':
@@ -51,22 +61,26 @@ export function App() {
       case 'transport':
         return <TransportEstimatorPage onNavigate={setCurrentTab} />;
       case 'admin':
-        return <AdminDashboardPage />;
+        return <AdminDashboardPage onNavigate={setCurrentTab} />;
       default:
-        return <HomePage onNavigate={setCurrentTab} onOpenAi={() => setIsAiModalOpen(true)} />;
+        return (
+          <HomePage 
+            onNavigate={setCurrentTab} 
+            onOpenAi={() => setIsAiModalOpen(true)} 
+          />
+        );
     }
   };
 
   return (
     <AuthProvider>
       <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-[#173F35] selection:text-[#F8F5EC]">
-        {/* Global Navigation Header with Integrated Emergency Strip */}
-
         {/* Global Navigation Header */}
         <Navbar
           currentTab={currentTab}
           setCurrentTab={setCurrentTab}
           onOpenAi={() => setIsAiModalOpen(true)}
+          onOpenAuth={() => setIsAuthModalOpen(true)}
         />
 
         {/* Main Content Viewport */}
@@ -78,6 +92,13 @@ export function App() {
         <AiAssistantModal
           isOpen={isAiModalOpen}
           onClose={() => setIsAiModalOpen(false)}
+        />
+
+        {/* Dedicated Professional Log In & Sign Up Module */}
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={() => setIsAuthModalOpen(false)}
+          onAdminLoginSuccess={handleAdminLoginSuccess}
         />
 
         {/* Institutional Footer */}
