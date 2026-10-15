@@ -87,7 +87,7 @@ export function App() {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-[#173F35] selection:text-[#F8F5EC]">
+      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-[#173F35] selection:text-[#F8F5EC] overflow-x-hidden w-full max-w-full">
         {/* Global Navigation Header */}
         <Navbar
           currentTab={currentTab}
@@ -97,7 +97,7 @@ export function App() {
         />
 
         {/* Main Content Viewport */}
-        <main className="flex-1">
+        <main className="flex-1 w-full max-w-full overflow-x-hidden">
           {renderCurrentPage()}
         </main>
 

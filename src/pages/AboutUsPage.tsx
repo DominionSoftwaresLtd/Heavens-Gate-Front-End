@@ -170,55 +170,55 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigate }) => {
         
 
         {/* Story Headline & Editorial Framing */}
-        <div className="max-w-4xl mb-10 sm:mb-12">
-          <div className="inline-flex items-center space-x-2 text-[#C22F23] font-black text-xs uppercase tracking-widest mb-3">
-            <Flame className="w-4 h-4" />
+        <div className="max-w-4xl mb-8 sm:mb-12">
+          <div className="inline-flex items-center space-x-2 text-[#C22F23] font-black text-[10px] sm:text-xs uppercase tracking-widest mb-2 sm:mb-3 break-words">
+            <Flame className="w-4 h-4 shrink-0" />
             <span>Sacred History & Divine Formation (2002 — 2011 — Present)</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-brand tracking-tight text-[#173F35] uppercase leading-tight">
+          <h1 className="text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-black font-brand tracking-tight text-[#173F35] uppercase leading-tight break-words">
             Our Story & <span className="text-[#C22F23]">Divine Formation</span>
           </h1>
-          <p className="text-slate-700 text-sm sm:text-lg mt-3.5 font-light leading-relaxed">
+          <p className="text-slate-700 text-xs sm:text-base lg:text-lg mt-3 sm:mt-3.5 font-light leading-relaxed">
             A consecrated 30-acre interdenominational prayer city along the Nairobi-Nakuru Highway in Gilgil, Kenya. An altar established out of a prophetic burden for believers from all nations to seek God through fasting, solitary intercession, and corporate revival.
           </p>
         </div>
 
         {/* 4 Creative Story Milestone Stat Cards (Integrated Elegantly) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5 mb-12 sm:mb-16">
-          <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Groundbreaking</span>
-              <span className="w-2 h-2 rounded-full bg-[#C22F23]"></span>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 mb-10 sm:mb-16">
+          <div className="bg-white p-3.5 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider truncate">Groundbreaking</span>
+              <span className="w-2 h-2 rounded-full bg-[#C22F23] shrink-0"></span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black font-mono text-[#173F35]">2011</div>
-            <p className="text-xs text-slate-600 mt-1">Sept 10 Consecration Dedication</p>
+            <div className="text-xl xs:text-2xl sm:text-3xl font-black font-mono text-[#173F35] truncate">2011</div>
+            <p className="text-[11px] sm:text-xs text-slate-600 mt-1 line-clamp-2">Sept 10 Consecration Dedication</p>
           </div>
 
-          <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Sacred Territory</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
+          <div className="bg-white p-3.5 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider truncate">Sacred Territory</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black font-mono text-[#173F35]">30+ Acres</div>
-            <p className="text-xs text-slate-600 mt-1">Expanded from initial 5 acres</p>
+            <div className="text-xl xs:text-2xl sm:text-3xl font-black font-mono text-[#173F35] truncate">30+ Acres</div>
+            <p className="text-[11px] sm:text-xs text-slate-600 mt-1 line-clamp-2">Expanded from initial 5 acres</p>
           </div>
 
-          <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Shiloh Cathedral</span>
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
+          <div className="bg-white p-3.5 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider truncate">Shiloh Cathedral</span>
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37] shrink-0"></span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black font-mono text-[#173F35]">3,000+</div>
-            <p className="text-xs text-slate-600 mt-1">Seating for corporate assemblies</p>
+            <div className="text-xl xs:text-2xl sm:text-3xl font-black font-mono text-[#173F35] truncate">3,000+</div>
+            <p className="text-[11px] sm:text-xs text-slate-600 mt-1 line-clamp-2">Seating for corporate assemblies</p>
           </div>
 
-          <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Global Altar</span>
-              <span className="w-2 h-2 rounded-full bg-indigo-600"></span>
+          <div className="bg-white p-3.5 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider truncate">Global Altar</span>
+              <span className="w-2 h-2 rounded-full bg-indigo-600 shrink-0"></span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black font-mono text-[#173F35]">100,000+</div>
-            <p className="text-xs text-slate-600 mt-1">Pilgrims seeking God annually</p>
+            <div className="text-xl xs:text-2xl sm:text-3xl font-black font-mono text-[#173F35] truncate">100,000+</div>
+            <p className="text-[11px] sm:text-xs text-slate-600 mt-1 line-clamp-2">Pilgrims seeking God annually</p>
           </div>
         </div>
 

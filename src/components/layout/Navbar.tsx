@@ -44,75 +44,75 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
   return (
     <header className="sticky top-0 z-40 shadow-md shadow-slate-900/10">
       {/* 1. Top Utility Information Bar: Deep Forest Green #173F35 */}
-      <div className="bg-[#173F35] text-[#F8F5EC] text-[11px] px-4 sm:px-6 lg:px-8 py-1.5 border-b border-[#244E40]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          {/* Left: Call Us & Contact Email */}
-          <div className="flex items-center space-x-3 truncate">
+      <div className="bg-[#173F35] text-[#F8F5EC] text-[10px] sm:text-[11px] px-3 sm:px-6 lg:px-8 py-1.5 border-b border-[#244E40] w-full">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+          {/* Left: Call Us */}
+          <div className="flex items-center space-x-2 truncate">
             <a
               href="tel:+254700999111"
-              className="flex items-center space-x-1.5 text-[#F8F5EC] hover:text-[#E5C158] transition font-medium"
+              className="flex items-center space-x-1.5 text-[#F8F5EC] hover:text-[#E5C158] transition font-medium whitespace-nowrap"
             >
-              <PhoneCall className="w-3 h-3 text-[#D4AF37]" />
-              <span>Call us : <strong className="font-mono text-white">0700 999 111</strong></span>
+              <PhoneCall className="w-3 h-3 text-[#D4AF37] shrink-0" />
+              <span>Call: <strong className="font-mono text-white">0700 999 111</strong></span>
             </a>
-            <span className="text-white/30 hidden xs:inline">|</span>
+            <span className="text-white/30 hidden md:inline">|</span>
             <a
               href="mailto:info@heavensgate.org"
-              className="hidden sm:flex items-center space-x-1.5 text-[#F8F5EC] hover:text-[#E5C158] transition font-medium"
+              className="hidden md:flex items-center space-x-1.5 text-[#F8F5EC] hover:text-[#E5C158] transition font-medium"
             >
-              <Mail className="w-3 h-3 text-[#D4AF37]" />
+              <Mail className="w-3 h-3 text-[#D4AF37] shrink-0" />
               <span>info@heavensgate.org</span>
             </a>
           </div>
 
           {/* Right: Scripture Motto & Gate Hours */}
-          <div className="flex items-center space-x-3 shrink-0">
+          <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
             <div className="hidden md:flex items-center space-x-1.5 text-[#F8F5EC]/90 font-medium text-[11px]">
               <span className="text-[#E5C158] font-semibold italic">This is the Gate of Heaven</span>
               <span className="text-[#F8F5EC]/75 font-mono text-[10px]">• Genesis 28:17</span>
             </div>
             <span className="text-white/30 hidden md:inline">|</span>
-            <div className="flex items-center space-x-1.5 text-[#F8F5EC]/90 font-medium">
-              <Clock className="w-3 h-3 text-[#D4AF37]" />
-              <span>Gate Hours: 5:00 AM — 8:00 PM</span>
+            <div className="flex items-center space-x-1 text-[#F8F5EC]/90 font-medium text-[10px] sm:text-[11px] whitespace-nowrap">
+              <Clock className="w-3 h-3 text-[#D4AF37] shrink-0" />
+              <span><span className="hidden xs:inline">Gate Hours: </span><strong className="font-mono text-white">5AM — 8PM</strong></span>
             </div>
           </div>
         </div>
       </div>
 
       {/* 2. Main Navigation Bar (Single Unified Row): Warm Ivory #F8F5EC */}
-      <div className="bg-[#F8F5EC] text-[#173F35] px-4 sm:px-6 lg:px-8 py-2.5 border-b border-[#E8E3D5] shadow-xs">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 xl:gap-6">
+      <div className="bg-[#F8F5EC] text-[#173F35] px-3 sm:px-6 lg:px-8 py-2 sm:py-2.5 border-b border-[#E8E3D5] shadow-xs w-full">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Logo & Centered Brand Lockup */}
           <div 
             onClick={() => handleNavClick('home')}
-            className="flex items-center space-x-2.5 sm:space-x-3.5 cursor-pointer group shrink-0"
+            className="flex items-center space-x-1.5 sm:space-x-3 cursor-pointer group shrink-0 min-w-0"
           >
             <img 
               src={logoImg} 
               alt="Heavens Gate Prayer Mountain Official Logo" 
-              className="w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-sm group-hover:scale-105 transition shrink-0" 
+              className="w-8 h-8 sm:w-11 sm:h-11 object-contain drop-shadow-sm group-hover:scale-105 transition shrink-0" 
             />
 
             {/* Subtle Vertical Divider Line */}
-            <div className="h-8 sm:h-10 w-[1.5px] bg-gradient-to-b from-transparent via-[#173F35]/25 to-transparent hidden sm:block shrink-0"></div>
+            <div className="h-7 sm:h-9 w-[1.5px] bg-gradient-to-b from-transparent via-[#173F35]/25 to-transparent hidden sm:block shrink-0"></div>
 
             <div className="shrink-0 flex flex-col items-center justify-center text-center">
               {/* Primary Thick Title Name: Montserrat 900 Extra Bold / Black in Sacred Red */}
               <div className="flex items-center justify-center whitespace-nowrap">
-                <span className="font-brand font-black text-base sm:text-xl xl:text-[23px] tracking-tight uppercase leading-none select-none text-[#C22F23]">
+                <span className="font-brand font-black text-sm sm:text-lg xl:text-[22px] tracking-tight uppercase leading-none select-none text-[#C22F23]">
                   HEAVENS GATE
                 </span>
               </div>
 
               {/* Subtitle: Elegant Cursive Script with Accent Wing Dividers */}
               <div className="flex items-center justify-center space-x-1 sm:space-x-1.5 w-full mt-0.5">
-                <span className="h-[1px] w-3 sm:w-6 bg-gradient-to-r from-transparent via-[#173F35]/40 to-[#173F35] rounded-full"></span>
-                <p className="font-script text-[#173F35] text-xs sm:text-[15px] font-semibold italic tracking-wide leading-none whitespace-nowrap select-none">
+                <span className="h-[1px] w-2 sm:w-5 bg-gradient-to-r from-transparent via-[#173F35]/40 to-[#173F35] rounded-full"></span>
+                <p className="font-script text-[#173F35] text-[11px] sm:text-[14px] font-semibold italic tracking-wide leading-none whitespace-nowrap select-none">
                   Prayer Mountain
                 </p>
-                <span className="h-[1px] w-3 sm:w-6 bg-gradient-to-l from-transparent via-[#173F35]/40 to-[#173F35] rounded-full"></span>
+                <span className="h-[1px] w-2 sm:w-5 bg-gradient-to-l from-transparent via-[#173F35]/40 to-[#173F35] rounded-full"></span>
               </div>
             </div>
           </div>
@@ -138,9 +138,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
           </nav>
 
           {/* Right: Actions Group (Staff Portal + Book Stay CTA + Inquiries Bell + Log In / User + Mobile Toggle) */}
-          <div className="flex items-center space-x-2 sm:space-x-2.5 shrink-0">
+          <div className="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
             
-            {/* Direct Staff Portal Shortcut (Strictly if Admin) */}
+            {/* Direct Staff Portal Shortcut (Strictly if Admin on desktop) */}
             {isAdmin && (
               <button
                 onClick={() => handleNavClick('admin')}
@@ -152,10 +152,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
               </button>
             )}
 
-            {/* Primary Green Book Stay CTA Button */}
+            {/* Primary Green Book Stay CTA Button (Visible on sm: and up; mobile users have full CTA in mobile menu) */}
             <button
               onClick={() => handleNavClick('booking')}
-              className="flex items-center bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs px-3.5 sm:px-4 py-2 rounded-xl shadow-xs transition hover:scale-105 active:scale-95"
+              className="hidden sm:flex items-center bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs px-3 sm:px-4 py-2 rounded-xl shadow-xs transition hover:scale-105 active:scale-95"
             >
               Book Stay
             </button>
@@ -163,33 +163,34 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
             {/* Circular Inquiries Bell Button */}
             <button
               onClick={onOpenAi}
-              className="w-9 h-9 rounded-full bg-white hover:bg-stone-100 text-[#173F35] border border-[#E8E3D5] flex items-center justify-center transition shadow-xs hover:scale-105"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white hover:bg-stone-100 text-[#173F35] border border-[#E8E3D5] flex items-center justify-center transition shadow-xs hover:scale-105 shrink-0"
               title="Campus Inquiries & Visitor Guide"
+              aria-label="Campus Inquiries"
             >
-              <Bell className="w-4 h-4 text-[#244E40]" />
+              <Bell className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#244E40]" />
             </button>
 
-            {/* User Account / Log In Pill */}
+            {/* User Account / Log In Button (Compact on mobile, full on tablet/desktop) */}
             {user ? (
-              <div className="flex items-center space-x-1.5">
+              <div className="flex items-center space-x-1 sm:space-x-1.5">
                 <button
                   onClick={onOpenAuth}
-                  className="flex items-center space-x-2 bg-white hover:bg-stone-50 border border-[#173F35]/30 text-[#173F35] px-3 py-1.5 rounded-xl text-xs font-bold transition shadow-xs group"
-                  title="Switch Account or View Details"
+                  className="flex items-center space-x-1.5 bg-white hover:bg-stone-50 border border-[#173F35]/30 text-[#173F35] p-1.5 sm:px-3 sm:py-1.5 rounded-xl text-xs font-bold transition shadow-xs group shrink-0"
+                  title="Account Details"
                 >
                   <div className="w-5 h-5 rounded-full bg-[#173F35] text-[#F8F5EC] flex items-center justify-center text-[10px]">
                     {user.name.charAt(0)}
                   </div>
                   <span className="max-w-[70px] sm:max-w-[100px] truncate hidden sm:inline">{user.name.split(' ')[0]}</span>
                   {isAdmin && (
-                    <span className="text-[9px] bg-[#E5C158] text-[#173F35] px-1.5 py-0.2 rounded font-extrabold uppercase">
+                    <span className="text-[9px] bg-[#E5C158] text-[#173F35] px-1 py-0.2 rounded font-extrabold uppercase hidden sm:inline">
                       Admin
                     </span>
                   )}
                 </button>
                 <button
                   onClick={logout}
-                  className="p-2 rounded-xl bg-white hover:bg-red-50 text-slate-500 hover:text-red-600 border border-[#E8E3D5] transition shadow-xs"
+                  className="hidden sm:flex p-2 rounded-xl bg-white hover:bg-red-50 text-slate-500 hover:text-red-600 border border-[#E8E3D5] transition shadow-xs shrink-0"
                   title="Sign Out"
                 >
                   <LogOut className="w-3.5 h-3.5" />
@@ -198,10 +199,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
             ) : (
               <button
                 onClick={onOpenAuth}
-                className="flex items-center space-x-1.5 bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs hover:scale-105 active:scale-95"
+                className="flex items-center space-x-1.5 bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 p-2 sm:px-3.5 sm:py-2 rounded-xl text-xs font-bold transition shadow-xs hover:scale-105 active:scale-95 shrink-0"
+                title="Log In"
               >
                 <UserIcon className="w-3.5 h-3.5 text-[#E5C158]" />
-                <span>Log In</span>
+                <span className="hidden sm:inline">Log In</span>
               </button>
             )}
 
@@ -209,7 +211,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-              className="lg:hidden text-[#173F35] p-2 rounded-xl bg-white hover:bg-stone-100 border border-[#E8E3D5] focus:outline-none focus:ring-2 focus:ring-[#173F35] transition shadow-xs"
+              className="lg:hidden text-[#173F35] p-1.5 sm:p-2 rounded-xl bg-white hover:bg-stone-100 border border-[#E8E3D5] focus:outline-none focus:ring-2 focus:ring-[#173F35] transition shadow-xs shrink-0"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
