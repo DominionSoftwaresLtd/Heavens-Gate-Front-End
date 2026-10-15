@@ -165,159 +165,221 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="bg-[#FAF8F5] text-slate-800 min-h-screen">
-      {/* 1. HERO SECTION: Sacred Atmosphere & Divine Mandate */}
-      <section className="relative bg-[#173F35] text-[#F8F5EC] overflow-hidden py-16 sm:py-24 border-b-4 border-[#D4AF37]">
-        {/* Background Overlay */}
-        <div 
-          className="absolute inset-0 opacity-20 bg-cover bg-center mix-blend-overlay"
-          style={{ backgroundImage: `url(${fullViewImg})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#173F35]/90 via-[#173F35]/95 to-[#173F35]"></div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            {/* Scripture Badge */}
-            <div className="inline-flex items-center space-x-2 bg-[#244E40]/90 border border-[#D4AF37]/50 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#E5C158] mb-6 shadow-sm">
+      {/* 1. DIRECT CREATIVE OPENING: OUR STORY & DIVINE FORMATION */}
+      <section className="relative pt-8 sm:pt-12 pb-14 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Top Sacred Header Badge & Quick Action Links */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-stone-200 mb-8 sm:mb-12">
+          <div className="flex items-center space-x-2">
+            <span className="inline-flex items-center space-x-1.5 bg-[#173F35] text-[#E5C158] px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>Genesis 28:17 • The Altar of Jacob</span>
-            </div>
+            </span>
+            <span className="text-xs text-slate-500 hidden md:inline">
+              Nairobi-Nakuru Highway, Gilgil
+            </span>
+          </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-brand tracking-tight leading-tight uppercase text-white mb-4">
-              ABOUT <span className="text-[#E5C158]">HEAVENS GATE</span> PRAYER MOUNTAIN
-            </h1>
-
-            <p className="text-base sm:text-xl text-[#F8F5EC]/90 font-light leading-relaxed mb-6">
-              A consecrated 30-acre interdenominational prayer city along the Nairobi-Nakuru Highway in Gilgil, Kenya. An altar established for believers from all nations to seek God through fasting, solitary intercession, and corporate revival.
-            </p>
-
-            <blockquote className="border-l-4 border-[#D4AF37] pl-4 italic text-[#E5C158] text-sm sm:text-base font-serif bg-[#0F2A23]/60 py-2.5 rounded-r-xl pr-4">
-              “How awesome is this place! This is none other than the house of God; this is the gate of heaven.”
-              <span className="block not-italic text-xs text-[#F8F5EC]/70 mt-1 font-mono font-bold">— Genesis 28:17</span>
-            </blockquote>
-
-            {/* Quick Action Navigation Buttons */}
-            <div className="flex flex-wrap items-center gap-3 mt-8">
-              <button
-                onClick={() => onNavigate('booking')}
-                className="bg-[#D4AF37] hover:bg-[#c29d2b] text-[#173F35] font-black text-xs sm:text-sm px-5 py-3 rounded-xl shadow-lg transition transform hover:scale-105 flex items-center space-x-2"
-              >
-                <Bed className="w-4 h-4" />
-                <span>Book Accommodation</span>
-              </button>
-
-              <button
-                onClick={() => onNavigate('map')}
-                className="bg-[#244E40] hover:bg-[#2d5f4f] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs sm:text-sm px-5 py-3 rounded-xl transition flex items-center space-x-2"
-              >
-                <Compass className="w-4 h-4 text-[#E5C158]" />
-                <span>Explore Campus Map</span>
-              </button>
-
-              <button
-                onClick={() => onNavigate('transport')}
-                className="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm px-4 py-3 rounded-xl transition flex items-center space-x-1.5"
-              >
-                <MapPin className="w-4 h-4 text-[#E5C158]" />
-                <span>Travel Routes & Stages</span>
-              </button>
-            </div>
+          {/* Quick Access Action Chips */}
+          <div className="flex items-center space-x-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+            <button
+              onClick={() => onNavigate('booking')}
+              className="bg-[#173F35] hover:bg-[#244E40] text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center space-x-1.5 shrink-0 shadow-xs"
+            >
+              <Bed className="w-3.5 h-3.5 text-[#E5C158]" />
+              <span>Book Stay</span>
+            </button>
+            <button
+              onClick={() => onNavigate('map')}
+              className="bg-white hover:bg-stone-100 text-[#173F35] border border-stone-200 font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center space-x-1.5 shrink-0 shadow-xs"
+            >
+              <Compass className="w-3.5 h-3.5 text-[#173F35]" />
+              <span>Campus Map</span>
+            </button>
+            <button
+              onClick={() => onNavigate('transport')}
+              className="bg-white hover:bg-stone-100 text-[#173F35] border border-stone-200 font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center space-x-1.5 shrink-0 shadow-xs"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#173F35]" />
+              <span>Travel & Fares</span>
+            </button>
           </div>
         </div>
 
-        {/* Vital Quick Facts Strip */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-[#244E40]">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
-            <div className="bg-[#0F2A23]/60 p-4 rounded-2xl border border-[#244E40]">
-              <div className="text-2xl sm:text-3xl font-black text-[#E5C158] font-mono">2011</div>
-              <div className="text-xs text-[#F8F5EC]/80 mt-1 font-medium">Groundbreaking Dedication</div>
+        {/* Story Headline & Editorial Framing */}
+        <div className="max-w-4xl mb-10 sm:mb-12">
+          <div className="inline-flex items-center space-x-2 text-[#C22F23] font-black text-xs uppercase tracking-widest mb-3">
+            <Flame className="w-4 h-4" />
+            <span>Sacred History & Divine Formation (2002 — 2011 — Present)</span>
+          </div>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-brand tracking-tight text-[#173F35] uppercase leading-tight">
+            Our Story & <span className="text-[#C22F23]">Divine Formation</span>
+          </h1>
+          <p className="text-slate-700 text-sm sm:text-lg mt-3.5 font-light leading-relaxed">
+            A consecrated 30-acre interdenominational prayer city along the Nairobi-Nakuru Highway in Gilgil, Kenya. An altar established out of a prophetic burden for believers from all nations to seek God through fasting, solitary intercession, and corporate revival.
+          </p>
+        </div>
+
+        {/* 4 Creative Story Milestone Stat Cards (Integrated Elegantly) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5 mb-12 sm:mb-16">
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Groundbreaking</span>
+              <span className="w-2 h-2 rounded-full bg-[#C22F23]"></span>
             </div>
-            <div className="bg-[#0F2A23]/60 p-4 rounded-2xl border border-[#244E40]">
-              <div className="text-2xl sm:text-3xl font-black text-[#E5C158] font-mono">30+ Acres</div>
-              <div className="text-xs text-[#F8F5EC]/80 mt-1 font-medium">Protected Prayer Grounds</div>
+            <div className="text-2xl sm:text-3xl font-black font-mono text-[#173F35]">2011</div>
+            <p className="text-xs text-slate-600 mt-1">Sept 10 Consecration Dedication</p>
+          </div>
+
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Sacred Territory</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
             </div>
-            <div className="bg-[#0F2A23]/60 p-4 rounded-2xl border border-[#244E40]">
-              <div className="text-2xl sm:text-3xl font-black text-[#E5C158] font-mono">3,000+</div>
-              <div className="text-xs text-[#F8F5EC]/80 mt-1 font-medium">Shiloh Cathedral Capacity</div>
+            <div className="text-2xl sm:text-3xl font-black font-mono text-[#173F35]">30+ Acres</div>
+            <p className="text-xs text-slate-600 mt-1">Expanded from initial 5 acres</p>
+          </div>
+
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Shiloh Cathedral</span>
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
             </div>
-            <div className="bg-[#0F2A23]/60 p-4 rounded-2xl border border-[#244E40]">
-              <div className="text-2xl sm:text-3xl font-black text-[#E5C158] font-mono">100,000+</div>
-              <div className="text-xs text-[#F8F5EC]/80 mt-1 font-medium">Annual Global Pilgrims</div>
+            <div className="text-2xl sm:text-3xl font-black font-mono text-[#173F35]">3,000+</div>
+            <p className="text-xs text-slate-600 mt-1">Seating for corporate assemblies</p>
+          </div>
+
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-stone-200 hover:border-[#173F35] transition shadow-xs group">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Global Altar</span>
+              <span className="w-2 h-2 rounded-full bg-indigo-600"></span>
             </div>
+            <div className="text-2xl sm:text-3xl font-black font-mono text-[#173F35]">100,000+</div>
+            <p className="text-xs text-slate-600 mt-1">Pilgrims seeking God annually</p>
           </div>
         </div>
-      </section>
 
-      {/* 2. OUR STORY & FORMATION */}
-      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Text */}
+        {/* Narrative & Photo Split Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          
+          {/* Left: The Story Narrative & Timeline */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center space-x-2 text-[#C22F23] font-black text-xs uppercase tracking-wider">
-              <Flame className="w-4 h-4" />
-              <span>Sacred History & Origins</span>
+            <div className="prose prose-stone text-slate-700 text-sm sm:text-base leading-relaxed space-y-4">
+              <p className="first-letter:text-4xl first-letter:font-black first-letter:text-[#173F35] first-letter:mr-2 first-letter:float-left">
+                Heaven’s Gate Prayer Mountain was established in 2011 out of a powerful spiritual burden given by God to create a safe, distraction-free sanctuary for believers. The prophetic vision traces back to <strong>2002</strong>, inspired by an acute awareness of the need for a protected environment where intercessors could seek God without fear of robbery, wild threats, or worldly interference.
+              </p>
+
+              <p>
+                The ministry began on a humble <strong>five-acre plot</strong> of land in the serene highlands of Gilgil. Following the historic groundbreaking ceremony on <strong>September 10, 2011</strong>, divine instruction led the ministry to prioritize territory expansion rather than build immediately.
+              </p>
+
+              <p>
+                Through deep faith, prayer, and sacrificial community cooperation, an additional <strong>25 acres</strong> were acquired. This paved the way for the expansive, serene prayer city that stands today along the Nairobi-Nakuru Highway directly opposite St. Mary’s Mission Hospital.
+              </p>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#173F35] font-brand tracking-tight">
-              Our Story & Divine Formation
-            </h2>
+            {/* Illuminated Scripture Revelation Card */}
+            <div className="bg-[#F8F5EC] border-l-4 border-[#C22F23] p-5 rounded-r-2xl border-y border-r border-[#E8E3D5] shadow-xs my-6">
+              <div className="flex items-start space-x-3">
+                <Sparkles className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
+                <div>
+                  <blockquote className="font-serif italic text-[#173F35] text-base sm:text-lg leading-snug">
+                    “How awesome is this place! This is none other than the house of God; this is the gate of heaven.”
+                  </blockquote>
+                  <div className="text-xs font-mono font-bold text-[#C22F23] mt-2 flex items-center space-x-1.5">
+                    <span>— Genesis 28:17</span>
+                    <span className="text-stone-400">•</span>
+                    <span className="text-slate-600 font-sans font-normal">Foundational Inscription on the Consecration Stone</span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-              Heaven’s Gate Prayer Mountain was established in 2011 out of a powerful spiritual burden given by God to create a safe, distraction-free sanctuary for believers. The prophetic vision traces back to <strong>2002</strong>, inspired by an acute awareness of the need for a protected environment where intercessors could seek God without fear, robbery, wild threats, or external worldly interference.
-            </p>
-
-            <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-              The ministry began on a humble <strong>five-acre plot</strong> in Gilgil. Following the historic groundbreaking dedication on <strong>September 10, 2011</strong>, divine instruction led Apostle John Kimani William to prioritize territory expansion rather than immediate building. Through deep faith and sacrificial community cooperation, an additional <strong>25 acres</strong> were acquired, paving the way for the expansive, serene prayer city that flourishes today along the Nairobi-Nakuru Highway opposite St. Mary’s Mission Hospital.
-            </p>
-
-            {/* Historical Milestones Timeline */}
-            <div className="space-y-4 pt-4 border-t border-stone-200">
+            {/* Historical Milestones Timeline Cards */}
+            <div className="space-y-3 pt-2">
+              <h3 className="font-brand font-bold text-sm uppercase tracking-wider text-[#173F35]">
+                Key Milestones of the Altar
+              </h3>
               {keyMilestones.map((m, idx) => (
-                <div key={idx} className="flex items-start space-x-3.5 bg-white p-3.5 rounded-xl border border-stone-200 shadow-xs">
+                <div key={idx} className="flex items-start space-x-3.5 bg-white p-4 rounded-xl border border-stone-200 shadow-xs hover:border-[#173F35] transition">
                   <span className="font-mono font-bold text-xs bg-[#173F35] text-[#E5C158] px-2.5 py-1 rounded-lg shrink-0">
                     {m.year}
                   </span>
                   <div>
-                    <h4 className="font-bold text-xs text-[#173F35]">{m.title}</h4>
-                    <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">{m.description}</p>
+                    <h4 className="font-bold text-xs sm:text-sm text-[#173F35]">{m.title}</h4>
+                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">{m.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right Image Feature: 2011 Foundation Monument Stone */}
-          <div className="lg:col-span-5">
-            <div className="bg-white p-4 rounded-3xl border border-stone-200 shadow-xl overflow-hidden group">
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-100 cursor-pointer" onClick={() => setActivePhoto(stoneMarkImg)}>
+          {/* Right: Authentic Historical Photo & Sacred Landmarks Showcase */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            {/* Primary Feature: 2011 Consecration Stone */}
+            <div className="bg-white p-4 rounded-3xl border-2 border-stone-200 shadow-xl overflow-hidden group">
+              <div 
+                className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-100 cursor-pointer" 
+                onClick={() => setActivePhoto(stoneMarkImg)}
+              >
                 <img 
                   src={stoneMarkImg} 
                   alt="Heavens Gate 2011 Groundbreaking Monument Stone"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex items-end p-4">
                   <div>
-                    <span className="bg-[#C22F23] text-white text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">
-                      Groundbreaking Monument
+                    <span className="bg-[#C22F23] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider">
+                      Foundational Monument
                     </span>
                     <h3 className="text-white font-bold text-sm sm:text-base mt-1">
-                      The Consecration Stone of September 10, 2011
+                      The Consecration Stone of Sept 10, 2011
                     </h3>
                   </div>
                 </div>
               </div>
               <div className="p-4 space-y-2 text-xs text-slate-600">
                 <p className="italic text-slate-800 font-serif">
-                  “...This is none other than the house of God, and this is the gate of heaven.” — Inscribed on the foundational stone monument.
+                  “The foundational stone monument marking the 2011 groundbreaking dedication. Engraved with Genesis 28:17.”
                 </p>
                 <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-stone-100">
-                  <span className="flex items-center space-x-1">
-                    <MapPin className="w-3.5 h-3.5 text-[#173F35]" />
+                  <span className="flex items-center space-x-1 font-semibold text-[#173F35]">
+                    <MapPin className="w-3.5 h-3.5" />
                     <span>Gilgil, Nakuru County, Kenya</span>
                   </span>
-                  <span className="font-mono text-emerald-800 font-semibold">Sept 10, 2011</span>
+                  <span className="font-mono text-emerald-800 font-bold">Dedicated 2011</span>
                 </div>
               </div>
             </div>
+
+            {/* Secondary Feature: Expansive 30-Acre Campus Panorama */}
+            <div className="bg-white p-4 rounded-3xl border border-stone-200 shadow-md overflow-hidden group">
+              <div 
+                className="relative rounded-2xl overflow-hidden aspect-[16/9] bg-stone-100 cursor-pointer"
+                onClick={() => setActivePhoto(fullViewImg)}
+              >
+                <img 
+                  src={fullViewImg} 
+                  alt="Heavens Gate 30-Acre Sacred Campus Panorama"
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
+                />
+                <div className="absolute top-3 left-3 bg-[#173F35]/90 text-[#E5C158] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-xs">
+                  30+ Consecrated Acres
+                </div>
+              </div>
+              <div className="p-3 text-xs text-slate-600 flex items-center justify-between">
+                <span className="font-medium text-slate-800 truncate">Serene Prayer City along Nairobi-Nakuru Hwy</span>
+                <button
+                  onClick={() => onNavigate('map')}
+                  className="text-xs font-bold text-[#173F35] hover:text-[#C22F23] flex items-center space-x-1 shrink-0 ml-2"
+                >
+                  <span>Explore Grounds</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
