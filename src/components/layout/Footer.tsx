@@ -15,14 +15,14 @@ export const Footer: React.FC = () => {
                 alt="Heavens Gate Prayer Mountain Official Logo" 
                 className="w-14 h-14 object-contain drop-shadow-sm shrink-0"
               />
-              <div className="shrink-0">
-                <span className="font-brand font-black text-lg sm:text-xl uppercase tracking-tight block leading-tight">
-                  <span className="text-[#173F35]">HEAVENS</span> <span className="text-[#C22F23]">GATE</span>
+              <div className="shrink-0 flex flex-col items-start">
+                <span className="font-brand font-black text-lg sm:text-xl uppercase tracking-tight block leading-tight text-[#C22F23]">
+                  HEAVENS GATE
                 </span>
                 <div className="flex items-center space-x-1.5 mt-0.5">
-                  <span className="h-[1px] w-4 bg-[#2E6352]/40"></span>
-                  <span className="font-script text-[#2E6352] text-sm font-semibold italic">Prayer Mountain</span>
-                  <span className="h-[1px] w-4 bg-[#2E6352]/40"></span>
+                  <span className="h-[1px] w-4 bg-[#173F35]/40"></span>
+                  <span className="font-script text-[#173F35] text-sm font-semibold italic">Prayer Mountain</span>
+                  <span className="h-[1px] w-4 bg-[#173F35]/40"></span>
                 </div>
               </div>
             </div>

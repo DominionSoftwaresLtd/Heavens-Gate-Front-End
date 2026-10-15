@@ -78,21 +78,21 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
             {/* Subtle Vertical Divider Line like Dominion Softwares Header */}
             <div className="h-8 sm:h-10 w-[1.5px] bg-gradient-to-b from-transparent via-[#173F35]/25 to-transparent hidden sm:block shrink-0"></div>
 
-            <div className="shrink-0 flex flex-col justify-center">
-              {/* Primary Thick Title Name: Montserrat 900 Extra Bold / Black */}
-              <div className="flex items-center whitespace-nowrap">
-                <span className="font-brand font-black text-lg sm:text-2xl md:text-[26px] tracking-tight uppercase leading-none select-none">
-                  <span className="text-[#173F35]">HEAVENS</span> <span className="text-[#C22F23]">GATE</span>
+            <div className="shrink-0 flex flex-col items-center justify-center text-center">
+              {/* Primary Thick Title Name: Montserrat 900 Extra Bold / Black in Sacred Red */}
+              <div className="flex items-center justify-center whitespace-nowrap">
+                <span className="font-brand font-black text-lg sm:text-2xl md:text-[26px] tracking-tight uppercase leading-none select-none text-[#C22F23]">
+                  HEAVENS GATE
                 </span>
               </div>
 
-              {/* Subtitle: Elegant Cursive Script with Accent Wing Dividers */}
-              <div className="flex items-center space-x-1.5 sm:space-x-2 mt-0.5 sm:mt-1">
-                <span className="h-[1.5px] w-4 sm:w-8 bg-gradient-to-r from-transparent via-[#2E6352]/40 to-[#2E6352] rounded-full"></span>
-                <p className="font-script text-[#2E6352] text-sm sm:text-[18px] font-semibold italic tracking-wide leading-none whitespace-nowrap select-none">
+              {/* Subtitle: Elegant Cursive Script with Accent Wing Dividers Centered Directly Below */}
+              <div className="flex items-center justify-center space-x-1.5 sm:space-x-2 w-full mt-0.5 sm:mt-1">
+                <span className="h-[1.5px] w-4 sm:w-8 bg-gradient-to-r from-transparent via-[#173F35]/40 to-[#173F35] rounded-full"></span>
+                <p className="font-script text-[#173F35] text-sm sm:text-[18px] font-semibold italic tracking-wide leading-none whitespace-nowrap select-none">
                   Prayer Mountain
                 </p>
-                <span className="h-[1.5px] w-4 sm:w-8 bg-gradient-to-l from-transparent via-[#2E6352]/40 to-[#2E6352] rounded-full"></span>
+                <span className="h-[1.5px] w-4 sm:w-8 bg-gradient-to-l from-transparent via-[#173F35]/40 to-[#173F35] rounded-full"></span>
               </div>
             </div>
           </div>
