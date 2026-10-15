@@ -17,25 +17,29 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, logout } = useAuth();
 
-  const navItems = [
+  const isAdmin = user?.role === 'system_admin';
+
+  // Public navigation tabs visible to all pilgrims and visitors
+  const baseNavItems = [
     { id: 'home', label: 'Home' },
     { id: 'booking', label: 'Book Stay' },
     { id: 'ticket', label: 'My Ticket' },
-    { id: 'scanner', label: 'Gate Scanner' },
     { id: 'map', label: 'Campus Map' },
     { id: 'services', label: 'Live Services' },
     { id: 'testimonies', label: 'Testimonies' },
     { id: 'prayer', label: 'Prayer Requests' },
     { id: 'transport', label: 'Transport & Fares' },
-    { id: 'admin', label: 'Staff Portal' },
   ];
+
+  // Staff Portal is strictly accessible only when authenticated as admin (admin@heavensgate.org)
+  const navItems = isAdmin 
+    ? [...baseNavItems, { id: 'admin', label: 'Staff Portal' }]
+    : baseNavItems;
 
   const handleNavClick = (tabId: string) => {
     setCurrentTab(tabId);
     setMobileMenuOpen(false);
   };
-
-  const isAdmin = user?.role === 'system_admin';
 
   return (
     <header className="sticky top-0 z-40 shadow-md shadow-slate-900/10">
@@ -100,15 +104,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
           {/* Right-Hand Tools: Log In Button, Admin Quick Link, Green Book Stay CTA, Role Switcher */}
           <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
             
-            {/* Admin Portal Direct Badge / Quick Jump (if Admin) */}
+            {/* Staff Portal Direct Executive Access (strictly if Admin) */}
             {isAdmin && (
               <button
                 onClick={() => handleNavClick('admin')}
-                className="hidden lg:flex items-center space-x-1.5 bg-[#E5C158] hover:bg-[#d8b446] text-[#173F35] border border-[#173F35] font-black text-xs px-3 py-1.5 rounded-xl shadow-sm transition animate-pulse"
-                title="Open Executive Management Dashboard"
+                className="hidden lg:flex items-center space-x-1.5 bg-[#E5C158] hover:bg-[#d8b446] text-[#173F35] border border-[#173F35] font-black text-xs px-3.5 py-1.5 rounded-xl shadow-sm transition animate-pulse"
+                title="Open Executive Staff Portal"
               >
                 <ShieldAlert className="w-3.5 h-3.5 text-[#173F35]" />
-                <span>Admin Desk</span>
+                <span>Staff Portal</span>
               </button>
             )}
 
@@ -241,14 +245,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
             )}
           </div>
 
-          {/* Quick Admin Shortcut in Mobile (if Admin) */}
+          {/* Quick Staff Portal in Mobile (strictly if Admin) */}
           {isAdmin && (
             <button
               onClick={() => handleNavClick('admin')}
               className="w-full bg-[#E5C158] text-[#173F35] font-black text-sm py-2.5 px-4 rounded-xl shadow-lg border border-[#F8F5EC] flex items-center justify-center space-x-2 transition"
             >
               <ShieldAlert className="w-4 h-4 text-[#173F35]" />
-              <span>Open Executive Admin Desk</span>
+              <span>Open Staff Portal</span>
             </button>
           )}
 

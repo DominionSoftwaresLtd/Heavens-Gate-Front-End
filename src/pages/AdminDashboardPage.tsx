@@ -3,16 +3,18 @@ import {
   LayoutDashboard, Users, Bed, CreditCard, ShieldCheck, 
   Download, Clock, RefreshCw, Search, Plus, CheckCircle2, 
   XCircle, Filter, MessageSquare, AlertTriangle, UserCheck, 
-  Send, Trash2, Megaphone, Check, Calendar, ChevronRight
+  Send, Trash2, Megaphone, Check, Calendar, ChevronRight,
+  ShieldAlert, LogIn, Scan
 } from 'lucide-react';
 import { api } from '../services/api.js';
 import { useAuth } from '../context/AuthContext.js';
 
 interface AdminDashboardPageProps {
   onNavigate?: (tab: string) => void;
+  onOpenAuth?: () => void;
 }
 
-export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNavigate }) => {
+export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNavigate, onOpenAuth }) => {
   const { user } = useAuth();
 
   // Active Admin Sub-Tab
@@ -85,9 +87,15 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
     }
   };
 
+  const isAdmin = user?.role === 'system_admin';
+
   useEffect(() => {
-    loadAllData();
-  }, []);
+    if (isAdmin) {
+      loadAllData();
+    } else {
+      setLoading(false);
+    }
+  }, [isAdmin]);
 
   // Filter Bookings
   const filteredBookings = bookings.filter(b => {
@@ -236,6 +244,52 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
     link.click();
     document.body.removeChild(link);
   };
+
+  // Strict Administrator Access Control: admin@heavensgate.org
+  if (!isAdmin) {
+    return (
+      <div className="min-h-[75vh] flex items-center justify-center px-4 py-16 bg-[#F8F5EC]/50">
+        <div className="max-w-md w-full bg-white rounded-3xl p-8 border border-[#173F35]/20 shadow-xl text-center space-y-6 animate-fade-in">
+          <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center mx-auto border border-amber-200 shadow-inner">
+            <ShieldAlert className="w-8 h-8 text-amber-600" />
+          </div>
+          <div>
+            <span className="text-[10px] bg-red-100 text-red-700 font-mono font-bold uppercase px-2.5 py-1 rounded-full tracking-wider">
+              Staff Only Access
+            </span>
+            <h2 className="text-xl sm:text-2xl font-black text-[#173F35] font-brand uppercase tracking-tight mt-3">
+              Staff Portal Restricted
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              The Heavens Gate <strong>Staff Portal</strong> is strictly accessible when logged in as an executive administrator.
+            </p>
+          </div>
+          <div className="p-4 bg-stone-50 rounded-2xl border border-stone-200 text-xs text-slate-700 text-left space-y-1.5">
+            <div className="font-bold text-[#173F35] flex items-center space-x-1.5">
+              <span>Required Administrator Credentials:</span>
+            </div>
+            <div className="font-mono text-[11px] text-slate-600">Email: <strong className="text-slate-900">admin@heavensgate.org</strong></div>
+            <div className="font-mono text-[11px] text-slate-600">Password: <strong className="text-slate-900">HeavensGate</strong></div>
+          </div>
+          <div className="space-y-2.5 pt-1">
+            <button
+              onClick={onOpenAuth}
+              className="w-full bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] font-bold py-3 px-4 rounded-xl shadow-md transition hover:scale-[1.02] active:scale-[0.98] text-sm flex items-center justify-center space-x-2 border border-[#D4AF37]/40"
+            >
+              <LogIn className="w-4 h-4 text-[#D4AF37]" />
+              <span>Log In with Administrator Account</span>
+            </button>
+            <button
+              onClick={() => onNavigate?.('home')}
+              className="w-full bg-white hover:bg-stone-100 text-slate-700 font-semibold py-2.5 px-4 rounded-xl border border-slate-300 text-xs transition"
+            >
+              Return to Pilgrim Homepage
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (

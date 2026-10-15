@@ -49,7 +49,12 @@ export function App() {
       case 'ticket':
         return <TicketViewPage initialTicketRef={activeTicketRef} onNavigateToMap={() => setCurrentTab('map')} />;
       case 'scanner':
-        return <GateScannerPage />;
+        return (
+          <GateScannerPage 
+            onNavigate={setCurrentTab} 
+            onOpenAuth={() => setIsAuthModalOpen(true)} 
+          />
+        );
       case 'map':
         return <InteractiveMapPage />;
       case 'services':
@@ -61,7 +66,12 @@ export function App() {
       case 'transport':
         return <TransportEstimatorPage onNavigate={setCurrentTab} />;
       case 'admin':
-        return <AdminDashboardPage onNavigate={setCurrentTab} />;
+        return (
+          <AdminDashboardPage 
+            onNavigate={setCurrentTab} 
+            onOpenAuth={() => setIsAuthModalOpen(true)} 
+          />
+        );
       default:
         return (
           <HomePage 

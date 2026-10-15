@@ -2,14 +2,64 @@ import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { 
   ShieldCheck, Scan, AlertTriangle, CheckCircle2, 
-  XCircle, Bed, Clock, Loader2, LogOut
+  XCircle, Bed, Clock, Loader2, LogOut, ShieldAlert, LogIn
 } from 'lucide-react';
 import { api } from '../services/api.js';
 import { useAuth } from '../context/AuthContext.js';
 import logoImg from '../assets/LOGO.png';
 
-export const GateScannerPage: React.FC = () => {
+interface GateScannerPageProps {
+  onNavigate?: (tab: string) => void;
+  onOpenAuth?: () => void;
+}
+
+export const GateScannerPage: React.FC<GateScannerPageProps> = ({ onNavigate, onOpenAuth }) => {
   const { user } = useAuth();
+  const isAdmin = user?.role === 'system_admin';
+
+  // Strict Access Guard
+  if (!isAdmin) {
+    return (
+      <div className="min-h-[75vh] flex items-center justify-center px-4 py-16 bg-[#F8F5EC]/50">
+        <div className="max-w-md w-full bg-white rounded-3xl p-8 border border-[#173F35]/20 shadow-xl text-center space-y-6 animate-fade-in">
+          <div className="w-16 h-16 rounded-2xl bg-red-50 text-red-700 flex items-center justify-center mx-auto border border-red-200 shadow-inner">
+            <ShieldAlert className="w-8 h-8 text-red-600" />
+          </div>
+          <div>
+            <span className="text-[10px] bg-red-100 text-red-700 font-mono font-bold uppercase px-2.5 py-1 rounded-full tracking-wider">
+              Gate Security Restricted
+            </span>
+            <h2 className="text-xl sm:text-2xl font-black text-[#173F35] font-brand uppercase tracking-tight mt-3">
+              Gate Scanner Restricted
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              QR ticket scanning and admission validation is strictly restricted to authorized Heavens Gate security and administration personnel.
+            </p>
+          </div>
+          <div className="p-4 bg-stone-50 rounded-2xl border border-stone-200 text-xs text-slate-700 text-left space-y-1.5">
+            <div className="font-bold text-[#173F35]">Required Staff Credentials:</div>
+            <div className="font-mono text-[11px] text-slate-600">Email: <strong className="text-slate-900">admin@heavensgate.org</strong></div>
+            <div className="font-mono text-[11px] text-slate-600">Password: <strong className="text-slate-900">HeavensGate</strong></div>
+          </div>
+          <div className="space-y-2.5 pt-1">
+            <button
+              onClick={onOpenAuth}
+              className="w-full bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] font-bold py-3 px-4 rounded-xl shadow-md transition hover:scale-[1.02] active:scale-[0.98] text-sm flex items-center justify-center space-x-2 border border-[#D4AF37]/40"
+            >
+              <LogIn className="w-4 h-4 text-[#D4AF37]" />
+              <span>Log In with Staff Account</span>
+            </button>
+            <button
+              onClick={() => onNavigate?.('home')}
+              className="w-full bg-white hover:bg-stone-100 text-slate-700 font-semibold py-2.5 px-4 rounded-xl border border-slate-300 text-xs transition"
+            >
+              Return to Pilgrim Homepage
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
   const [ticketInput, setTicketInput] = useState('TKT-2026-9821');
   const [loading, setLoading] = useState(false);
   const [scanResult, setScanResult] = useState<any>(null);
