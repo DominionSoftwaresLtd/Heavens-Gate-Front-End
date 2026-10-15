@@ -7,6 +7,7 @@ import { AuthModal } from './components/AuthModal.js';
 
 // Application Pages
 import { HomePage } from './pages/HomePage.js';
+import { AboutUsPage } from './pages/AboutUsPage.js';
 import { BookingPage } from './pages/BookingPage.js';
 import { TicketViewPage } from './pages/TicketViewPage.js';
 import { GateScannerPage } from './pages/GateScannerPage.js';
@@ -44,6 +45,8 @@ export function App() {
             onOpenAi={() => setIsAiModalOpen(true)} 
           />
         );
+      case 'about':
+        return <AboutUsPage onNavigate={setCurrentTab} />;
       case 'booking':
         return <BookingPage onBookingSuccess={handleBookingSuccess} />;
       case 'ticket':

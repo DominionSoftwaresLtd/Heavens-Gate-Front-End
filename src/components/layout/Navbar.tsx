@@ -22,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
   // Public navigation tabs visible to all pilgrims and visitors
   const baseNavItems = [
     { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About Us' },
     { id: 'booking', label: 'Book Stay' },
     { id: 'map', label: 'Campus Map' },
     { id: 'services', label: 'Live Services' },
