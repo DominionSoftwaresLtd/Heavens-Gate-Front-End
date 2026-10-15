@@ -15,9 +15,15 @@ export const Footer: React.FC = () => {
                 alt="Heavens Gate Prayer Mountain Official Logo" 
                 className="w-14 h-14 object-contain drop-shadow-sm shrink-0"
               />
-              <div>
-                <span className="font-cinzel font-bold text-[#173F35] text-base sm:text-lg block leading-tight">Heavens Gate</span>
-                <span className="text-[10px] text-[#244E40] font-bold uppercase tracking-wider block">Prayer Mountain</span>
+              <div className="shrink-0">
+                <span className="font-brand font-black text-lg sm:text-xl uppercase tracking-tight block leading-tight">
+                  <span className="text-[#173F35]">HEAVENS</span> <span className="text-[#EA580C]">GATE</span>
+                </span>
+                <div className="flex items-center space-x-1.5 mt-0.5">
+                  <span className="h-[1px] w-3 bg-[#2E6352]/40"></span>
+                  <span className="font-script text-[#2E6352] text-sm font-semibold italic">Prayer Mountain • Gilgil</span>
+                  <span className="h-[1px] w-3 bg-[#2E6352]/40"></span>
+                </div>
               </div>
             </div>
             <p className="text-slate-600 text-xs leading-relaxed">
@@ -76,14 +82,14 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-slate-200 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500">
+        <div className="border-t border-slate-200 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-2">
           <div>
             © {new Date().getFullYear()} Heavens Gate Prayer Mountain Digital System. All rights reserved.
           </div>
-          <div className="mt-2 sm:mt-0 flex items-center space-x-1">
-            <span>Built for the glory of God with</span>
-            <Heart className="w-3 h-3 text-red-500 inline fill-red-500" />
-            <span>in Gilgil, Kenya</span>
+          <div className="flex items-center space-x-1.5">
+            <span>Powered by</span>
+            <strong className="text-slate-800 font-bold tracking-tight">Dominion Softwares</strong>
+            <span className="font-script text-[#2E6352] text-xs sm:text-sm italic font-semibold">— Heavenly Inspired —</span>
           </div>
         </div>
       </div>

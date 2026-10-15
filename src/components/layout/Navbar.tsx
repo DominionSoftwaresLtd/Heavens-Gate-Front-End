@@ -67,25 +67,33 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
           {/* Logo & Branding */}
           <div 
             onClick={() => handleNavClick('home')}
-            className="flex items-center space-x-3 cursor-pointer group shrink-0"
+            className="flex items-center space-x-2.5 sm:space-x-3.5 cursor-pointer group shrink-0"
           >
             <img 
               src={logoImg} 
               alt="Heavens Gate Prayer Mountain Official Logo" 
-              className="w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow-sm group-hover:scale-105 transition shrink-0" 
+              className="w-11 h-11 sm:w-14 sm:h-14 object-contain drop-shadow-sm group-hover:scale-105 transition shrink-0" 
             />
-            <div className="shrink-0 leading-tight">
-              <div className="flex items-center space-x-1.5 whitespace-nowrap">
-                <span className="font-cinzel font-black text-lg sm:text-xl text-[#173F35] tracking-wide">
-                  Heavens Gate
-                </span>
-                <span className="text-[10px] bg-[#173F35]/10 text-[#173F35] border border-[#173F35]/20 px-1.5 py-0.5 rounded font-mono font-bold uppercase">
-                  Gilgil
+
+            {/* Subtle Vertical Divider Line like Dominion Softwares Header */}
+            <div className="h-8 sm:h-10 w-[1.5px] bg-gradient-to-b from-transparent via-[#173F35]/25 to-transparent hidden sm:block shrink-0"></div>
+
+            <div className="shrink-0 flex flex-col justify-center">
+              {/* Primary Thick Title Name: Montserrat 900 Extra Bold / Black */}
+              <div className="flex items-center whitespace-nowrap">
+                <span className="font-brand font-black text-lg sm:text-2xl md:text-[26px] tracking-tight uppercase leading-none select-none">
+                  <span className="text-[#173F35]">HEAVENS</span> <span className="text-[#EA580C]">GATE</span>
                 </span>
               </div>
-              <p className="text-[11px] text-[#173F35]/75 font-medium tracking-tight whitespace-nowrap">
-                Prayer Mountain • Gilgil, Kenya
-              </p>
+
+              {/* Subtitle: Elegant Cursive Script with Accent Wing Dividers */}
+              <div className="flex items-center space-x-1.5 sm:space-x-2 mt-0.5 sm:mt-1">
+                <span className="h-[1.5px] w-3 sm:w-7 bg-gradient-to-r from-transparent via-[#2E6352]/40 to-[#2E6352] rounded-full"></span>
+                <p className="font-script text-[#2E6352] text-[13px] sm:text-[17px] font-semibold italic tracking-wide leading-none whitespace-nowrap select-none">
+                  Prayer Mountain • Gilgil<span className="hidden sm:inline">, Kenya</span>
+                </p>
+                <span className="h-[1.5px] w-3 sm:w-7 bg-gradient-to-l from-transparent via-[#2E6352]/40 to-[#2E6352] rounded-full"></span>
+              </div>
             </div>
           </div>
 

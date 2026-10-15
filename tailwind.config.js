@@ -50,7 +50,9 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        cinzel: ['Cinzel', 'Georgia', 'serif']
+        cinzel: ['Cinzel', 'Georgia', 'serif'],
+        brand: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
+        script: ['"Alex Brush"', '"Great Vibes"', '"Dancing Script"', 'cursive']
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',

@@ -185,15 +185,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onAdminLo
             />
             <div>
               <div className="flex items-center space-x-2">
-                <h2 className="font-cinzel text-lg sm:text-xl font-black text-[#F8F5EC] tracking-wide">
-                  Heavens Gate
+                <h2 className="font-brand text-lg sm:text-xl font-black uppercase tracking-tight leading-none">
+                  <span className="text-[#F8F5EC]">HEAVENS</span> <span className="text-[#E5C158]">GATE</span>
                 </h2>
                 <span className="text-[10px] bg-[#E5C158] text-[#173F35] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider font-mono">
                   Portal
                 </span>
               </div>
-              <p className="text-xs text-[#F8F5EC]/80 mt-0.5 font-medium">
-                Pilgrim Access & Staff Operational Desk
+              <p className="font-script text-[#E5C158] text-sm sm:text-base italic font-semibold mt-0.5 leading-none">
+                Prayer Mountain Access & Ministry Desk
               </p>
             </div>
           </div>
