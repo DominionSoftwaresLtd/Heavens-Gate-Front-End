@@ -82,17 +82,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
               {/* Primary Thick Title Name: Montserrat 900 Extra Bold / Black */}
               <div className="flex items-center whitespace-nowrap">
                 <span className="font-brand font-black text-lg sm:text-2xl md:text-[26px] tracking-tight uppercase leading-none select-none">
-                  <span className="text-[#173F35]">HEAVENS</span> <span className="text-[#EA580C]">GATE</span>
+                  <span className="text-[#173F35]">HEAVENS</span> <span className="text-[#C22F23]">GATE</span>
                 </span>
               </div>
 
               {/* Subtitle: Elegant Cursive Script with Accent Wing Dividers */}
               <div className="flex items-center space-x-1.5 sm:space-x-2 mt-0.5 sm:mt-1">
-                <span className="h-[1.5px] w-3 sm:w-7 bg-gradient-to-r from-transparent via-[#2E6352]/40 to-[#2E6352] rounded-full"></span>
-                <p className="font-script text-[#2E6352] text-[13px] sm:text-[17px] font-semibold italic tracking-wide leading-none whitespace-nowrap select-none">
-                  Prayer Mountain • Gilgil<span className="hidden sm:inline">, Kenya</span>
+                <span className="h-[1.5px] w-4 sm:w-8 bg-gradient-to-r from-transparent via-[#2E6352]/40 to-[#2E6352] rounded-full"></span>
+                <p className="font-script text-[#2E6352] text-sm sm:text-[18px] font-semibold italic tracking-wide leading-none whitespace-nowrap select-none">
+                  Prayer Mountain
                 </p>
-                <span className="h-[1.5px] w-3 sm:w-7 bg-gradient-to-l from-transparent via-[#2E6352]/40 to-[#2E6352] rounded-full"></span>
+                <span className="h-[1.5px] w-4 sm:w-8 bg-gradient-to-l from-transparent via-[#2E6352]/40 to-[#2E6352] rounded-full"></span>
               </div>
             </div>
           </div>
