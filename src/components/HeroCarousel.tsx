@@ -157,9 +157,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
         onTouchEnd={handleTouchEnd}
       >
         {/* ======================================================== */}
-        {/* LEFT SECTION (~64% on Desktop): PHOTO CAROUSEL + TEXT   */}
+        {/* LEFT SECTION (62% on Desktop): PHOTO CAROUSEL + TEXT     */}
         {/* ======================================================== */}
-        <div className="relative w-full lg:w-[64%] min-h-[440px] sm:min-h-[480px] lg:min-h-[560px] overflow-hidden flex items-center justify-center">
+        <div className="relative w-full lg:w-[62%] min-h-[440px] sm:min-h-[480px] lg:min-h-[560px] overflow-hidden flex items-center justify-center">
           {slides.map((slide, idx) => {
             const isCurrent = idx === currentSlide;
             return (
@@ -234,15 +234,10 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
         </div>
 
         {/* ======================================================== */}
-        {/* RIGHT SECTION (~36%): ANGLED ORANGE BANNER + TILTED PILLS */}
+        {/* RIGHT SECTION (~38%): STRAIGHT ORANGE BANNER + CAPSULES */}
         {/* ======================================================== */}
         <div 
-          className="relative w-full lg:w-[42%] lg:-ml-[6%] min-h-[320px] sm:min-h-[380px] lg:min-h-[560px] bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600 overflow-hidden flex items-center justify-center p-6 sm:p-10 z-20 shadow-2xl"
-          style={{
-            clipPath: typeof window !== 'undefined' && window.innerWidth >= 1024 
-              ? 'polygon(14% 0, 100% 0, 100% 100%, 0% 100%)' 
-              : 'none'
-          }}
+          className="relative w-full lg:w-[38%] min-h-[320px] sm:min-h-[380px] lg:min-h-[560px] bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600 overflow-hidden flex items-center justify-center p-6 sm:p-10 z-20 shadow-2xl border-t-4 lg:border-t-0 lg:border-l-4 border-amber-400/90"
         >
           {/* Subtle High-Resolution Photographic Watermark in Background */}
           <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none">
@@ -258,7 +253,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
           <div className="absolute bottom-0 left-10 w-64 h-64 bg-orange-800/40 rounded-full blur-2xl pointer-events-none"></div>
 
           {/* THE 3 TILTED GRAPHIC PILLS */}
-          <div className="relative z-10 flex flex-col items-center justify-center space-y-3 sm:space-y-4 transform -rotate-12 hover:-rotate-6 transition-transform duration-500 my-6 lg:my-0 lg:pl-10">
+          <div className="relative z-10 flex flex-col items-center justify-center space-y-3 sm:space-y-4 transform -rotate-12 hover:-rotate-6 transition-transform duration-500 my-6 lg:my-0">
             
             {/* Pill 1: Golden Yellow "HEAVENS" */}
             <div className="bg-amber-300 text-slate-950 font-black text-xl sm:text-2xl md:text-3xl px-8 sm:px-12 py-2 sm:py-3 rounded-full shadow-2xl tracking-widest font-cinzel border-2 border-amber-200 uppercase select-none transform hover:scale-105 transition">
