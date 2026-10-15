@@ -57,8 +57,8 @@ export const InteractiveMapPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
-          <div className="flex items-center space-x-2 text-xs text-orange-600 font-bold uppercase tracking-wider">
-            <Compass className="w-4 h-4" />
+          <div className="flex items-center space-x-2 text-xs text-[#173F35] font-bold uppercase tracking-wider">
+            <Compass className="w-4 h-4 text-[#244E40]" />
             <span>Interactive Grounds & Wayfinding</span>
           </div>
           <h1 className="font-cinzel text-2xl sm:text-3xl font-black text-slate-900">
@@ -71,11 +71,11 @@ export const InteractiveMapPage: React.FC = () => {
             onClick={() => setRouteToRoom(!routeToRoom)}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-2 ${
               routeToRoom
-                ? 'bg-orange-600 text-white shadow-md shadow-orange-500/25'
-                : 'bg-white text-orange-600 hover:bg-orange-50 border-2 border-orange-300'
+                ? 'bg-[#173F35] text-[#F8F5EC] border border-[#D4AF37]/50 shadow-md'
+                : 'bg-white text-[#173F35] hover:bg-[#F8F5EC] border-2 border-[#173F35]/30'
             }`}
           >
-            <Navigation className="w-3.5 h-3.5" />
+            <Navigation className="w-3.5 h-3.5 text-[#D4AF37]" />
             <span>{routeToRoom ? 'Hide Room Route' : 'Show Route to Room Z-101'}</span>
           </button>
         </div>
@@ -89,8 +89,8 @@ export const InteractiveMapPage: React.FC = () => {
             onClick={() => setActiveCategory(cat.id)}
             className={`px-3.5 py-1.5 rounded-full whitespace-nowrap transition font-bold ${
               activeCategory === cat.id
-                ? 'bg-orange-600 text-white shadow-sm'
-                : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-300'
+                ? 'bg-[#173F35] text-[#F8F5EC] border border-[#D4AF37]/50 shadow-sm'
+                : 'bg-white text-slate-700 hover:text-[#173F35] border border-slate-300'
             }`}
           >
             {cat.label}
@@ -142,8 +142,8 @@ export const InteractiveMapPage: React.FC = () => {
               >
                 <div className={`p-2.5 rounded-2xl flex items-center justify-center transition shadow-md ${
                   isSelected
-                    ? 'bg-orange-600 text-white scale-125 ring-4 ring-orange-400/40'
-                    : 'bg-white text-orange-600 border-2 border-orange-400 hover:scale-110 hover:bg-orange-50'
+                    ? 'bg-[#173F35] text-[#F8F5EC] scale-125 ring-4 ring-[#D4AF37]/50 border border-[#D4AF37]'
+                    : 'bg-white text-[#173F35] border-2 border-[#173F35]/40 hover:scale-110 hover:bg-[#F8F5EC]'
                 }`}>
                   <Icon className="w-4 h-4" />
                 </div>
@@ -157,7 +157,7 @@ export const InteractiveMapPage: React.FC = () => {
 
           {/* Compass Rose */}
           <div className="absolute top-4 right-4 bg-white/90 border border-slate-300 p-2 rounded-xl text-center text-[10px] text-slate-700 z-10 font-mono shadow-sm">
-            <div className="text-orange-600 font-bold text-xs">N</div>
+            <div className="text-[#173F35] font-bold text-xs">N</div>
             <div>▲</div>
             <div>Gilgil</div>
           </div>
@@ -170,7 +170,7 @@ export const InteractiveMapPage: React.FC = () => {
 
         {/* Selected Location Information Drawer */}
         {selectedFeature && (
-          <div className="mt-4 p-5 rounded-2xl bg-white border-2 border-orange-500 relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-lg animate-fade-in">
+          <div className="mt-4 p-5 rounded-2xl bg-white border-2 border-[#173F35] relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-lg animate-fade-in">
             <button
               onClick={() => setSelectedFeature(null)}
               className="absolute top-3 right-3 text-slate-400 hover:text-slate-600"
@@ -179,7 +179,7 @@ export const InteractiveMapPage: React.FC = () => {
             </button>
             <div className="space-y-1 max-w-2xl">
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-orange-700 bg-orange-100 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#173F35] bg-[#F8F5EC] border border-[#D4AF37]/40 px-2 py-0.5 rounded">
                   {selectedFeature.category.replace('_', ' ')}
                 </span>
                 <h3 className="font-bold text-slate-900 text-base">{selectedFeature.name}</h3>
@@ -188,7 +188,7 @@ export const InteractiveMapPage: React.FC = () => {
                 {selectedFeature.description}
               </p>
               {selectedFeature.rules && (
-                <div className="text-[11px] text-orange-700 font-bold pt-1">
+                <div className="text-[11px] text-amber-800 font-bold pt-1">
                   ⚠️ Note: {selectedFeature.rules}
                 </div>
               )}
@@ -197,7 +197,7 @@ export const InteractiveMapPage: React.FC = () => {
             <div className="shrink-0 flex items-center space-x-2">
               <button
                 onClick={() => setRouteToRoom(true)}
-                className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-md transition"
+                className="px-4 py-2 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs shadow-md transition"
               >
                 Directions from Gate
               </button>
@@ -218,9 +218,9 @@ export const InteractiveMapPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="glass-panel p-4 rounded-2xl space-y-1 border-t-2 border-t-orange-500">
+        <div className="glass-panel p-4 rounded-2xl space-y-1 border-t-2 border-t-[#173F35]">
           <div className="font-bold text-slate-900 flex items-center space-x-1.5">
-            <Coffee className="w-4 h-4 text-orange-600" />
+            <Coffee className="w-4 h-4 text-[#173F35]" />
             <span>Water & Tea Dispensary</span>
           </div>
           <p className="text-slate-600 leading-relaxed">

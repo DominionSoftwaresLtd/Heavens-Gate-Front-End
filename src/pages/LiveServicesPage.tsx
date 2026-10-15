@@ -44,8 +44,8 @@ export const LiveServicesPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
-          <div className="flex items-center space-x-2 text-xs text-orange-600 font-bold uppercase tracking-wider">
-            <Flame className="w-4 h-4" />
+          <div className="flex items-center space-x-2 text-xs text-[#173F35] font-bold uppercase tracking-wider bg-[#F8F5EC] border border-[#173F35]/20 px-3 py-1 rounded-full w-fit mb-2">
+            <Flame className="w-4 h-4 text-[#244E40]" />
             <span>Altar of Prayer & Worship</span>
           </div>
           <h1 className="font-cinzel text-2xl sm:text-3xl font-black text-slate-900">
@@ -56,13 +56,13 @@ export const LiveServicesPage: React.FC = () => {
 
       {/* Main Stream Player Showcase */}
       {selectedService && (
-        <div className="glass-panel rounded-3xl overflow-hidden border-2 border-orange-500 shadow-xl">
+        <div className="glass-panel rounded-3xl overflow-hidden border-2 border-[#173F35] shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-3">
             {/* Video Player Display */}
             <div className="lg:col-span-2 relative aspect-video bg-slate-950 flex items-center justify-center">
               <div className="text-center p-6 z-20 space-y-3">
-                <div className="w-16 h-16 rounded-full bg-orange-600/30 border-2 border-orange-500 text-orange-400 flex items-center justify-center mx-auto shadow-2xl animate-pulse">
-                  <Play className="w-8 h-8 fill-orange-400 ml-1" />
+                <div className="w-16 h-16 rounded-full bg-[#173F35]/50 border-2 border-[#D4AF37] text-[#E5C158] flex items-center justify-center mx-auto shadow-2xl animate-pulse">
+                  <Play className="w-8 h-8 fill-[#E5C158] ml-1" />
                 </div>
                 <div className="text-white font-cinzel text-lg font-bold">
                   Shiloh Main Sanctuary Live Feed
@@ -80,7 +80,7 @@ export const LiveServicesPage: React.FC = () => {
             {/* Service Information & Schedule */}
             <div className="p-6 bg-white flex flex-col justify-between space-y-6">
               <div>
-                <span className="text-[10px] text-orange-600 uppercase font-mono font-bold tracking-wider">
+                <span className="text-[10px] text-[#173F35] uppercase font-mono font-bold tracking-wider">
                   Daily Service Schedule
                 </span>
                 <h3 className="font-cinzel text-xl font-bold text-slate-900 mt-1">
@@ -88,7 +88,7 @@ export const LiveServicesPage: React.FC = () => {
                 </h3>
                 <div className="mt-3 text-xs text-slate-600 space-y-2">
                   <div className="flex items-center space-x-2">
-                    <Clock className="w-4 h-4 text-orange-600" />
+                    <Clock className="w-4 h-4 text-[#173F35]" />
                     <span>Time: <strong className="text-slate-900">{selectedService.startTime} — {selectedService.endTime}</strong></span>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -107,12 +107,12 @@ export const LiveServicesPage: React.FC = () => {
                     onClick={() => setSelectedService(srv)}
                     className={`p-3 rounded-xl cursor-pointer border-2 text-xs transition ${
                       selectedService.id === srv.id
-                        ? 'bg-orange-50 border-orange-500 text-slate-900 shadow-sm'
-                        : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-orange-300'
+                        ? 'bg-[#F8F5EC] border-[#173F35] text-slate-900 shadow-sm'
+                        : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-[#173F35]/30'
                     }`}
                   >
                     <div className="font-bold text-slate-900">{srv.title}</div>
-                    <div className="text-[11px] text-orange-600 font-semibold">{srv.startTime} - {srv.endTime}</div>
+                    <div className="text-[11px] text-[#173F35] font-semibold">{srv.startTime} - {srv.endTime}</div>
                   </div>
                 ))}
               </div>
@@ -132,7 +132,7 @@ export const LiveServicesPage: React.FC = () => {
 
         <div className="flex items-end justify-between border-b border-slate-200 pb-3">
           <div>
-            <div className="text-xs text-orange-600 font-bold uppercase tracking-wider">
+            <div className="text-xs text-[#173F35] font-bold uppercase tracking-wider">
               Continuous 24-Hour Intercession
             </div>
             <h2 className="font-cinzel text-xl sm:text-2xl font-black text-slate-900">
@@ -147,11 +147,11 @@ export const LiveServicesPage: React.FC = () => {
             return (
               <div
                 key={watch.id}
-                className="glass-card rounded-2xl p-5 flex flex-col justify-between border-slate-200 space-y-4 border-t-4 border-t-orange-500"
+                className="glass-card rounded-2xl p-5 flex flex-col justify-between border-slate-200 space-y-4 border-t-4 border-t-[#173F35]"
               >
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-mono font-bold text-orange-700 bg-orange-100 px-2.5 py-0.5 rounded">
+                    <span className="text-xs font-mono font-bold text-[#173F35] bg-[#F8F5EC] border border-[#173F35]/20 px-2.5 py-0.5 rounded">
                       {watch.timeRange}
                     </span>
                     <span className="text-[10px] text-slate-500 font-mono font-medium">
@@ -175,7 +175,7 @@ export const LiveServicesPage: React.FC = () => {
                 <button
                   onClick={() => handleRegisterWatch(watch.id)}
                   disabled={isFull}
-                  className="w-full py-2.5 rounded-xl bg-orange-50 hover:bg-orange-600 hover:text-white text-orange-700 text-xs font-bold border border-orange-200 transition disabled:opacity-50"
+                  className="w-full py-2.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/30 text-xs font-bold transition shadow-sm disabled:opacity-50"
                 >
                   {isFull ? 'Watch Full' : 'Join This Watch'}
                 </button>

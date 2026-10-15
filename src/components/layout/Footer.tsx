@@ -4,7 +4,7 @@ import logoImg from '../../assets/LOGO.png';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-white border-t-4 border-orange-500 text-slate-600 text-xs mt-20 shadow-inner">
+    <footer className="bg-white border-t-4 border-[#173F35] text-slate-600 text-xs mt-20 shadow-inner">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Col 1: Ministry Info */}
@@ -16,33 +16,33 @@ export const Footer: React.FC = () => {
                 className="w-14 h-14 object-contain drop-shadow-sm shrink-0"
               />
               <div>
-                <span className="font-cinzel font-bold text-slate-900 text-base sm:text-lg block leading-tight">Heavens Gate</span>
-                <span className="text-[10px] text-orange-600 font-bold uppercase tracking-wider block">Prayer Mountain</span>
+                <span className="font-cinzel font-bold text-[#173F35] text-base sm:text-lg block leading-tight">Heavens Gate</span>
+                <span className="text-[10px] text-[#244E40] font-bold uppercase tracking-wider block">Prayer Mountain</span>
               </div>
             </div>
             <p className="text-slate-600 text-xs leading-relaxed">
               Heavens Gate Prayer Mountain in Gilgil is an altar of divine encounter, fasting, and continuous intercession established under the apostolic vision of Apostle John Kimani William.
             </p>
-            <div className="flex items-center space-x-1.5 text-orange-600 font-semibold text-[11px]">
-              <MapPin className="w-3.5 h-3.5" />
+            <div className="flex items-center space-x-1.5 text-[#173F35] font-semibold text-[11px]">
+              <MapPin className="w-3.5 h-3.5 text-[#244E40]" />
               <span>Gilgil, Nakuru County, Kenya</span>
             </div>
           </div>
 
           {/* Col 2: Strict Mountain Policies */}
           <div className="space-y-3">
-            <h4 className="font-bold text-slate-900 uppercase tracking-wider text-xs">Fasting & Gate Policies</h4>
+            <h4 className="font-bold text-[#173F35] uppercase tracking-wider text-xs">Fasting & Gate Policies</h4>
             <ul className="space-y-2 text-slate-600">
               <li className="flex items-start space-x-2">
-                <AlertTriangle className="w-3.5 h-3.5 text-orange-600 shrink-0 mt-0.5" />
+                <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
                 <span><strong className="text-slate-900">Strict Fasting:</strong> No cooked food, outside snacks, or fruits allowed in the compound.</span>
               </li>
               <li className="flex items-start space-x-2">
-                <Clock className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                <Clock className="w-3.5 h-3.5 text-[#244E40] shrink-0 mt-0.5" />
                 <span><strong className="text-slate-900">Gate Hours:</strong> Open 5:00 AM — Strictly closed at 8:00 PM for security and order.</span>
               </li>
               <li className="flex items-start space-x-2">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#173F35] shrink-0 mt-0.5" />
                 <span><strong className="text-slate-900">Modest Attire:</strong> Long skirts/dresses for ladies; no shorts or sleeveless tops.</span>
               </li>
             </ul>
@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Tea & Sustenance Times */}
           <div className="space-y-3">
-            <h4 className="font-bold text-slate-900 uppercase tracking-wider text-xs">Prayer Mountain Services</h4>
+            <h4 className="font-bold text-[#173F35] uppercase tracking-wider text-xs">Prayer Mountain Services</h4>
             <ul className="space-y-1.5 text-slate-600">
               <li>• Morning Glory: 06:00 AM — 08:00 AM</li>
               <li>• Midday Prayer: 12:00 PM — 01:30 PM</li>
@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 4: Contacts & Emergency */}
           <div className="space-y-3">
-            <h4 className="font-bold text-slate-900 uppercase tracking-wider text-xs">Contact & Inquiries</h4>
+            <h4 className="font-bold text-[#173F35] uppercase tracking-wider text-xs">Contact & Inquiries</h4>
             <p className="text-slate-600">Nehemiah Administration Office:</p>
             <div className="space-y-1 text-slate-800 font-mono text-xs">
               <div>Phone: +254 722 000 000</div>

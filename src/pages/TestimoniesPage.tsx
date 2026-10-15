@@ -95,8 +95,8 @@ export const TestimoniesPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
-          <div className="flex items-center space-x-2 text-xs text-orange-600 font-bold uppercase tracking-wider">
-            <MessageSquareQuote className="w-4 h-4" />
+          <div className="flex items-center space-x-2 text-xs text-[#173F35] font-bold uppercase tracking-wider bg-[#F8F5EC] border border-[#173F35]/20 px-3 py-1 rounded-full w-fit mb-2">
+            <MessageSquareQuote className="w-4 h-4 text-[#244E40]" />
             <span>Overcoming by the Blood of the Lamb</span>
           </div>
           <h1 className="font-cinzel text-2xl sm:text-3xl font-black text-slate-900">
@@ -106,9 +106,9 @@ export const TestimoniesPage: React.FC = () => {
 
         <button
           onClick={() => setIsSubmitModalOpen(true)}
-          className="px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider flex items-center space-x-2 shadow-lg shadow-orange-500/20 transition self-start sm:self-auto"
+          className="px-5 py-2.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs uppercase tracking-wider flex items-center space-x-2 shadow-lg shadow-black/20 transition self-start sm:self-auto"
         >
-          <Plus className="w-4 h-4" />
+          <Plus className="w-4 h-4 text-[#E5C158]" />
           <span>Share Your Testimony</span>
         </button>
       </div>
@@ -128,8 +128,8 @@ export const TestimoniesPage: React.FC = () => {
             onClick={() => setCategoryFilter(c.id)}
             className={`px-3.5 py-1.5 rounded-full whitespace-nowrap transition font-bold ${
               categoryFilter === c.id
-                ? 'bg-orange-600 text-white shadow-sm'
-                : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-300'
+                ? 'bg-[#173F35] text-[#F8F5EC] border border-[#D4AF37]/50 shadow-sm'
+                : 'bg-white text-slate-700 hover:text-[#173F35] border border-slate-300'
             }`}
           >
             {c.label}
@@ -140,10 +140,10 @@ export const TestimoniesPage: React.FC = () => {
       {/* Testimonies Feed */}
       <div className="space-y-6">
         {filtered.map(t => (
-          <div key={t.id} className="glass-panel p-6 rounded-2xl border-slate-200 space-y-4 border-t-4 border-t-orange-500 shadow-sm">
+          <div key={t.id} className="glass-panel p-6 rounded-2xl border-slate-200 space-y-4 border-t-4 border-t-[#173F35] shadow-sm">
             <div className="flex justify-between items-start">
               <div>
-                <span className="text-[10px] uppercase font-bold tracking-wider text-orange-700 bg-orange-100 px-2.5 py-0.5 rounded">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-[#173F35] bg-[#F8F5EC] border border-[#173F35]/20 px-2.5 py-0.5 rounded">
                   {t.category.replace('_', ' ')}
                 </span>
                 <h3 className="font-cinzel text-lg font-bold text-slate-900 mt-2">
@@ -176,7 +176,7 @@ export const TestimoniesPage: React.FC = () => {
 
                 <button
                   onClick={() => setActiveReplyId(activeReplyId === t.id ? null : t.id)}
-                  className="flex items-center space-x-1.5 text-slate-500 hover:text-orange-600 transition font-medium"
+                  className="flex items-center space-x-1.5 text-slate-500 hover:text-[#173F35] transition font-medium"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>{t.replies?.length || 0} Comments</span>
@@ -194,7 +194,7 @@ export const TestimoniesPage: React.FC = () => {
                 {t.replies?.map(rep => (
                   <div key={rep.id} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1">
                     <div className="flex justify-between text-[11px]">
-                      <span className="font-bold text-orange-600">{rep.authorName}</span>
+                      <span className="font-bold text-[#173F35]">{rep.authorName}</span>
                       <span className="text-slate-400">{rep.timestamp}</span>
                     </div>
                     <p className="text-slate-700">{rep.comment}</p>
@@ -208,13 +208,13 @@ export const TestimoniesPage: React.FC = () => {
                     value={replyText}
                     onChange={e => setReplyText(e.target.value)}
                     placeholder="Write a message of encouragement..."
-                    className="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-orange-500"
+                    className="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#173F35]"
                   />
                   <button
                     onClick={() => handleSendReply(t.id)}
-                    className="p-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white transition shadow-sm"
+                    className="p-2 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/30 transition shadow-sm"
                   >
-                    <Send className="w-4 h-4" />
+                    <Send className="w-4 h-4 text-[#E5C158]" />
                   </button>
                 </div>
               </div>
@@ -226,7 +226,7 @@ export const TestimoniesPage: React.FC = () => {
       {/* Submit Testimony Modal (Fully Responsive on Mobile) */}
       {isSubmitModalOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
-          <div className="bg-white border-2 border-orange-500 rounded-2xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-8 shadow-2xl relative space-y-4 sm:space-y-5 animate-fade-in max-h-[92vh] overflow-y-auto">
+          <div className="bg-white border-2 border-[#173F35] rounded-2xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-8 shadow-2xl relative space-y-4 sm:space-y-5 animate-fade-in max-h-[92vh] overflow-y-auto">
             <button
               onClick={() => setIsSubmitModalOpen(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1"
@@ -234,8 +234,8 @@ export const TestimoniesPage: React.FC = () => {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center space-x-2 text-orange-600">
-              <MessageSquareQuote className="w-5 h-5" />
+            <div className="flex items-center space-x-2 text-[#173F35]">
+              <MessageSquareQuote className="w-5 h-5 text-[#244E40]" />
               <h3 className="font-cinzel text-base sm:text-lg font-bold text-slate-900">Share Your Testimony</h3>
             </div>
 
@@ -247,7 +247,7 @@ export const TestimoniesPage: React.FC = () => {
                     type="text"
                     value={authorName}
                     onChange={e => setAuthorName(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm sm:text-xs text-slate-900 focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm sm:text-xs text-slate-900 focus:outline-none focus:border-[#173F35]"
                     required
                   />
                 </div>
@@ -258,7 +258,7 @@ export const TestimoniesPage: React.FC = () => {
                     value={countyOrCity}
                     onChange={e => setCountyOrCity(e.target.value)}
                     placeholder="e.g. Nakuru / Nairobi"
-                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm sm:text-xs text-slate-900 focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm sm:text-xs text-slate-900 focus:outline-none focus:border-[#173F35]"
                     required
                   />
                 </div>
@@ -269,7 +269,7 @@ export const TestimoniesPage: React.FC = () => {
                 <select
                   value={category}
                   onChange={e => setCategory(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-[#173F35]"
                 >
                   <option value="healing">Divine Healing</option>
                   <option value="deliverance">Deliverance & Freedom</option>
@@ -286,7 +286,7 @@ export const TestimoniesPage: React.FC = () => {
                   value={title}
                   onChange={e => setTitle(e.target.value)}
                   placeholder="e.g. Delivered from 5 years of infirmity at Mount Carmel"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-[#173F35]"
                   required
                 />
               </div>
@@ -298,7 +298,7 @@ export const TestimoniesPage: React.FC = () => {
                   value={content}
                   onChange={e => setContent(e.target.value)}
                   placeholder="Share details of your fasting, prayer watch experience, and how the Lord answered your prayer..."
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-orange-500 resize-none leading-relaxed"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-[#173F35] resize-none leading-relaxed"
                   required
                 ></textarea>
               </div>
@@ -306,7 +306,7 @@ export const TestimoniesPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full py-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider transition shadow-md shadow-orange-500/20"
+                className="w-full py-3 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs uppercase tracking-wider transition shadow-md shadow-black/20"
               >
                 {submitting ? 'Publishing...' : 'Publish Testimony to the Glory of God'}
               </button>

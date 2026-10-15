@@ -52,9 +52,9 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Search Header for Ticket Retrieval */}
-      <div className="glass-panel p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 border-t-4 border-t-orange-500">
+      <div className="glass-panel p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 border-t-4 border-t-[#173F35]">
         <div className="text-left w-full sm:w-auto">
-          <div className="text-xs text-orange-600 font-bold uppercase tracking-wider">Gate Verification Pass</div>
+          <div className="text-xs text-[#173F35] font-bold uppercase tracking-wider">Gate Verification Pass</div>
           <h2 className="font-cinzel text-lg font-bold text-slate-900">Retrieve Pilgrim Ticket</h2>
         </div>
         <form
@@ -71,12 +71,12 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
               value={ticketRefInput}
               onChange={e => setTicketRefInput(e.target.value)}
               placeholder="Enter Ticket or Booking Ref..."
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-orange-500 font-medium"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#173F35] font-medium"
             />
           </div>
           <button
             type="submit"
-            className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs shadow-sm transition"
+            className="px-4 py-2 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs shadow-sm transition"
           >
             Search
           </button>
@@ -93,7 +93,7 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
       {loading ? (
         <div className="py-16 text-center text-xs text-slate-500">Loading digital ticket...</div>
       ) : ticketData?.ticket ? (
-        <div className="bg-white border-2 border-orange-500 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden print:border-black print:text-black">
+        <div className="bg-white border-2 border-[#173F35] rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden print:border-black print:text-black">
           {/* Top Seal & Status */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-slate-200 gap-4">
             <div className="flex items-center space-x-4">
@@ -129,14 +129,14 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
           {/* Ticket Body: QR Code & Details */}
           <div className="py-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             {/* QR Code Presentation */}
-            <div className="flex flex-col items-center justify-center p-5 bg-orange-50/50 rounded-2xl shadow-inner border-2 border-orange-300">
+            <div className="flex flex-col items-center justify-center p-5 bg-[#F8F5EC] rounded-2xl shadow-inner border-2 border-[#D4AF37]/60">
               <QRCodeSVG
                 value={ticketData.ticket.qrData}
                 size={180}
                 level="H"
                 includeMargin={false}
               />
-              <div className="text-xs text-slate-900 font-mono font-bold mt-3">
+              <div className="text-xs text-[#173F35] font-mono font-bold mt-3">
                 {ticketData.ticket.ticketReference}
               </div>
               <div className="text-[10px] text-slate-500 font-medium">
@@ -153,7 +153,7 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
                 </div>
                 <div>
                   <span className="text-slate-500 block text-[10px] uppercase font-bold">Booking Reference</span>
-                  <span className="font-mono font-black text-orange-600 text-sm">{ticketData.ticket.bookingReference}</span>
+                  <span className="font-mono font-black text-[#173F35] text-sm">{ticketData.ticket.bookingReference}</span>
                 </div>
                 <div>
                   <span className="text-slate-500 block text-[10px] uppercase font-bold">Stay Duration</span>
@@ -168,13 +168,13 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
               </div>
 
               {/* Room Assignment (Stacks gracefully on mobile) */}
-              <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="p-4 rounded-2xl bg-[#F8F5EC] border border-[#173F35]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-                    <Bed className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-xl bg-[#173F35] text-[#F8F5EC] flex items-center justify-center shrink-0 shadow-sm border border-[#D4AF37]/40">
+                    <Bed className="w-5 h-5 text-[#E5C158]" />
                   </div>
                   <div>
-                    <div className="text-[10px] text-orange-800 uppercase font-bold">Assigned Room & Bed</div>
+                    <div className="text-[10px] text-[#173F35] uppercase font-bold">Assigned Room & Bed</div>
                     <div className="font-bold text-sm text-slate-900">
                       {ticketData.booking?.assignedRoomNumber || 'Mount Zion Z-101'} • {ticketData.booking?.assignedBedNumber || 'Bed 1'}
                     </div>
@@ -184,10 +184,10 @@ export const TicketViewPage: React.FC<TicketViewPageProps> = ({ initialTicketRef
                 {onNavigateToMap && (
                   <button
                     onClick={onNavigateToMap}
-                    className="w-full sm:w-auto px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs transition flex items-center justify-center space-x-1 shadow-sm"
+                    className="w-full sm:w-auto px-4 py-2 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs transition flex items-center justify-center space-x-1 shadow-sm"
                   >
                     <span>View Room Route</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#E5C158]" />
                   </button>
                 )}
               </div>

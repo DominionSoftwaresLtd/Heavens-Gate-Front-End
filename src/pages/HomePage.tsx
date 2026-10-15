@@ -20,9 +20,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
       {/* Quick Stats / Highlights Bar */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 relative z-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-orange-500">
-            <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
-              <Clock className="w-5 h-5" />
+          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-[#173F35]">
+            <div className="w-10 h-10 rounded-xl bg-[#F8F5EC] text-[#173F35] border border-[#173F35]/15 flex items-center justify-center shrink-0">
+              <Clock className="w-5 h-5 text-[#173F35]" />
             </div>
             <div>
               <div className="text-xs text-slate-500 font-medium">Security Gate Window</div>
@@ -30,9 +30,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
             </div>
           </div>
 
-          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-emerald-500">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-              <Coffee className="w-5 h-5" />
+          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-[#244E40]">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#244E40] border border-[#244E40]/15 flex items-center justify-center shrink-0">
+              <Coffee className="w-5 h-5 text-[#244E40]" />
             </div>
             <div>
               <div className="text-xs text-slate-500 font-medium">Strict Mountain Fasting</div>
@@ -40,9 +40,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
             </div>
           </div>
 
-          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-blue-500">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
-              <Users className="w-5 h-5" />
+          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-[#D4AF37]">
+            <div className="w-10 h-10 rounded-xl bg-amber-50 text-[#B89326] border border-[#D4AF37]/30 flex items-center justify-center shrink-0">
+              <Users className="w-5 h-5 text-[#B89326]" />
             </div>
             <div>
               <div className="text-xs text-slate-500 font-medium">Continuous Watches</div>
@@ -50,9 +50,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
             </div>
           </div>
 
-          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-purple-500">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
-              <MapPin className="w-5 h-5" />
+          <div className="glass-panel p-3.5 sm:p-4 rounded-2xl flex items-center space-x-3.5 border-t-2 border-t-[#173F35]">
+            <div className="w-10 h-10 rounded-xl bg-[#F8F5EC] text-[#173F35] border border-[#173F35]/15 flex items-center justify-center shrink-0">
+              <MapPin className="w-5 h-5 text-[#173F35]" />
             </div>
             <div>
               <div className="text-xs text-slate-500 font-medium">Gilgil Location</div>
@@ -66,8 +66,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-slate-200">
           <div>
-            <div className="text-orange-600 text-xs font-bold uppercase tracking-wider mb-1">
-              Affordable Spiritual Retreat Quarters
+            <div className="text-[#173F35] text-xs font-bold uppercase tracking-wider mb-1 flex items-center space-x-1.5">
+              <span>Affordable Spiritual Retreat Quarters</span>
             </div>
             <h2 className="font-cinzel text-2xl sm:text-3xl font-extrabold text-slate-900">
               Accommodation Inventory & Subsidised Rates
@@ -75,10 +75,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
           </div>
           <button
             onClick={() => onNavigate('booking')}
-            className="mt-3 md:mt-0 text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center space-x-1"
+            className="mt-3 md:mt-0 text-xs font-bold text-[#173F35] hover:text-[#244E40] flex items-center space-x-1"
           >
             <span>Check live bed availability</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37]" />
           </button>
         </div>
 
@@ -87,11 +87,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
           <div className="glass-card rounded-2xl p-5 flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-start mb-3">
-                <span className="text-xs font-bold bg-orange-100 text-orange-800 px-2.5 py-0.5 rounded">
+                <span className="text-xs font-bold bg-[#F8F5EC] text-[#173F35] border border-[#173F35]/20 px-2.5 py-0.5 rounded">
                   Private Solitude
                 </span>
                 <div className="text-right">
-                  <span className="text-xl font-bold font-mono text-orange-600">KES 600</span>
+                  <span className="text-xl font-bold font-mono text-[#173F35]">KES 600</span>
                   <span className="text-[10px] text-slate-500 block">per night</span>
                 </div>
               </div>
@@ -101,39 +101,39 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
               </p>
               <ul className="text-xs text-slate-700 space-y-1.5 mb-6">
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Mount Zion Executive Wing</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Ensuite Private Bath</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Beddings & Towel Provided</span>
                 </li>
               </ul>
             </div>
             <button
               onClick={() => onNavigate('booking')}
-              className="w-full py-2.5 rounded-xl bg-orange-50 hover:bg-orange-600 hover:text-white text-orange-700 text-xs font-bold border border-orange-200 transition"
+              className="w-full py-2.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] text-xs font-bold border border-[#D4AF37]/30 transition shadow-sm"
             >
               Select Single Room
             </button>
           </div>
 
           {/* Double Sharing */}
-          <div className="glass-card rounded-2xl p-5 flex flex-col justify-between border-2 border-orange-500 relative shadow-md">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-600 text-white text-[10px] font-black px-3 py-0.5 rounded-full uppercase tracking-wider shadow">
+          <div className="glass-card rounded-2xl p-5 flex flex-col justify-between border-2 border-[#173F35] relative shadow-md">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#173F35] text-[#F8F5EC] border border-[#D4AF37]/50 text-[10px] font-black px-3 py-0.5 rounded-full uppercase tracking-wider shadow">
               Popular Choice
             </div>
             <div>
               <div className="flex justify-between items-start mb-3">
-                <span className="text-xs font-bold bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded">
+                <span className="text-xs font-bold bg-[#F8F5EC] text-[#173F35] border border-[#173F35]/20 px-2.5 py-0.5 rounded">
                   Twin Sharing
                 </span>
                 <div className="text-right">
-                  <span className="text-xl font-bold font-mono text-orange-600">KES 450</span>
+                  <span className="text-xl font-bold font-mono text-[#173F35]">KES 450</span>
                   <span className="text-[10px] text-slate-500 block">per person / night</span>
                 </div>
               </div>
@@ -143,22 +143,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
               </p>
               <ul className="text-xs text-slate-700 space-y-1.5 mb-6">
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Mount Zion Wing</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Two Independent Beds</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Hot Water Shower</span>
                 </li>
               </ul>
             </div>
             <button
               onClick={() => onNavigate('booking')}
-              className="w-full py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold transition shadow-md shadow-orange-500/20"
+              className="w-full py-2.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] text-xs font-bold border border-[#D4AF37]/40 transition shadow-md shadow-black/20"
             >
               Select Double Room
             </button>
@@ -168,11 +168,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
           <div className="glass-card rounded-2xl p-5 flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-start mb-3">
-                <span className="text-xs font-bold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded">
+                <span className="text-xs font-bold bg-[#F8F5EC] text-[#173F35] border border-[#173F35]/20 px-2.5 py-0.5 rounded">
                   Brothers / Sisters
                 </span>
                 <div className="text-right">
-                  <span className="text-xl font-bold font-mono text-orange-600">KES 280</span>
+                  <span className="text-xl font-bold font-mono text-[#173F35]">KES 280</span>
                   <span className="text-[10px] text-slate-500 block">per person / night</span>
                 </div>
               </div>
@@ -182,22 +182,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
               </p>
               <ul className="text-xs text-slate-700 space-y-1.5 mb-6">
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Bethany Hall Blocks</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Strict Gender Separation</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Clean Ablution Blocks</span>
                 </li>
               </ul>
             </div>
             <button
               onClick={() => onNavigate('booking')}
-              className="w-full py-2.5 rounded-xl bg-orange-50 hover:bg-orange-600 hover:text-white text-orange-700 text-xs font-bold border border-orange-200 transition"
+              className="w-full py-2.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] text-xs font-bold border border-[#D4AF37]/30 transition shadow-sm"
             >
               Select 4-Bed Dorm
             </button>
@@ -207,11 +207,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
           <div className="glass-card rounded-2xl p-5 flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-start mb-3">
-                <span className="text-xs font-bold bg-purple-100 text-purple-800 px-2.5 py-0.5 rounded">
+                <span className="text-xs font-bold bg-[#F8F5EC] text-[#173F35] border border-[#173F35]/20 px-2.5 py-0.5 rounded">
                   Community Hall
                 </span>
                 <div className="text-right">
-                  <span className="text-xl font-bold font-mono text-orange-600">KES 180</span>
+                  <span className="text-xl font-bold font-mono text-[#173F35]">KES 180</span>
                   <span className="text-[10px] text-slate-500 block">per person / night</span>
                 </div>
               </div>
@@ -221,22 +221,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
               </p>
               <ul className="text-xs text-slate-700 space-y-1.5 mb-6">
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Bethesda Pavilion</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>High Ceilings & Ventilation</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#244E40] shrink-0" />
                   <span>Direct Access to Gardens</span>
                 </li>
               </ul>
             </div>
             <button
               onClick={() => onNavigate('booking')}
-              className="w-full py-2.5 rounded-xl bg-orange-50 hover:bg-orange-600 hover:text-white text-orange-700 text-xs font-bold border border-orange-200 transition"
+              className="w-full py-2.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] text-xs font-bold border border-[#D4AF37]/30 transition shadow-sm"
             >
               Select General Hall
             </button>
@@ -297,15 +297,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
             <div className="flex flex-col space-y-3 justify-center">
               <button
                 onClick={() => onNavigate('transport')}
-                className="w-full py-3.5 rounded-xl bg-white text-orange-600 hover:bg-orange-50 font-bold text-xs shadow-md flex items-center justify-center space-x-2 transition"
+                className="w-full py-3.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs shadow-md flex items-center justify-center space-x-2 transition"
               >
                 <span>Travel Fares & Route Guide</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-[#E5C158]" />
               </button>
 
               <button
                 onClick={() => onNavigate('map')}
-                className="w-full py-3.5 rounded-xl bg-orange-700/80 hover:bg-orange-700 text-white font-bold text-xs border border-white/30 flex items-center justify-center space-x-2 transition"
+                className="w-full py-3.5 rounded-xl bg-black/25 hover:bg-black/40 text-white font-bold text-xs border border-white/30 flex items-center justify-center space-x-2 transition"
               >
                 <MapPin className="w-4 h-4 text-white" />
                 <span>Explore 2D Grounds Map</span>
@@ -313,9 +313,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenAi }) => {
 
               <button
                 onClick={() => onNavigate('prayer')}
-                className="w-full py-3.5 rounded-xl bg-amber-300 hover:bg-white text-orange-950 font-black text-xs flex items-center justify-center space-x-2 shadow-lg transition"
+                className="w-full py-3.5 rounded-xl bg-[#F8F5EC] hover:bg-white text-[#173F35] font-black text-xs border border-[#D4AF37] shadow-lg flex items-center justify-center space-x-2 transition"
               >
-                <HeartHandshake className="w-4 h-4 text-orange-600" />
+                <HeartHandshake className="w-4 h-4 text-[#173F35]" />
                 <span>Submit Confidential Prayer Request</span>
               </button>
             </div>

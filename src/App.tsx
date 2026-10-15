@@ -49,7 +49,7 @@ export function App() {
       case 'prayer':
         return <PrayerRequestPage />;
       case 'transport':
-        return <TransportEstimatorPage />;
+        return <TransportEstimatorPage onNavigate={setCurrentTab} />;
       case 'admin':
         return <AdminDashboardPage />;
       default:
@@ -59,7 +59,7 @@ export function App() {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-orange-500 selection:text-white">
+      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-[#173F35] selection:text-[#F8F5EC]">
         {/* Global Navigation Header with Integrated Emergency Strip */}
 
         {/* Global Navigation Header */}

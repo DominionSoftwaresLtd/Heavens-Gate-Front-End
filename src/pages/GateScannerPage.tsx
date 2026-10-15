@@ -117,8 +117,8 @@ export const GateScannerPage: React.FC = () => {
             className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-md shrink-0" 
           />
           <div>
-            <div className="flex items-center space-x-2 text-xs text-orange-600 font-bold uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4" />
+            <div className="flex items-center space-x-2 text-xs text-[#173F35] font-bold uppercase tracking-wider">
+              <ShieldCheck className="w-4 h-4 text-[#244E40]" />
               <span>Gate Control & Admission Desk</span>
             </div>
             <h1 className="font-cinzel text-xl sm:text-2xl font-black text-slate-900">
@@ -140,7 +140,7 @@ export const GateScannerPage: React.FC = () => {
       </div>
 
       {/* Quick Test Bar */}
-      <div className="glass-panel p-5 rounded-2xl space-y-3 border-t-4 border-t-orange-500">
+      <div className="glass-panel p-5 rounded-2xl space-y-3 border-t-4 border-t-[#173F35]">
         <label className="block text-xs font-bold text-slate-800">
           Scan QR Code or Input Ticket Reference Number:
         </label>
@@ -152,15 +152,15 @@ export const GateScannerPage: React.FC = () => {
               value={ticketInput}
               onChange={e => setTicketInput(e.target.value)}
               placeholder="e.g. TKT-2026-9821"
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-orange-500 font-mono font-medium"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-[#173F35] font-mono font-medium"
             />
           </div>
           <button
             onClick={() => handleVerifyTicket(ticketInput)}
             disabled={loading}
-            className="w-full sm:w-auto px-6 py-2.5 bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs rounded-xl shadow-md shadow-orange-500/20 transition flex items-center justify-center space-x-2 shrink-0"
+            className="w-full sm:w-auto px-6 py-2.5 bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center space-x-2 shrink-0"
           >
-            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Scan className="w-4 h-4" />}
+            {loading ? <Loader2 className="w-4 h-4 animate-spin text-[#E5C158]" /> : <Scan className="w-4 h-4 text-[#E5C158]" />}
             <span>Verify Ticket</span>
           </button>
         </div>
@@ -172,7 +172,7 @@ export const GateScannerPage: React.FC = () => {
               setTicketInput('TKT-2026-9821');
               handleVerifyTicket('TKT-2026-9821');
             }}
-            className="text-orange-600 hover:underline font-mono font-bold"
+            className="text-[#173F35] hover:underline font-mono font-bold"
           >
             [Pre-seeded Valid Ticket: TKT-2026-9821]
           </button>
@@ -196,10 +196,10 @@ export const GateScannerPage: React.FC = () => {
 
       {/* Ticket Details & Mandatory Screening Checklist */}
       {scanResult?.ticket && (
-        <div className="glass-panel p-6 rounded-3xl space-y-6 border-2 border-orange-500 shadow-md">
+        <div className="glass-panel p-6 rounded-3xl space-y-6 border-2 border-[#173F35] shadow-md">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 gap-2">
             <div>
-              <span className="text-[10px] text-orange-600 uppercase font-mono font-bold">
+              <span className="text-[10px] text-[#173F35] uppercase font-mono font-bold">
                 Ref: {scanResult.ticket.ticketReference}
               </span>
               <h2 className="text-xl font-bold text-slate-900 flex items-center space-x-2">
@@ -222,17 +222,17 @@ export const GateScannerPage: React.FC = () => {
           </div>
 
           {/* Room Allocation Banner (Stacks on mobile) */}
-          <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="p-4 rounded-2xl bg-[#F8F5EC] border border-[#173F35]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-                <Bed className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-[#173F35] text-[#F8F5EC] border border-[#D4AF37]/40 flex items-center justify-center shrink-0 shadow-sm">
+                <Bed className="w-5 h-5 text-[#E5C158]" />
               </div>
               <div>
-                <div className="text-[10px] text-orange-800 uppercase font-bold">Room & Bed Allocation</div>
+                <div className="text-[10px] text-[#173F35] uppercase font-bold">Room & Bed Allocation</div>
                 <div className="text-sm font-bold text-slate-900">
                   {scanResult.roomNumber || 'Mount Zion Z-101'} • {scanResult.bedNumber || 'Bed 1'}
                 </div>
-                <div className="text-xs text-orange-700 font-medium">{scanResult.ticket.categoryName}</div>
+                <div className="text-xs text-[#244E40] font-medium">{scanResult.ticket.categoryName}</div>
               </div>
             </div>
 
@@ -245,7 +245,7 @@ export const GateScannerPage: React.FC = () => {
           {scanResult.ticket.status === 'valid' && (
             <div className="space-y-4 pt-2">
               <h3 className="font-bold text-sm text-slate-900 flex items-center space-x-2">
-                <ShieldCheck className="w-4 h-4 text-orange-600" />
+                <ShieldCheck className="w-4 h-4 text-[#173F35]" />
                 <span>Mandatory Gate Admission Checklist (Rule BR-08)</span>
               </h3>
               <p className="text-xs text-slate-600 font-medium">
@@ -253,12 +253,12 @@ export const GateScannerPage: React.FC = () => {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <label className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3 cursor-pointer hover:border-orange-300">
+                <label className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3 cursor-pointer hover:border-[#173F35]/40">
                   <input
                     type="checkbox"
                     checked={checks.dressCode}
                     onChange={e => setChecks({ ...checks, dressCode: e.target.checked })}
-                    className="mt-0.5 rounded text-orange-600 focus:ring-orange-500 w-4 h-4"
+                    className="mt-0.5 rounded text-[#173F35] focus:ring-[#173F35] w-4 h-4"
                   />
                   <div className="text-xs">
                     <strong className="text-slate-900 block font-bold">1. Modest Attire Verified</strong>
@@ -266,12 +266,12 @@ export const GateScannerPage: React.FC = () => {
                   </div>
                 </label>
 
-                <label className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3 cursor-pointer hover:border-orange-300">
+                <label className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3 cursor-pointer hover:border-[#173F35]/40">
                   <input
                     type="checkbox"
                     checked={checks.luggageNoFood}
                     onChange={e => setChecks({ ...checks, luggageNoFood: e.target.checked })}
-                    className="mt-0.5 rounded text-orange-600 focus:ring-orange-500 w-4 h-4"
+                    className="mt-0.5 rounded text-[#173F35] focus:ring-[#173F35] w-4 h-4"
                   />
                   <div className="text-xs">
                     <strong className="text-slate-900 block font-bold">2. Strict Baggage Inspection</strong>
@@ -279,12 +279,12 @@ export const GateScannerPage: React.FC = () => {
                   </div>
                 </label>
 
-                <label className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3 cursor-pointer hover:border-orange-300">
+                <label className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3 cursor-pointer hover:border-[#173F35]/40">
                   <input
                     type="checkbox"
                     checked={checks.identity}
                     onChange={e => setChecks({ ...checks, identity: e.target.checked })}
-                    className="mt-0.5 rounded text-orange-600 focus:ring-orange-500 w-4 h-4"
+                    className="mt-0.5 rounded text-[#173F35] focus:ring-[#173F35] w-4 h-4"
                   />
                   <div className="text-xs">
                     <strong className="text-slate-900 block font-bold">3. National ID Verified</strong>
@@ -292,12 +292,12 @@ export const GateScannerPage: React.FC = () => {
                   </div>
                 </label>
 
-                <label className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3 cursor-pointer hover:border-orange-300">
+                <label className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3 cursor-pointer hover:border-[#173F35]/40">
                   <input
                     type="checkbox"
                     checked={checks.orientation}
                     onChange={e => setChecks({ ...checks, orientation: e.target.checked })}
-                    className="mt-0.5 rounded text-orange-600 focus:ring-orange-500 w-4 h-4"
+                    className="mt-0.5 rounded text-[#173F35] focus:ring-[#173F35] w-4 h-4"
                   />
                   <div className="text-xs">
                     <strong className="text-slate-900 block font-bold">4. In-Person Safety Briefing</strong>
@@ -310,9 +310,9 @@ export const GateScannerPage: React.FC = () => {
               <button
                 onClick={handleAdmitPilgrim}
                 disabled={loading}
-                className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-600/20 transition flex items-center justify-center space-x-2"
+                className="w-full py-3.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs uppercase tracking-wider shadow-lg shadow-black/20 transition flex items-center justify-center space-x-2"
               >
-                <CheckCircle2 className="w-4 h-4" />
+                <CheckCircle2 className="w-4 h-4 text-[#E5C158]" />
                 <span>Confirm Screening & Grant Gate Admission</span>
               </button>
             </div>
@@ -320,16 +320,16 @@ export const GateScannerPage: React.FC = () => {
 
           {/* If already checked in: Offer Checkout Button */}
           {scanResult.ticket.status === 'checked_in' && (
-            <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200 space-y-3">
-              <div className="text-xs text-blue-900 font-medium">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+              <div className="text-xs text-slate-800 font-medium">
                 Pilgrim is currently admitted on campus (Checked in at: {new Date(scanResult.ticket.checkedInAt).toLocaleString()}).
               </div>
               <button
                 onClick={handleCheckoutPilgrim}
                 disabled={loading}
-                className="w-full py-2.5 rounded-xl bg-white hover:bg-orange-50 text-orange-700 border-2 border-orange-300 text-xs font-bold transition flex items-center justify-center space-x-2 shadow-sm"
+                className="w-full py-2.5 rounded-xl bg-[#F8F5EC] hover:bg-white text-[#173F35] border border-[#D4AF37] text-xs font-bold transition flex items-center justify-center space-x-2 shadow-sm"
               >
-                <LogOut className="w-4 h-4 text-orange-600" />
+                <LogOut className="w-4 h-4 text-[#173F35]" />
                 <span>Record Departure & Check Out Pilgrim (Releases Bed)</span>
               </button>
             </div>

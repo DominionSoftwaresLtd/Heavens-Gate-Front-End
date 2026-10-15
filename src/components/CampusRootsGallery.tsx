@@ -284,8 +284,8 @@ export const CampusRootsGallery: React.FC = () => {
             className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-md shrink-0" 
           />
           <div>
-            <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-100 px-3 py-1 rounded-full mb-2">
-              <Flame className="w-3.5 h-3.5 text-orange-600" />
+            <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#173F35] bg-[#F8F5EC] border border-[#173F35]/20 px-3 py-1 rounded-full mb-2">
+              <Flame className="w-3.5 h-3.5 text-[#173F35]" />
               <span>Spiritual Roots & Authentic Campus Archive</span>
             </div>
             <h2 className="font-cinzel text-2xl sm:text-3xl font-black text-slate-900">
@@ -311,8 +311,8 @@ export const CampusRootsGallery: React.FC = () => {
               onClick={() => setActiveCategory(tab.id as any)}
               className={`px-3.5 py-2 rounded-xl font-bold whitespace-nowrap transition text-xs ${
                 activeCategory === tab.id
-                  ? 'bg-orange-600 text-white shadow-md shadow-orange-600/25'
-                  : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-orange-300'
+                  ? 'bg-[#173F35] text-[#F8F5EC] shadow-md border border-[#D4AF37]/50'
+                  : 'bg-white text-slate-700 hover:text-[#173F35] border border-slate-200 hover:border-[#173F35]/40'
               }`}
             >
               {tab.label}
@@ -324,14 +324,14 @@ export const CampusRootsGallery: React.FC = () => {
       {/* ======================================================== */}
       {/* THE SPIRITUAL ROOTS FEATURE CARD                          */}
       {/* ======================================================== */}
-      <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-800 shadow-2xl relative overflow-hidden">
+      <div className="bg-gradient-to-br from-[#173F35] via-[#244E40] to-[#0F2A23] text-[#F8F5EC] rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#D4AF37]/30 shadow-2xl relative overflow-hidden">
         {/* Ambient Glow */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-orange-600/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37]/15 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
           {/* Apostle & Cornerstone Photos */}
           <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-            <div className="relative rounded-2xl overflow-hidden border border-orange-500/30 shadow-xl group cursor-pointer"
+            <div className="relative rounded-2xl overflow-hidden border border-[#D4AF37]/40 shadow-xl group cursor-pointer"
                  onClick={() => setSelectedPhoto(authenticPhotos[0])}>
               <img
                 src={stoneMarkImg}
@@ -339,11 +339,11 @@ export const CampusRootsGallery: React.FC = () => {
                 className="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3">
-                <span className="text-[11px] font-bold text-orange-300">2011 Dedicated Stone</span>
+                <span className="text-[11px] font-bold text-[#E5C158]">2011 Dedicated Stone</span>
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden border border-orange-500/30 shadow-xl group cursor-pointer"
+            <div className="relative rounded-2xl overflow-hidden border border-[#D4AF37]/40 shadow-xl group cursor-pointer"
                  onClick={() => setSelectedPhoto(authenticPhotos[1])}>
               <img
                 src={apostleKimaniImg}
@@ -351,15 +351,15 @@ export const CampusRootsGallery: React.FC = () => {
                 className="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3">
-                <span className="text-[11px] font-bold text-orange-300">Apostle John Kimani</span>
+                <span className="text-[11px] font-bold text-[#E5C158]">Apostle John Kimani</span>
               </div>
             </div>
           </div>
 
           {/* Spiritual Heritage Narrative */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="flex items-center space-x-2 text-orange-400 font-mono text-xs uppercase font-bold tracking-widest">
-              <BookOpen className="w-4 h-4 text-orange-500" />
+            <div className="flex items-center space-x-2 text-[#E5C158] font-mono text-xs uppercase font-bold tracking-widest">
+              <BookOpen className="w-4 h-4 text-[#D4AF37]" />
               <span>Foundational Covenant • Genesis 28:17</span>
             </div>
 
@@ -367,27 +367,27 @@ export const CampusRootsGallery: React.FC = () => {
               "How dreadful is this place! This is none other but the house of God, and this is the gate of heaven."
             </h3>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+            <p className="text-xs sm:text-sm text-[#F8F5EC]/90 leading-relaxed font-light">
               Heavens Gate Prayer Mountain was birthed out of a burden to establish an uninterrupted, 24-hour altar of prayer in Kenya where believers from every nation could seek God in holiness, intensive fasting, and solitary intercession. Situated in the peaceful hills of Gilgil at an elevation of 2,050 meters, the mountain stands as a consecrated sanctuary dedicated to revival, national repentance, and spiritual breakthrough.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-[10px] text-orange-400 font-bold uppercase font-mono">Founding Year</div>
+                <div className="text-[10px] text-[#E5C158] font-bold uppercase font-mono">Founding Year</div>
                 <div className="text-lg font-black text-white mt-0.5">2011</div>
-                <div className="text-[11px] text-slate-400">Gilgil Consecration</div>
+                <div className="text-[11px] text-[#F8F5EC]/70">Gilgil Consecration</div>
               </div>
 
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-[10px] text-orange-400 font-bold uppercase font-mono">Continuous Altar</div>
+                <div className="text-[10px] text-[#E5C158] font-bold uppercase font-mono">Continuous Altar</div>
                 <div className="text-lg font-black text-white mt-0.5">24/7 Watches</div>
-                <div className="text-[11px] text-slate-400">3-Hour Intercessions</div>
+                <div className="text-[11px] text-[#F8F5EC]/70">3-Hour Intercessions</div>
               </div>
 
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="text-[10px] text-orange-400 font-bold uppercase font-mono">Fasting Order</div>
+                <div className="text-[10px] text-[#E5C158] font-bold uppercase font-mono">Fasting Order</div>
                 <div className="text-lg font-black text-white mt-0.5">Strict Sanctity</div>
-                <div className="text-[11px] text-slate-400">Free Tea & Boiling Water</div>
+                <div className="text-[11px] text-[#F8F5EC]/70">Free Tea & Boiling Water</div>
               </div>
             </div>
           </div>
@@ -408,7 +408,7 @@ export const CampusRootsGallery: React.FC = () => {
             <div
               key={photo.id}
               onClick={() => setSelectedPhoto(photo)}
-              className="glass-card group rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl hover:border-orange-400 transition flex flex-col justify-between border border-slate-200"
+              className="glass-card group rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl hover:border-[#173F35] transition flex flex-col justify-between border border-slate-200"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
                 <img
@@ -418,12 +418,12 @@ export const CampusRootsGallery: React.FC = () => {
                   loading="lazy"
                 />
                 <div className="absolute top-2.5 left-2.5">
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-black/70 text-orange-300 px-2 py-0.5 rounded-md backdrop-blur-sm border border-white/20">
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-black/70 text-[#E5C158] px-2 py-0.5 rounded-md backdrop-blur-sm border border-white/20">
                     {photo.badge}
                   </span>
                 </div>
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="bg-orange-600 text-white p-2 rounded-full shadow-lg">
+                  <span className="bg-[#173F35] text-[#F8F5EC] p-2 rounded-full shadow-lg border border-[#D4AF37]/50">
                     <ZoomIn className="w-4 h-4" />
                   </span>
                 </div>
@@ -431,16 +431,16 @@ export const CampusRootsGallery: React.FC = () => {
 
               <div className="p-3.5 space-y-1.5 flex-1 flex flex-col justify-between">
                 <div>
-                  <h4 className="font-bold text-slate-900 text-xs sm:text-sm line-clamp-1 group-hover:text-orange-600 transition">
+                  <h4 className="font-bold text-slate-900 text-xs sm:text-sm line-clamp-1 group-hover:text-[#173F35] transition">
                     {photo.title}
                   </h4>
                   <p className="text-[11px] text-slate-600 line-clamp-2 mt-1 leading-snug">
                     {photo.description}
                   </p>
                 </div>
-                <div className="pt-2 flex items-center text-[10px] font-bold text-orange-600 space-x-1">
+                <div className="pt-2 flex items-center text-[10px] font-bold text-[#173F35] space-x-1">
                   <span>View Details</span>
-                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform text-[#244E40]" />
                 </div>
               </div>
             </div>
@@ -463,7 +463,7 @@ export const CampusRootsGallery: React.FC = () => {
             {/* Modal Header */}
             <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-800 bg-slate-900/60">
               <div>
-                <span className="text-[10px] font-bold uppercase text-orange-400 bg-orange-950/60 border border-orange-800 px-2.5 py-0.5 rounded-full">
+                <span className="text-[10px] font-bold uppercase text-[#E5C158] bg-[#173F35] border border-[#D4AF37]/50 px-2.5 py-0.5 rounded-full">
                   {selectedPhoto.badge}
                 </span>
                 <h3 className="font-cinzel text-base sm:text-lg font-bold text-white mt-1">
@@ -472,7 +472,7 @@ export const CampusRootsGallery: React.FC = () => {
               </div>
               <button
                 onClick={() => setSelectedPhoto(null)}
-                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-orange-600 text-white flex items-center justify-center transition"
+                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#173F35] text-white flex items-center justify-center transition border border-white/20"
                 aria-label="Close photo preview"
               >
                 <X className="w-4 h-4" />
@@ -495,12 +495,12 @@ export const CampusRootsGallery: React.FC = () => {
               </p>
               <div className="mt-3 flex items-center justify-between text-[11px] text-slate-400">
                 <span className="flex items-center space-x-1">
-                  <MapPin className="w-3.5 h-3.5 text-orange-500" />
+                  <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
                   <span>Heavens Gate Prayer Mountain, Gilgil, Nakuru County, Kenya</span>
                 </span>
                 <button
                   onClick={() => setSelectedPhoto(null)}
-                  className="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs transition"
+                  className="px-4 py-1.5 rounded-lg bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs transition"
                 >
                   Close Preview
                 </button>

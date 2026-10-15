@@ -67,9 +67,9 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
-      <div className="bg-white border-2 border-orange-500 rounded-2xl sm:rounded-3xl max-w-xl w-full h-[90vh] sm:h-[620px] max-h-[100dvh] flex flex-col shadow-2xl overflow-hidden relative">
-        {/* Header in Vivid Orange */}
-        <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 p-3.5 sm:p-4 flex items-center justify-between text-white shadow-md">
+      <div className="bg-white border-2 border-[#173F35] rounded-2xl sm:rounded-3xl max-w-xl w-full h-[90vh] sm:h-[620px] max-h-[100dvh] flex flex-col shadow-2xl overflow-hidden relative">
+        {/* Header in Sacred Forest Green with Champagne Gold border */}
+        <div className="bg-gradient-to-r from-[#173F35] via-[#244E40] to-[#0F2A23] p-3.5 sm:p-4 flex items-center justify-between text-white shadow-md border-b-2 border-[#D4AF37]/40">
           <div className="flex items-center space-x-3">
             <img 
               src={logoImg} 
@@ -78,12 +78,12 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
             />
             <div>
               <div className="flex items-center space-x-2">
-                <h3 className="font-cinzel font-bold text-white text-sm sm:text-base">Campus Inquiries & Visitor Guide</h3>
-                <span className="text-[10px] bg-white text-orange-700 px-2 py-0.5 rounded-full font-bold">
+                <h3 className="font-cinzel font-bold text-[#F8F5EC] text-sm sm:text-base">Campus Inquiries & Visitor Guide</h3>
+                <span className="text-[10px] bg-[#F8F5EC] text-[#173F35] border border-[#D4AF37]/50 px-2 py-0.5 rounded-full font-bold">
                   Gilgil Altar
                 </span>
               </div>
-              <p className="text-[11px] sm:text-xs text-orange-100">Grounded institutional guidelines & regulations</p>
+              <p className="text-[11px] sm:text-xs text-[#F8F5EC]/80">Grounded institutional guidelines & regulations</p>
             </div>
           </div>
           <button
@@ -95,15 +95,15 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
         </div>
 
         {/* Quick prompt pills */}
-        <div className="p-2 sm:p-2.5 bg-orange-50/60 border-b border-orange-100 flex items-center space-x-1.5 overflow-x-auto text-xs no-scrollbar">
-          <span className="text-orange-800 text-[11px] shrink-0 font-bold flex items-center pl-1">
-            <BookOpen className="w-3.5 h-3.5 text-orange-600 mr-1" /> Quick Guidelines:
+        <div className="p-2 sm:p-2.5 bg-[#F8F5EC] border-b border-[#D4AF37]/30 flex items-center space-x-1.5 overflow-x-auto text-xs no-scrollbar">
+          <span className="text-[#173F35] text-[11px] shrink-0 font-bold flex items-center pl-1">
+            <BookOpen className="w-3.5 h-3.5 text-[#D4AF37] mr-1" /> Quick Guidelines:
           </span>
           {quickQuestions.map((q, idx) => (
             <button
               key={idx}
               onClick={() => handleSend(q)}
-              className="shrink-0 bg-white hover:bg-orange-100 text-slate-700 hover:text-orange-800 px-3 py-1 rounded-full border border-orange-200 transition text-xs font-medium shadow-2xs"
+              className="shrink-0 bg-white hover:bg-[#F8F5EC] text-slate-700 hover:text-[#173F35] px-3 py-1 rounded-full border border-slate-200 hover:border-[#173F35]/40 transition text-xs font-medium shadow-2xs"
             >
               {q}
             </button>
@@ -120,16 +120,16 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
               <div
                 className={`max-w-[85%] rounded-2xl p-3.5 text-sm leading-relaxed shadow-sm ${
                   msg.sender === 'user'
-                    ? 'bg-orange-600 text-white rounded-tr-none font-medium'
+                    ? 'bg-[#173F35] text-[#F8F5EC] rounded-tr-none font-medium border border-[#D4AF37]/40'
                     : 'bg-white text-slate-800 border border-slate-200 rounded-tl-none'
                 }`}
               >
                 {msg.sender === 'assistant' && (
-                  <div className="flex items-center space-x-1.5 text-orange-600 text-xs font-bold mb-1">
-                    <BookOpen className="w-3.5 h-3.5" />
+                  <div className="flex items-center space-x-1.5 text-[#173F35] text-xs font-bold mb-1">
+                    <BookOpen className="w-3.5 h-3.5 text-[#D4AF37]" />
                     <span>Heavens Gate Visitor Guide</span>
                     {msg.category && (
-                      <span className="text-[10px] bg-orange-100 text-orange-800 px-2 py-0.2 rounded font-semibold ml-1">
+                      <span className="text-[10px] bg-[#F8F5EC] text-[#173F35] border border-[#D4AF37]/40 px-2 py-0.2 rounded font-semibold ml-1">
                         {msg.category}
                       </span>
                     )}
@@ -137,7 +137,7 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
                 )}
                 <div>{msg.text}</div>
                 {msg.relatedModule && (
-                  <div className="mt-2 pt-2 border-t border-slate-100 text-xs text-orange-700 font-bold">
+                  <div className="mt-2 pt-2 border-t border-slate-100 text-xs text-[#173F35] font-bold">
                     📌 Relevant Section: {msg.relatedModule}
                   </div>
                 )}
@@ -146,10 +146,10 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
           ))}
           {loading && (
             <div className="flex justify-start">
-              <div className="bg-white rounded-2xl p-3 text-xs text-orange-600 font-bold flex items-center space-x-2 border border-slate-200 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-orange-600 animate-bounce"></span>
-                <span className="w-2 h-2 rounded-full bg-orange-600 animate-bounce [animation-delay:0.2s]"></span>
-                <span className="w-2 h-2 rounded-full bg-orange-600 animate-bounce [animation-delay:0.4s]"></span>
+              <div className="bg-white rounded-2xl p-3 text-xs text-[#173F35] font-bold flex items-center space-x-2 border border-slate-200 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-[#173F35] animate-bounce"></span>
+                <span className="w-2 h-2 rounded-full bg-[#173F35] animate-bounce [animation-delay:0.2s]"></span>
+                <span className="w-2 h-2 rounded-full bg-[#173F35] animate-bounce [animation-delay:0.4s]"></span>
                 <span>Searching verified Gilgil policies...</span>
               </div>
             </div>
@@ -169,14 +169,14 @@ export const AiAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
             value={input}
             onChange={e => setInput(e.target.value)}
             placeholder="Ask about fasting, gate hours, rooms, travel..."
-            className="flex-1 bg-slate-50 border border-slate-300 focus:border-orange-500 rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none transition"
+            className="flex-1 bg-slate-50 border border-slate-300 focus:border-[#173F35] rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none transition"
           />
           <button
             type="submit"
             disabled={!input.trim() || loading}
-            className="bg-orange-600 hover:bg-orange-500 disabled:opacity-50 text-white p-2.5 rounded-xl font-bold transition flex items-center justify-center shrink-0 shadow-md shadow-orange-500/20"
+            className="bg-[#173F35] hover:bg-[#244E40] disabled:opacity-50 text-[#F8F5EC] p-2.5 rounded-xl font-bold transition flex items-center justify-center shrink-0 shadow-md border border-[#D4AF37]/40"
           >
-            <Send className="w-4 h-4" />
+            <Send className="w-4 h-4 text-[#E5C158]" />
           </button>
         </form>
       </div>

@@ -59,8 +59,8 @@ export const AdminDashboardPage: React.FC = () => {
       {/* Dashboard Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
-          <div className="flex items-center space-x-2 text-xs text-orange-600 font-bold uppercase tracking-wider">
-            <LayoutDashboard className="w-4 h-4" />
+          <div className="inline-flex items-center space-x-2 text-xs text-[#173F35] font-bold uppercase tracking-wider bg-[#F8F5EC] border border-[#D4AF37]/40 px-3 py-1 rounded-full shadow-sm mb-2">
+            <LayoutDashboard className="w-4 h-4 text-[#D4AF37]" />
             <span>Executive Operations & Financial Oversight</span>
           </div>
           <h1 className="font-cinzel text-2xl sm:text-3xl font-black text-slate-900">
@@ -74,7 +74,7 @@ export const AdminDashboardPage: React.FC = () => {
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={loadStats}
-            className="p-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 shadow-sm transition"
+            className="p-2.5 rounded-xl bg-white hover:bg-slate-50 text-[#173F35] border border-slate-300 shadow-sm transition"
             title="Refresh Metrics"
           >
             <RefreshCw className="w-4 h-4" />
@@ -82,9 +82,9 @@ export const AdminDashboardPage: React.FC = () => {
 
           <button
             onClick={handleExportCSV}
-            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg shadow-orange-500/20"
+            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] font-bold text-xs uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-sm border border-[#D4AF37]/40"
           >
-            <Download className="w-4 h-4" />
+            <Download className="w-4 h-4 text-[#E5C158]" />
             <span>Export CSV Report</span>
           </button>
         </div>
@@ -93,60 +93,60 @@ export const AdminDashboardPage: React.FC = () => {
       {/* KPI Cards Grid (Responsive 1-col on mobile, 2-col on tablet, 4-col on desktop) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
         {/* Checked In */}
-        <div className="glass-panel p-5 rounded-2xl space-y-2 border-t-4 border-t-emerald-500 shadow-sm">
+        <div className="glass-panel p-5 rounded-2xl space-y-2 border-t-4 border-t-[#173F35] shadow-sm">
           <div className="flex justify-between items-center text-slate-500 text-xs font-bold">
             <span>On-Site Pilgrims</span>
-            <Users className="w-4 h-4 text-emerald-600" />
+            <Users className="w-4 h-4 text-[#173F35]" />
           </div>
           <div className="text-2xl sm:text-3xl font-black font-mono text-slate-900">
             {m?.checkedInVisitors || 0}
           </div>
-          <div className="text-[11px] text-emerald-700 font-bold">Currently Admitted</div>
+          <div className="text-[11px] text-[#173F35] font-bold">Currently Admitted</div>
         </div>
 
         {/* Expected Arrivals */}
-        <div className="glass-panel p-5 rounded-2xl space-y-2 border-t-4 border-t-blue-500 shadow-sm">
+        <div className="glass-panel p-5 rounded-2xl space-y-2 border-t-4 border-t-[#244E40] shadow-sm">
           <div className="flex justify-between items-center text-slate-500 text-xs font-bold">
             <span>Expected Arrivals</span>
-            <Clock className="w-4 h-4 text-blue-600" />
+            <Clock className="w-4 h-4 text-[#244E40]" />
           </div>
           <div className="text-2xl sm:text-3xl font-black font-mono text-slate-900">
             {m?.expectedArrivals || 0}
           </div>
-          <div className="text-[11px] text-blue-700 font-bold">Confirmed for Gate Pass</div>
+          <div className="text-[11px] text-[#244E40] font-bold">Confirmed for Gate Pass</div>
         </div>
 
         {/* Occupancy */}
-        <div className="glass-panel p-5 rounded-2xl space-y-2 border-t-4 border-t-orange-500 shadow-sm">
+        <div className="glass-panel p-5 rounded-2xl space-y-2 border-t-4 border-t-[#D4AF37] shadow-sm">
           <div className="flex justify-between items-center text-slate-500 text-xs font-bold">
             <span>Room Occupancy</span>
-            <Bed className="w-4 h-4 text-orange-600" />
+            <Bed className="w-4 h-4 text-[#D4AF37]" />
           </div>
           <div className="text-2xl sm:text-3xl font-black font-mono text-slate-900">
             {m?.occupancyPercentage || 0}%
           </div>
-          <div className="text-[11px] text-orange-700 font-bold">
+          <div className="text-[11px] text-[#173F35] font-bold">
             {m?.availableBeds || 0} beds available out of {m?.totalBeds || 0}
           </div>
         </div>
 
         {/* M-Pesa Revenue */}
-        <div className="glass-panel p-5 rounded-2xl space-y-2 border-t-4 border-t-purple-500 shadow-sm">
+        <div className="glass-panel p-5 rounded-2xl space-y-2 border-t-4 border-t-[#173F35] shadow-sm">
           <div className="flex justify-between items-center text-slate-500 text-xs font-bold">
             <span>Total M-Pesa Revenue</span>
-            <CreditCard className="w-4 h-4 text-purple-600" />
+            <CreditCard className="w-4 h-4 text-[#173F35]" />
           </div>
           <div className="text-xl sm:text-2xl font-black font-mono text-slate-900 truncate">
             KES {m?.totalRevenueKES?.toLocaleString() || 0}
           </div>
-          <div className="text-[11px] text-purple-700 font-bold">Reconciled via Daraja</div>
+          <div className="text-[11px] text-[#173F35] font-bold">Reconciled via Daraja</div>
         </div>
       </div>
 
       {/* Occupancy Breakdown by Category */}
-      <div className="glass-panel p-6 rounded-3xl space-y-4 border-t-4 border-t-orange-500 shadow-sm">
+      <div className="glass-panel p-6 rounded-3xl space-y-4 border-t-4 border-t-[#173F35] shadow-sm">
         <h3 className="font-cinzel text-base font-bold text-slate-900 flex items-center space-x-2">
-          <Bed className="w-4 h-4 text-orange-600" />
+          <Bed className="w-4 h-4 text-[#173F35]" />
           <span>Accommodation Category Inventory & Occupancy Ratios</span>
         </h3>
 
@@ -155,12 +155,12 @@ export const AdminDashboardPage: React.FC = () => {
             <div key={cat.categoryId} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
               <div className="flex justify-between items-center text-xs">
                 <span className="font-bold text-slate-900">{cat.categoryName}</span>
-                <span className="font-mono text-orange-600 font-bold">{cat.occupancyPercent}% Occupied</span>
+                <span className="font-mono text-[#173F35] font-bold">{cat.occupancyPercent}% Occupied</span>
               </div>
               {/* Progress Bar */}
               <div className="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-orange-600 rounded-full transition-all duration-500"
+                  className="h-full bg-[#173F35] rounded-full transition-all duration-500"
                   style={{ width: `${cat.occupancyPercent}%` }}
                 ></div>
               </div>
@@ -176,9 +176,9 @@ export const AdminDashboardPage: React.FC = () => {
       {/* Tables: Recent Bookings & Gate Admission Log */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Recent Bookings */}
-        <div className="glass-panel p-6 rounded-3xl space-y-4 border-t-4 border-t-orange-500 shadow-sm">
+        <div className="glass-panel p-6 rounded-3xl space-y-4 border-t-4 border-t-[#173F35] shadow-sm">
           <h3 className="font-cinzel text-base font-bold text-slate-900 flex items-center space-x-2">
-            <Clock className="w-4 h-4 text-blue-600" />
+            <Clock className="w-4 h-4 text-[#173F35]" />
             <span>Recent Booking Reservations</span>
           </h3>
 
@@ -192,11 +192,11 @@ export const AdminDashboardPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-mono font-black text-orange-600">KES {b.totalAmountKES}</div>
+                  <div className="font-mono font-black text-[#173F35]">KES {b.totalAmountKES}</div>
                   <span className={`text-[9px] uppercase px-2 py-0.5 rounded-full font-bold ${
                     b.status === 'confirmed' || b.status === 'checked_in'
-                      ? 'bg-emerald-100 text-emerald-800'
-                      : 'bg-orange-100 text-orange-800'
+                      ? 'bg-[#173F35]/10 text-[#173F35] border border-[#173F35]/20'
+                      : 'bg-amber-100 text-amber-800'
                   }`}>
                     {b.status.replace('_', ' ')}
                   </span>
@@ -207,9 +207,9 @@ export const AdminDashboardPage: React.FC = () => {
         </div>
 
         {/* Gate Event Screening Audit */}
-        <div className="glass-panel p-6 rounded-3xl space-y-4 border-t-4 border-t-emerald-500 shadow-sm">
+        <div className="glass-panel p-6 rounded-3xl space-y-4 border-t-4 border-t-[#244E40] shadow-sm">
           <h3 className="font-cinzel text-base font-bold text-slate-900 flex items-center space-x-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <ShieldCheck className="w-4 h-4 text-[#244E40]" />
             <span>Gate Admission & Security Log</span>
           </h3>
 
@@ -219,7 +219,7 @@ export const AdminDashboardPage: React.FC = () => {
                 <div key={ev.id} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
                   <div className="flex justify-between items-center">
                     <span className="font-bold text-slate-900">{ev.visitorName}</span>
-                    <span className="text-[10px] text-emerald-800 font-bold uppercase bg-emerald-100 px-2 py-0.5 rounded">
+                    <span className="text-[10px] text-[#173F35] font-bold uppercase bg-[#173F35]/10 px-2 py-0.5 rounded border border-[#173F35]/20">
                       {ev.eventType}
                     </span>
                   </div>

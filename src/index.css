@@ -22,7 +22,7 @@
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #ea580c;
+    background: #173F35;
   }
 }
 
@@ -54,23 +54,23 @@
   }
 
   .glass-card:hover {
-    border-color: #ea580c;
-    box-shadow: 0 10px 20px -3px rgba(234, 88, 12, 0.12);
+    border-color: #173F35;
+    box-shadow: 0 10px 20px -3px rgba(23, 63, 53, 0.12);
     transform: translateY(-2px);
   }
 
-  .orange-gradient-header {
-    background: linear-gradient(135deg, #ea580c 0%, #f97316 50%, #ea580c 100%);
-    color: #ffffff;
+  .forest-gradient-header {
+    background: linear-gradient(135deg, #173F35 0%, #244E40 50%, #0F2A23 100%);
+    color: #F8F5EC;
   }
 
-  .orange-gradient-text {
-    background: linear-gradient(135deg, #c2410c 0%, #ea580c 50%, #f97316 100%);
+  .forest-gradient-text {
+    background: linear-gradient(135deg, #173F35 0%, #244E40 50%, #D4AF37 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .orange-glow {
-    box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.25);
+  .forest-glow {
+    box-shadow: 0 10px 25px -5px rgba(23, 63, 53, 0.25);
   }
 }

@@ -205,28 +205,28 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
                 <span className="block whitespace-nowrap">“...THIS IS NONE OTHER THAN THE HOUSE OF GOD,</span>
                 <span className="block whitespace-nowrap mt-1 sm:mt-2 text-white">AND THIS IS THE GATE OF HEAVEN.”</span>
               </blockquote>
-              <div className="font-mono text-xs sm:text-base font-black text-orange-400 tracking-widest uppercase drop-shadow-md text-center pt-0.5">
+              <div className="font-mono text-xs sm:text-base font-black text-[#E5C158] tracking-widest uppercase drop-shadow-md text-center pt-0.5">
                 GENESIS 28:17
               </div>
             </div>
 
             {/* Action Buttons - Centered */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 w-full">
-              {/* Primary Solid Orange Button */}
+              {/* Primary Forest Green Action Button with Gold Accent */}
               <button
                 onClick={() => onNavigate('booking')}
-                className="px-7 py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-orange-600/30 hover:scale-105 active:scale-95 transition flex items-center justify-center space-x-2 min-h-[46px]"
+                className="px-7 py-3.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/50 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-black/40 hover:scale-105 active:scale-95 transition flex items-center justify-center space-x-2 min-h-[46px]"
               >
                 <span>Reserve Accommodation</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-[#E5C158]" />
               </button>
 
-              {/* Secondary Dark Button with White Border */}
+              {/* Secondary Dark Button with Ivory & Gold Border */}
               <button
                 onClick={() => onNavigate('ticket')}
-                className="px-7 py-3.5 rounded-xl bg-black/60 hover:bg-black/80 text-white border-2 border-white/80 hover:border-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg backdrop-blur-sm transition flex items-center justify-center space-x-2 min-h-[46px]"
+                className="px-7 py-3.5 rounded-xl bg-black/60 hover:bg-black/80 text-white border-2 border-[#D4AF37]/70 hover:border-[#E5C158] font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg backdrop-blur-sm transition flex items-center justify-center space-x-2 min-h-[46px]"
               >
-                <ShieldCheck className="w-4 h-4 text-orange-400" />
+                <ShieldCheck className="w-4 h-4 text-[#E5C158]" />
                 <span>Access QR Ticket</span>
               </button>
             </div>
@@ -234,10 +234,10 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
         </div>
 
         {/* ======================================================== */}
-        {/* RIGHT SECTION (~38%): STRAIGHT ORANGE BANNER + CAPSULES */}
+        {/* RIGHT SECTION (~38%): STRAIGHT FOREST GREEN & GOLD BANNER*/}
         {/* ======================================================== */}
         <div 
-          className="relative w-full lg:w-[38%] min-h-[320px] sm:min-h-[380px] lg:min-h-[560px] bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600 overflow-hidden flex items-center justify-center p-6 sm:p-10 z-20 shadow-2xl border-t-4 lg:border-t-0 lg:border-l-4 border-amber-400/90"
+          className="relative w-full lg:w-[38%] min-h-[320px] sm:min-h-[380px] lg:min-h-[560px] bg-gradient-to-br from-[#173F35] via-[#244E40] to-[#0F2A23] overflow-hidden flex items-center justify-center p-6 sm:p-10 z-20 shadow-2xl border-t-4 lg:border-t-0 lg:border-l-4 border-[#D4AF37]"
         >
           {/* Subtle High-Resolution Photographic Watermark in Background */}
           <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none">
@@ -249,33 +249,33 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
           </div>
 
           {/* Ambient Lighting Rays */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-amber-300/30 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-10 w-64 h-64 bg-orange-800/40 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#E5C158]/20 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-10 w-64 h-64 bg-[#173F35]/50 rounded-full blur-2xl pointer-events-none"></div>
 
           {/* THE 3 TILTED GRAPHIC PILLS */}
           <div className="relative z-10 flex flex-col items-center justify-center space-y-3 sm:space-y-4 transform -rotate-12 hover:-rotate-6 transition-transform duration-500 my-6 lg:my-0">
             
-            {/* Pill 1: Golden Yellow "HEAVENS" */}
-            <div className="bg-amber-300 text-slate-950 font-black text-xl sm:text-2xl md:text-3xl px-8 sm:px-12 py-2 sm:py-3 rounded-full shadow-2xl tracking-widest font-cinzel border-2 border-amber-200 uppercase select-none transform hover:scale-105 transition">
+            {/* Pill 1: Champagne Gold "HEAVENS" */}
+            <div className="bg-[#E5C158] text-[#173F35] font-black text-xl sm:text-2xl md:text-3xl px-8 sm:px-12 py-2 sm:py-3 rounded-full shadow-2xl tracking-widest font-cinzel border-2 border-[#F8F5EC] uppercase select-none transform hover:scale-105 transition">
               HEAVENS
             </div>
 
-            {/* Pill 2: Electric Cyan / Sky Blue "GATE PRAYER" */}
-            <div className="bg-sky-400 text-slate-950 font-black text-xl sm:text-2xl md:text-3xl px-8 sm:px-12 py-2 sm:py-3 rounded-full shadow-2xl tracking-widest font-cinzel border-2 border-sky-300 uppercase select-none transform hover:scale-105 transition">
+            {/* Pill 2: Warm Ivory "GATE PRAYER" */}
+            <div className="bg-[#F8F5EC] text-[#173F35] font-black text-xl sm:text-2xl md:text-3xl px-8 sm:px-12 py-2 sm:py-3 rounded-full shadow-2xl tracking-widest font-cinzel border-2 border-[#D4AF37] uppercase select-none transform hover:scale-105 transition">
               GATE PRAYER
             </div>
 
-            {/* Pill 3: Golden Yellow "MOUNTAIN" */}
-            <div className="bg-amber-300 text-slate-950 font-black text-xl sm:text-2xl md:text-3xl px-8 sm:px-12 py-2 sm:py-3 rounded-full shadow-2xl tracking-widest font-cinzel border-2 border-amber-200 uppercase select-none transform hover:scale-105 transition">
+            {/* Pill 3: Champagne Gold "MOUNTAIN" */}
+            <div className="bg-[#E5C158] text-[#173F35] font-black text-xl sm:text-2xl md:text-3xl px-8 sm:px-12 py-2 sm:py-3 rounded-full shadow-2xl tracking-widest font-cinzel border-2 border-[#F8F5EC] uppercase select-none transform hover:scale-105 transition">
               MOUNTAIN
             </div>
 
             {/* Cornerstone Scripture Badge beneath pills */}
             <div className="pt-2 text-center text-white drop-shadow">
-              <div className="font-mono text-xs sm:text-sm font-black tracking-widest uppercase bg-black/30 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/30 inline-block">
+              <div className="font-mono text-xs sm:text-sm font-black tracking-widest uppercase bg-black/40 backdrop-blur-md px-3.5 py-1 rounded-full border border-[#D4AF37]/50 inline-block text-[#F8F5EC]">
                 GENESIS 28:17
               </div>
-              <div className="text-[10px] sm:text-xs text-orange-100 font-bold tracking-wider mt-1 uppercase">
+              <div className="text-[10px] sm:text-xs text-[#F8F5EC]/85 font-bold tracking-wider mt-1 uppercase">
                 Gilgil Altar • Nakuru County, Kenya
               </div>
             </div>
@@ -287,9 +287,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
       {/* ======================================================== */}
       {/* BOTTOM IMPACT RIBBON TICKER STRIP                         */}
       {/* ======================================================== */}
-      <div className="bg-slate-950 border-t border-slate-800 text-white flex items-center overflow-hidden h-12 shadow-inner">
-        {/* Fixed Bright Solid Orange Block Badge */}
-        <div className="bg-orange-600 text-white font-black text-xs uppercase tracking-widest px-4 sm:px-6 h-full flex items-center justify-center shrink-0 z-10 shadow-md font-cinzel">
+      <div className="bg-slate-950 border-t border-[#244E40]/60 text-white flex items-center overflow-hidden h-12 shadow-inner">
+        {/* Fixed Deep Forest Green Badge */}
+        <div className="bg-[#173F35] text-[#F8F5EC] border-r border-[#244E40] font-black text-xs uppercase tracking-widest px-4 sm:px-6 h-full flex items-center justify-center shrink-0 z-10 shadow-md font-cinzel">
           HEAVENS GATE
         </div>
 
@@ -297,7 +297,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
         <div className="flex-1 overflow-x-auto no-scrollbar flex items-center space-x-6 sm:space-x-8 px-4 text-xs font-bold text-slate-300 whitespace-nowrap">
           {tickerItems.map((item, i) => (
             <div key={i} className="flex items-center space-x-2 shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
               <span className="tracking-wide uppercase text-[11px] sm:text-xs text-slate-200 hover:text-white transition">
                 {item}
               </span>
@@ -306,7 +306,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate, onOpenAi
           {/* Duplicate for infinite seamless scroll */}
           {tickerItems.map((item, i) => (
             <div key={`dup-${i}`} className="hidden md:flex items-center space-x-2 shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
               <span className="tracking-wide uppercase text-[11px] sm:text-xs text-slate-200">
                 {item}
               </span>

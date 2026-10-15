@@ -42,8 +42,8 @@ export const PrayerRequestPage: React.FC = () => {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Header */}
       <div className="text-center max-w-xl mx-auto space-y-2">
-        <div className="inline-flex items-center space-x-2 text-xs text-orange-700 font-bold uppercase tracking-wider bg-orange-100 px-3 py-1 rounded-full">
-          <HeartHandshake className="w-4 h-4 text-orange-600" />
+        <div className="inline-flex items-center space-x-2 text-xs text-[#173F35] font-bold uppercase tracking-wider bg-[#F8F5EC] border border-[#173F35]/20 px-3 py-1 rounded-full">
+          <HeartHandshake className="w-4 h-4 text-[#244E40]" />
           <span>Intercessory Prayer Altar</span>
         </div>
         <h1 className="font-cinzel text-3xl font-black text-slate-900">
@@ -63,21 +63,21 @@ export const PrayerRequestPage: React.FC = () => {
           <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
             Your prayer burden has been encrypted and assigned to the pastoral prayer team at Heavens Gate. We are standing with you in fasting and intercession during the continuous prayer watches.
           </p>
-          <div className="text-xs font-mono font-bold text-orange-700 bg-orange-50 border border-orange-200 p-3 rounded-xl max-w-xs mx-auto">
+          <div className="text-xs font-mono font-bold text-[#173F35] bg-[#F8F5EC] border border-[#173F35]/20 p-3 rounded-xl max-w-xs mx-auto">
             Submission Reference: {submittedRef}
           </div>
           <button
             onClick={() => setSubmittedRef(null)}
-            className="mt-4 px-6 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold shadow-md"
+            className="mt-4 px-6 py-2.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 text-xs font-bold shadow-md"
           >
             Submit Another Request
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="glass-panel p-6 sm:p-8 rounded-3xl border-2 border-orange-500 shadow-lg space-y-6">
+        <form onSubmit={handleSubmit} className="glass-panel p-6 sm:p-8 rounded-3xl border-2 border-[#173F35] shadow-lg space-y-6">
           {/* Privacy Guarantee Banner */}
-          <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 flex items-start space-x-3 text-xs text-slate-700">
-            <Lock className="w-5 h-5 text-orange-600 shrink-0 mt-0.5" />
+          <div className="p-4 rounded-2xl bg-[#F8F5EC] border border-[#173F35]/20 flex items-start space-x-3 text-xs text-slate-700">
+            <Lock className="w-5 h-5 text-[#244E40] shrink-0 mt-0.5" />
             <div>
               <strong className="text-slate-900 block font-bold">Strict Pastoral Confidentiality (Rule BR-11):</strong>
               Your private request is only accessible to authorized intercessors. It will never be indexed publicly, shared with moderators, or shown to general visitors.
@@ -92,7 +92,7 @@ export const PrayerRequestPage: React.FC = () => {
                 value={visitorName}
                 onChange={e => setVisitorName(e.target.value)}
                 placeholder="e.g. John"
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-orange-500"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-[#173F35]"
                 required
               />
             </div>
@@ -104,7 +104,7 @@ export const PrayerRequestPage: React.FC = () => {
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
                 placeholder="0722 000 000"
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-orange-500"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-[#173F35]"
                 required
               />
             </div>
@@ -115,7 +115,7 @@ export const PrayerRequestPage: React.FC = () => {
             <select
               value={category}
               onChange={e => setCategory(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-orange-500"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none focus:border-[#173F35]"
             >
               <option value="Healing and Health Restoration">Healing and Health Restoration</option>
               <option value="Deliverance & Overcoming Addictions">Deliverance & Overcoming Addictions</option>
@@ -133,7 +133,7 @@ export const PrayerRequestPage: React.FC = () => {
               value={requestText}
               onChange={e => setRequestText(e.target.value)}
               placeholder="Describe your situation in faith. What burden are you laying at the altar of Heavens Gate?..."
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3.5 text-slate-900 focus:outline-none focus:border-orange-500 resize-none leading-relaxed"
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3.5 text-slate-900 focus:outline-none focus:border-[#173F35] resize-none leading-relaxed"
               required
             ></textarea>
           </div>
@@ -144,7 +144,7 @@ export const PrayerRequestPage: React.FC = () => {
               id="confidentialCheck"
               checked={isConfidential}
               onChange={e => setIsConfidential(e.target.checked)}
-              className="rounded text-orange-600 focus:ring-orange-500 w-4 h-4"
+              className="rounded text-[#173F35] focus:ring-[#173F35] w-4 h-4"
             />
             <label htmlFor="confidentialCheck" className="cursor-pointer">
               Keep this request strictly private to senior intercessors only
@@ -154,9 +154,9 @@ export const PrayerRequestPage: React.FC = () => {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-orange-500/25 transition flex items-center justify-center space-x-2"
+            className="w-full py-3.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] border border-[#D4AF37]/40 font-bold text-xs uppercase tracking-wider shadow-lg shadow-black/20 transition flex items-center justify-center space-x-2"
           >
-            <Send className="w-4 h-4" />
+            <Send className="w-4 h-4 text-[#E5C158]" />
             <span>{submitting ? 'Submitting in Prayer...' : 'Submit Prayer Request to the Mountain Altar'}</span>
           </button>
         </form>

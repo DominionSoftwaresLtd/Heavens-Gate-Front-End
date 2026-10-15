@@ -10,7 +10,11 @@ import billboardImg from '../assets/BILL BOARD.jpg';
 import entryGateImg from '../assets/ENTRY GATE CLEAR.jpg';
 import gateViewImg from '../assets/GATE VIEW.jpg';
 
-export const TransportEstimatorPage: React.FC = () => {
+interface TransportEstimatorPageProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export const TransportEstimatorPage: React.FC<TransportEstimatorPageProps> = ({ onNavigate }) => {
   const [routes, setRoutes] = useState<TransportRoute[]>([]);
   const [selectedRouteId, setSelectedRouteId] = useState<string>('tr-nbo');
   
@@ -55,8 +59,8 @@ export const TransportEstimatorPage: React.FC = () => {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto space-y-2">
-        <div className="inline-flex items-center space-x-2 text-xs text-orange-700 font-bold uppercase tracking-wider bg-orange-100 px-3 py-1 rounded-full">
-          <Bus className="w-4 h-4 text-orange-600" />
+        <div className="inline-flex items-center space-x-2 text-xs text-[#173F35] font-bold uppercase tracking-wider bg-[#F8F5EC] border border-[#D4AF37]/40 px-3.5 py-1 rounded-full shadow-sm">
+          <Bus className="w-4 h-4 text-[#D4AF37]" />
           <span>Pilgrim Travel & Financial Preparation</span>
         </div>
         <h1 className="font-cinzel text-3xl sm:text-4xl font-black text-slate-900">
@@ -71,9 +75,9 @@ export const TransportEstimatorPage: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Routes */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="glass-panel p-6 rounded-3xl space-y-5 border-t-4 border-t-orange-500 shadow-sm">
+          <div className="glass-panel p-6 rounded-3xl space-y-5 border-t-4 border-t-[#173F35] shadow-sm">
             <h2 className="font-cinzel text-lg font-bold text-slate-900 flex items-center space-x-2">
-              <MapPin className="w-4 h-4 text-orange-600" />
+              <MapPin className="w-4 h-4 text-[#173F35]" />
               <span>Select Your Point of Origin</span>
             </h2>
 
@@ -87,13 +91,13 @@ export const TransportEstimatorPage: React.FC = () => {
                     onClick={() => setSelectedRouteId(r.id)}
                     className={`p-3.5 rounded-2xl border-2 text-left transition ${
                       isSelected
-                        ? 'bg-orange-50 border-orange-500 text-slate-900 shadow-sm'
-                        : 'bg-white border-slate-200 text-slate-600 hover:border-orange-300'
+                        ? 'bg-[#F8F5EC] border-[#173F35] text-slate-900 shadow-sm'
+                        : 'bg-white border-slate-200 text-slate-600 hover:border-[#173F35]/40'
                     }`}
                   >
-                    <div className="text-[10px] text-orange-600 font-bold uppercase font-mono">From</div>
+                    <div className="text-[10px] text-[#173F35] font-bold uppercase font-mono">From</div>
                     <div className="font-bold text-xs text-slate-900 mt-0.5 truncate">{r.originCity}</div>
-                    <div className="text-[11px] text-orange-700 font-bold mt-1">KES {r.matatuFareKES}</div>
+                    <div className="text-[11px] text-[#173F35] font-bold mt-1">KES {r.matatuFareKES}</div>
                   </button>
                 );
               })}
@@ -105,7 +109,7 @@ export const TransportEstimatorPage: React.FC = () => {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200 gap-2">
                   <h3 className="font-bold text-slate-900 text-sm">{selectedRoute.routeTitle}</h3>
                   <div className="flex items-center space-x-1.5 text-slate-500 text-[11px]">
-                    <Clock className="w-3.5 h-3.5 text-orange-600" />
+                    <Clock className="w-3.5 h-3.5 text-[#173F35]" />
                     <span>Est. Travel Time: <strong className="text-slate-900">{selectedRoute.travelTime}</strong></span>
                   </div>
                 </div>
@@ -117,7 +121,7 @@ export const TransportEstimatorPage: React.FC = () => {
                   </div>
                   <div className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm">
                     <span className="text-[10px] text-slate-500 uppercase font-bold">Boda Boda to Gate (1.5 km)</span>
-                    <div className="text-base font-mono font-black text-orange-600">KES {selectedRoute.bodaBodaFareKES}</div>
+                    <div className="text-base font-mono font-black text-[#173F35]">KES {selectedRoute.bodaBodaFareKES}</div>
                   </div>
                 </div>
 
@@ -126,78 +130,79 @@ export const TransportEstimatorPage: React.FC = () => {
                   <p className="leading-relaxed">{selectedRoute.stageDirections}</p>
                 </div>
 
-                <div className="p-3 rounded-xl bg-orange-100 border border-orange-200 text-orange-900 text-[11px] font-medium">
+                {/* Controlled brand amber highlight for practical travel advisory */}
+                <div className="p-3 rounded-xl bg-amber-50 border border-amber-200/80 text-amber-900 text-[11px] font-medium">
                   💡 <strong>Travel Tip:</strong> {selectedRoute.advice}
                 </div>
               </div>
             )}
 
             {/* Visual Highway Route Landmarks ("Remember the Routes") */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 text-white border border-slate-800 space-y-4">
-              <div className="flex items-center space-x-2 text-orange-400 text-xs font-bold uppercase tracking-wider">
-                <Navigation className="w-4 h-4 text-orange-500" />
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-[#0F2A23] to-[#173F35] text-white border border-[#D4AF37]/30 space-y-4 shadow-sm">
+              <div className="flex items-center space-x-2 text-[#E5C158] text-xs font-bold uppercase tracking-wider">
+                <Navigation className="w-4 h-4 text-[#D4AF37]" />
                 <span>Visual Route Milestones • Highway Landmarks</span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed font-light">
+              <p className="text-xs text-[#F8F5EC]/80 leading-relaxed font-light">
                 When alighting at the Gilgil weighbridge junction along the Nairobi-Nakuru Highway (A104), look out for these exact authentic physical landmarks to guide your arrival:
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
                 {/* Milestone 1: Billboard */}
-                <div className="rounded-xl overflow-hidden bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between">
+                <div className="rounded-xl overflow-hidden bg-[#173F35]/70 border border-[#D4AF37]/25 flex flex-col justify-between">
                   <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <img 
                       src={billboardImg} 
                       alt="Official Heavens Gate Highway Billboard" 
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] font-bold text-orange-300">
+                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] font-bold text-[#E5C158] border border-[#D4AF37]/30">
                       Step 1
                     </div>
                   </div>
                   <div className="p-3">
-                    <strong className="text-white text-xs block font-bold">Highway Billboard</strong>
-                    <p className="text-[11px] text-slate-300 mt-0.5 leading-snug">
+                    <strong className="text-[#F8F5EC] text-xs block font-bold">Highway Billboard</strong>
+                    <p className="text-[11px] text-[#F8F5EC]/70 mt-0.5 leading-snug">
                       Official signpost along A104 at the Gilgil weighbridge turn-off.
                     </p>
                   </div>
                 </div>
 
                 {/* Milestone 2: Approach Road */}
-                <div className="rounded-xl overflow-hidden bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between">
+                <div className="rounded-xl overflow-hidden bg-[#173F35]/70 border border-[#D4AF37]/25 flex flex-col justify-between">
                   <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <img 
                       src={gateViewImg} 
                       alt="Approach Road to Heavens Gate" 
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] font-bold text-orange-300">
+                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] font-bold text-[#E5C158] border border-[#D4AF37]/30">
                       Step 2
                     </div>
                   </div>
                   <div className="p-3">
-                    <strong className="text-white text-xs block font-bold">1.5 km Hillside Approach</strong>
-                    <p className="text-[11px] text-slate-300 mt-0.5 leading-snug">
+                    <strong className="text-[#F8F5EC] text-xs block font-bold">1.5 km Hillside Approach</strong>
+                    <p className="text-[11px] text-[#F8F5EC]/70 mt-0.5 leading-snug">
                       Short Boda Boda transfer (KES 100-150) or peaceful 15-min prayer walk.
                     </p>
                   </div>
                 </div>
 
                 {/* Milestone 3: Gate */}
-                <div className="rounded-xl overflow-hidden bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between">
+                <div className="rounded-xl overflow-hidden bg-[#173F35]/70 border border-[#D4AF37]/25 flex flex-col justify-between">
                   <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <img 
                       src={entryGateImg} 
                       alt="Official Security Gatehouse" 
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] font-bold text-orange-300">
+                    <div className="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] font-bold text-[#E5C158] border border-[#D4AF37]/30">
                       Step 3
                     </div>
                   </div>
                   <div className="p-3">
-                    <strong className="text-white text-xs block font-bold">Security Gatehouse</strong>
-                    <p className="text-[11px] text-slate-300 mt-0.5 leading-snug">
+                    <strong className="text-[#F8F5EC] text-xs block font-bold">Security Gatehouse</strong>
+                    <p className="text-[11px] text-[#F8F5EC]/70 mt-0.5 leading-snug">
                       Present National ID & scanned QR Pass. Open 5:00 AM — 8:00 PM.
                     </p>
                   </div>
@@ -207,9 +212,9 @@ export const TransportEstimatorPage: React.FC = () => {
           </div>
 
           {/* Interactive Packing Checklist */}
-          <div className="glass-panel p-6 rounded-3xl space-y-4 border-t-4 border-t-orange-500 shadow-sm">
+          <div className="glass-panel p-6 rounded-3xl space-y-4 border-t-4 border-t-[#173F35] shadow-sm">
             <h3 className="font-cinzel text-lg font-bold text-slate-900 flex items-center space-x-2">
-              <CheckSquare className="w-4 h-4 text-orange-600" />
+              <CheckSquare className="w-4 h-4 text-[#173F35]" />
               <span>Mandatory Visitor Packing Checklist</span>
             </h3>
             <p className="text-xs text-slate-600 mt-0.5 font-medium">
@@ -223,12 +228,12 @@ export const TransportEstimatorPage: React.FC = () => {
                   onClick={() => toggleChecklist(item.id)}
                   className={`p-3.5 rounded-xl border flex items-center space-x-3 cursor-pointer text-xs transition ${
                     item.checked
-                      ? 'bg-orange-50/60 border-orange-300 text-slate-900 font-medium'
+                      ? 'bg-[#F8F5EC] border-[#173F35]/40 text-slate-900 font-medium'
                       : 'bg-slate-50 border-slate-200 text-slate-400 line-through'
                   }`}
                 >
                   {item.checked ? (
-                    <CheckSquare className="w-4 h-4 text-orange-600 shrink-0" />
+                    <CheckSquare className="w-4 h-4 text-[#173F35] shrink-0" />
                   ) : (
                     <Square className="w-4 h-4 text-slate-400 shrink-0" />
                   )}
@@ -246,9 +251,9 @@ export const TransportEstimatorPage: React.FC = () => {
 
         {/* Right Column: Total Retreat Budget Planner */}
         <div>
-          <div className="glass-panel p-6 rounded-3xl sticky top-24 space-y-5 border-2 border-orange-500 shadow-md">
+          <div className="glass-panel p-6 rounded-3xl sticky top-24 space-y-5 border-2 border-[#173F35] shadow-md">
             <div className="flex items-center space-x-2 text-slate-900">
-              <Calculator className="w-4 h-4 text-orange-600" />
+              <Calculator className="w-4 h-4 text-[#173F35]" />
               <h3 className="font-cinzel font-bold text-base">Retreat Expense Estimator</h3>
             </div>
 
@@ -261,7 +266,7 @@ export const TransportEstimatorPage: React.FC = () => {
                   max="30"
                   value={nights}
                   onChange={e => setNights(parseInt(e.target.value || '1', 10))}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-orange-500 font-bold"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-[#173F35] font-bold"
                 />
               </div>
 
@@ -270,7 +275,7 @@ export const TransportEstimatorPage: React.FC = () => {
                 <select
                   value={roomCostPerNight}
                   onChange={e => setRoomCostPerNight(parseInt(e.target.value, 10))}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-orange-500 font-medium"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-[#173F35] font-medium"
                 >
                   <option value={180}>6-Bed General Hall (KES 180 / night)</option>
                   <option value={280}>4-Bed Dormitory (KES 280 / night)</option>
@@ -299,11 +304,19 @@ export const TransportEstimatorPage: React.FC = () => {
 
                 <div className="border-t border-slate-200 pt-3 flex justify-between items-center text-sm">
                   <span className="font-bold text-slate-900">Estimated Budget:</span>
-                  <span className="font-mono text-xl font-black text-orange-600">
+                  <span className="font-mono text-xl font-black text-[#173F35]">
                     KES {totalBudgetKES.toLocaleString()}
                   </span>
                 </div>
               </div>
+
+              <button
+                type="button"
+                onClick={() => onNavigate ? onNavigate('booking') : undefined}
+                className="mt-4 w-full py-2.5 px-4 bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] rounded-xl font-bold text-center block text-xs border border-[#D4AF37]/40 shadow-md transition tracking-wider uppercase cursor-pointer"
+              >
+                Proceed to Book Stay
+              </button>
             </div>
 
             <p className="text-[10px] text-slate-500 leading-relaxed border-t border-slate-200 pt-3">
@@ -315,3 +328,4 @@ export const TransportEstimatorPage: React.FC = () => {
     </div>
   );
 };
+
