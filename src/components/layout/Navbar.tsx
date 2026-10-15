@@ -67,8 +67,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
           {/* Right: Scripture Motto & Gate Hours */}
           <div className="flex items-center space-x-3 shrink-0">
             <div className="hidden md:flex items-center space-x-1.5 text-[#F8F5EC]/90 font-medium text-[11px]">
-              <span className="text-[#E5C158] font-bold">Motto:</span>
-              <span className="italic">An Altar of Continuous Prayer • Genesis 28:17</span>
+              <span className="text-[#E5C158] font-semibold italic">This is the Gate of Heaven</span>
+              <span className="text-[#F8F5EC]/75 font-mono text-[10px]">• Genesis 28:17</span>
             </div>
             <span className="text-white/30 hidden md:inline">|</span>
             <div className="flex items-center space-x-1.5 text-[#F8F5EC]/90 font-medium">
