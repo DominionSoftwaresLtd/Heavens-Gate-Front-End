@@ -15,7 +15,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpenAi, onOpenAuth }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { user, logout, switchRole } = useAuth();
+  const { user, logout } = useAuth();
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -158,24 +158,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
               </button>
             )}
 
-            {/* Desktop Role Switcher Dropdown (Dev / Demo helper) */}
-            <div className="relative shrink-0 hidden xl:block">
-              <select
-                value={user?.role || 'registered_pilgrim'}
-                onChange={(e) => switchRole(e.target.value as any)}
-                aria-label="Switch User Role"
-                className="bg-white hover:bg-stone-50 border border-[#E8E3D5] text-[#173F35] text-xs font-medium rounded-xl px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#173F35] cursor-pointer shadow-sm"
-              >
-                <option value="system_admin" className="text-slate-900 bg-white">Admin: Pastor Peter</option>
-                <option value="registered_pilgrim" className="text-slate-900 bg-white">Pilgrim: John Kamau</option>
-                <option value="gate_officer" className="text-slate-900 bg-white">Gate Officer: David</option>
-                <option value="reception_officer" className="text-slate-900 bg-white">Reception: Mary</option>
-                <option value="accommodation_officer" className="text-slate-900 bg-white">Accommodation: Samuel</option>
-                <option value="finance_officer" className="text-slate-900 bg-white">Finance Officer: James</option>
-                <option value="prayer_admin" className="text-slate-900 bg-white">Prayer Admin: Grace</option>
-              </select>
-            </div>
-
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -291,30 +273,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
                 </button>
               );
             })}
-          </div>
-
-          {/* Mobile Role Switcher */}
-          <div className="pt-3 border-t border-[#244E40] space-y-1.5">
-            <label className="block text-[11px] font-bold text-[#E5C158] uppercase tracking-wider px-1">
-              Switch Test Role:
-            </label>
-            <select
-              value={user?.role || 'registered_pilgrim'}
-              onChange={(e) => {
-                switchRole(e.target.value as any);
-                setMobileMenuOpen(false);
-              }}
-              aria-label="Switch User Role on Mobile"
-              className="w-full bg-[#0F2A23] border border-[#244E40] text-[#F8F5EC] text-xs font-semibold rounded-xl px-3.5 py-3 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
-            >
-              <option value="system_admin" className="text-slate-900 bg-white">System Admin: Pastor Peter</option>
-              <option value="registered_pilgrim" className="text-slate-900 bg-white">Pilgrim: John Kamau</option>
-              <option value="gate_officer" className="text-slate-900 bg-white">Gate Officer: David</option>
-              <option value="reception_officer" className="text-slate-900 bg-white">Reception: Mary</option>
-              <option value="accommodation_officer" className="text-slate-900 bg-white">Accommodation: Samuel</option>
-              <option value="finance_officer" className="text-slate-900 bg-white">Finance Officer: James</option>
-              <option value="prayer_admin" className="text-slate-900 bg-white">Prayer Admin: Grace</option>
-            </select>
           </div>
 
           {/* Quick Clinic Emergency Dial */}

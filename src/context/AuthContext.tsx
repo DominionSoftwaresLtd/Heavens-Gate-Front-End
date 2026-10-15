@@ -24,23 +24,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } catch (e) {
       console.warn('Could not read user from storage', e);
     }
-    return {
-      id: 'usr-pilgrim-1',
-      name: 'John Kamau Karanja',
-      phone: '0722123456',
-      email: 'kamau@example.com',
-      role: 'registered_pilgrim',
-      nationalId: '29876543',
-      isFirstTime: false,
-      totalVisits: 3
-    };
+    return null;
   });
 
   const [token, setToken] = useState<string | null>(() => {
     try {
-      return localStorage.getItem('hg_token') || 'mock-jwt-token';
+      return localStorage.getItem('hg_token') || null;
     } catch {
-      return 'mock-jwt-token';
+      return null;
     }
   });
 
