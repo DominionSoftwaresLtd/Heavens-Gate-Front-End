@@ -168,43 +168,6 @@ export const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigate }) => {
       {/* 1. DIRECT CREATIVE OPENING: OUR STORY & DIVINE FORMATION */}
       <section className="relative pt-8 sm:pt-12 pb-14 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Sacred Header Badge & Quick Action Links */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-stone-200 mb-8 sm:mb-12">
-          <div className="flex items-center space-x-2">
-            <span className="inline-flex items-center space-x-1.5 bg-[#173F35] text-[#E5C158] px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span>Genesis 28:17 • The Altar of Jacob</span>
-            </span>
-            <span className="text-xs text-slate-500 hidden md:inline">
-              Nairobi-Nakuru Highway, Gilgil
-            </span>
-          </div>
-
-          {/* Quick Access Action Chips */}
-          <div className="flex items-center space-x-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
-            <button
-              onClick={() => onNavigate('booking')}
-              className="bg-[#173F35] hover:bg-[#244E40] text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center space-x-1.5 shrink-0 shadow-xs"
-            >
-              <Bed className="w-3.5 h-3.5 text-[#E5C158]" />
-              <span>Book Stay</span>
-            </button>
-            <button
-              onClick={() => onNavigate('map')}
-              className="bg-white hover:bg-stone-100 text-[#173F35] border border-stone-200 font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center space-x-1.5 shrink-0 shadow-xs"
-            >
-              <Compass className="w-3.5 h-3.5 text-[#173F35]" />
-              <span>Campus Map</span>
-            </button>
-            <button
-              onClick={() => onNavigate('transport')}
-              className="bg-white hover:bg-stone-100 text-[#173F35] border border-stone-200 font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center space-x-1.5 shrink-0 shadow-xs"
-            >
-              <MapPin className="w-3.5 h-3.5 text-[#173F35]" />
-              <span>Travel & Fares</span>
-            </button>
-          </div>
-        </div>
 
         {/* Story Headline & Editorial Framing */}
         <div className="max-w-4xl mb-10 sm:mb-12">
