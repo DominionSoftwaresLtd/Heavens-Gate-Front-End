@@ -23,7 +23,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpe
   const baseNavItems = [
     { id: 'home', label: 'Home' },
     { id: 'booking', label: 'Book Stay' },
-    { id: 'ticket', label: 'My Ticket' },
     { id: 'map', label: 'Campus Map' },
     { id: 'services', label: 'Live Services' },
     { id: 'testimonies', label: 'Testimonies' },
