@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { 
   LayoutDashboard, Users, Bed, CreditCard, ShieldCheck, 
   Download, Clock, RefreshCw, Search, Plus, CheckCircle2, 
-  XCircle, Filter, MessageSquare, AlertTriangle, UserCheck, 
-  Send, Trash2, Megaphone, Check, Calendar, ChevronRight,
-  ShieldAlert, LogIn, Scan
+  Filter, MessageSquare, AlertTriangle, UserCheck, 
+  Send, Trash2, Megaphone, Calendar, 
+  ShieldAlert, LogIn, Mail, History, 
+  X, Eye
 } from 'lucide-react';
 import { api } from '../services/api.js';
 import { useAuth } from '../context/AuthContext.js';
@@ -18,11 +19,28 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
   const { user } = useAuth();
 
   // Active Admin Sub-Tab
-  const [adminTab, setAdminTab] = useState<'overview' | 'bookings' | 'rooms' | 'gate' | 'prayers' | 'staff' | 'broadcast'>('overview');
+  const [adminTab, setAdminTab] = useState<'overview' | 'bookings' | 'members' | 'communications' | 'rooms' | 'gate' | 'prayers' | 'staff' | 'broadcast'>('overview');
+
+  // Member Management State
+  const [memberSearch, setMemberSearch] = useState('');
+  const [memberFilter, setMemberFilter] = useState<'all' | 'returning' | 'first_time' | 'registered' | 'staff'>('all');
+  const [selectedMember, setSelectedMember] = useState<any | null>(null);
+
+  // Communications / Email State
+  const [emailStatusList, setEmailStatusList] = useState<any[]>([]);
+  const [_emailEndpointMissing, setEmailEndpointMissing] = useState(false);
+  const [commsPreferences, setCommsPreferences] = useState({
+    welcomeEmail: true,
+    departureEmail: true,
+    smsAlerts: true,
+    prayerWatchReminder: true
+  });
+
 
   // Overview Data
   const [stats, setStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+
 
   // Bookings Tab Data
   const [bookings, setBookings] = useState<any[]>([]);
@@ -79,6 +97,17 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
       if (usersRes?.users) setUsersList(usersRes.users);
       if (annRes?.announcements) setAnnouncements(annRes.announcements);
       if (gateRes?.events) setGateEvents(gateRes.events);
+
+      try {
+        const emailRes = await api.getEmailStatus();
+        if (emailRes?.logs || emailRes?.statuses) {
+          setEmailStatusList(emailRes.logs || emailRes.statuses);
+          setEmailEndpointMissing(false);
+        }
+      } catch {
+        // Document endpoint pending implementation without disrupting workflow
+        setEmailEndpointMissing(true);
+      }
     } catch (err) {
       console.error('Error loading admin data:', err);
       showNotification('Could not load some management metrics', 'error');
@@ -390,6 +419,30 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
         </button>
 
         <button
+          onClick={() => setAdminTab('members')}
+          className={`px-4 py-2.5 rounded-xl transition flex items-center space-x-2 whitespace-nowrap shrink-0 ${
+            adminTab === 'members'
+              ? 'bg-[#173F35] text-[#F8F5EC] shadow-sm border border-[#D4AF37]/40'
+              : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+          }`}
+        >
+          <Users className="w-4 h-4" />
+          <span>Members & Visits ({usersList.length})</span>
+        </button>
+
+        <button
+          onClick={() => setAdminTab('communications')}
+          className={`px-4 py-2.5 rounded-xl transition flex items-center space-x-2 whitespace-nowrap shrink-0 ${
+            adminTab === 'communications'
+              ? 'bg-[#173F35] text-[#F8F5EC] shadow-sm border border-[#D4AF37]/40'
+              : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+          }`}
+        >
+          <Mail className="w-4 h-4" />
+          <span>Visitor Communications</span>
+        </button>
+
+        <button
           onClick={() => setAdminTab('rooms')}
           className={`px-4 py-2.5 rounded-xl transition flex items-center space-x-2 whitespace-nowrap shrink-0 ${
             adminTab === 'rooms'
@@ -400,6 +453,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
           <Bed className="w-4 h-4" />
           <span>Beds & Capacities</span>
         </button>
+
 
         <button
           onClick={() => setAdminTab('gate')}
@@ -769,9 +823,533 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
       )}
 
       {/* ======================================================== */}
+      {/* TAB: MEMBERS & VISIT HISTORY MANAGEMENT                  */}
+      {/* ======================================================== */}
+      {adminTab === 'members' && (
+        <div className="glass-panel p-6 rounded-3xl space-y-6 border-t-4 border-t-[#173F35] shadow-xs animate-fade-in">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="font-cinzel text-lg font-bold text-slate-900 flex items-center space-x-2">
+                <Users className="w-5 h-5 text-[#173F35]" />
+                <span>Pilgrim Member Management & Visit History</span>
+              </h2>
+              <p className="text-xs text-slate-600 mt-1">
+                Inspect registered member profiles, track returning visitors, and audit chronological campus visit histories.
+              </p>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <span className="text-xs text-slate-500 font-semibold">Total Members:</span>
+              <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-full bg-[#F8F5EC] text-[#173F35] border border-[#173F35]/20">
+                {usersList.length} Records
+              </span>
+            </div>
+          </div>
+
+          {/* Quick Metrics Bar */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+              <span className="text-[11px] text-slate-500 uppercase font-mono block">Registered Pilgrims</span>
+              <strong className="text-lg font-bold text-slate-900">
+                {usersList.filter(u => u.role === 'registered_pilgrim').length}
+              </strong>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+              <span className="text-[11px] text-slate-500 uppercase font-mono block">Returning Visitors</span>
+              <strong className="text-lg font-bold text-[#173F35]">
+                {usersList.filter(u => (u.totalVisits || 0) > 1).length}
+              </strong>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+              <span className="text-[11px] text-slate-500 uppercase font-mono block">First-Time Visitors</span>
+              <strong className="text-lg font-bold text-slate-800">
+                {usersList.filter(u => (!u.totalVisits || u.totalVisits <= 1) && u.role === 'registered_pilgrim').length}
+              </strong>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+              <span className="text-[11px] text-slate-500 uppercase font-mono block">Ministry & Staff</span>
+              <strong className="text-lg font-bold text-slate-800">
+                {usersList.filter(u => u.role !== 'registered_pilgrim' && u.role !== 'public_visitor').length}
+              </strong>
+            </div>
+          </div>
+
+          {/* Search & Classification Filters */}
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between text-xs">
+            <div className="relative flex-1 max-w-md">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+              <input
+                type="text"
+                placeholder="Search by name, email, phone, or member ID..."
+                value={memberSearch}
+                onChange={e => setMemberSearch(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-[#173F35] bg-white text-slate-900"
+              />
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <Filter className="w-4 h-4 text-slate-500 shrink-0" />
+              <select
+                value={memberFilter}
+                onChange={e => setMemberFilter(e.target.value as any)}
+                className="px-3 py-2 rounded-xl border border-slate-300 bg-white font-medium text-slate-800 focus:outline-none focus:border-[#173F35]"
+              >
+                <option value="all">All Members & Pilgrims ({usersList.length})</option>
+                <option value="returning">Returning Pilgrims (2+ Visits)</option>
+                <option value="first_time">First-Time Pilgrims</option>
+                <option value="registered">Registered Pilgrims Only</option>
+                <option value="staff">Ministry Staff Only</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Members Table */}
+          <div className="overflow-x-auto rounded-2xl border border-slate-200">
+            <table className="w-full text-left text-xs">
+              <thead className="bg-slate-100/80 text-slate-700 uppercase font-mono text-[10px] border-b border-slate-200">
+                <tr>
+                  <th className="p-3.5">Pilgrim / Member</th>
+                  <th className="p-3.5">Contact Details</th>
+                  <th className="p-3.5">National ID</th>
+                  <th className="p-3.5">Classification</th>
+                  <th className="p-3.5">Role</th>
+                  <th className="p-3.5">Visits Recorded</th>
+                  <th className="p-3.5 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 bg-white">
+                {usersList
+                  .filter(u => {
+                    const term = memberSearch.toLowerCase().trim();
+                    const matchesSearch = !term ||
+                      (u.name && u.name.toLowerCase().includes(term)) ||
+                      (u.email && u.email.toLowerCase().includes(term)) ||
+                      (u.phone && u.phone.includes(term)) ||
+                      (u.id && u.id.toLowerCase().includes(term)) ||
+                      (u.nationalId && u.nationalId.includes(term));
+
+                    let matchesType = true;
+                    if (memberFilter === 'returning') {
+                      matchesType = (u.totalVisits || 0) > 1;
+                    } else if (memberFilter === 'first_time') {
+                      matchesType = (!u.totalVisits || u.totalVisits <= 1) && u.role === 'registered_pilgrim';
+                    } else if (memberFilter === 'registered') {
+                      matchesType = u.role === 'registered_pilgrim';
+                    } else if (memberFilter === 'staff') {
+                      matchesType = u.role !== 'registered_pilgrim' && u.role !== 'public_visitor';
+                    }
+                    return matchesSearch && matchesType;
+                  })
+                  .map(member => {
+                    const visitsCount = member.totalVisits || 0;
+                    const isReturning = visitsCount > 1;
+                    return (
+                      <tr key={member.id} className="hover:bg-slate-50 transition">
+                        <td className="p-3.5">
+                          <div className="font-bold text-slate-900">{member.name}</div>
+                          <span className="font-mono text-[10px] text-slate-400">ID: {member.id.substring(0, 12)}...</span>
+                        </td>
+                        <td className="p-3.5 text-slate-600 font-mono text-[11px]">
+                          <div>{member.phone || 'N/A'}</div>
+                          <div className="text-[10px] text-slate-400">{member.email || 'No email provided'}</div>
+                        </td>
+                        <td className="p-3.5 font-mono text-slate-700">
+                          {member.nationalId || '—'}
+                        </td>
+                        <td className="p-3.5">
+                          {isReturning ? (
+                            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300">
+                              Returning Pilgrim ({visitsCount})
+                            </span>
+                          ) : (
+                            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-slate-100 text-slate-700 border border-slate-300">
+                              First-Time
+                            </span>
+                          )}
+                        </td>
+                        <td className="p-3.5">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase bg-slate-100 text-slate-700">
+                            {member.role?.replace('_', ' ')}
+                          </span>
+                        </td>
+                        <td className="p-3.5 font-mono font-bold text-slate-800">
+                          {visitsCount} visit{visitsCount === 1 ? '' : 's'}
+                        </td>
+                        <td className="p-3.5 text-right space-x-2">
+                          <button
+                            onClick={() => setSelectedMember(member)}
+                            className="px-3 py-1.5 rounded-xl bg-[#173F35] hover:bg-[#244E40] text-[#F8F5EC] text-xs font-bold inline-flex items-center space-x-1 transition shadow-2xs"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>Profile & History</span>
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* ======================================================== */}
+      {/* MEMBER PROFILE & CHRONOLOGICAL VISIT HISTORY MODAL        */}
+      {/* ======================================================== */}
+      {selectedMember && (() => {
+        const memberVisits = bookings.filter(b => 
+          (selectedMember.id && b.visitorId === selectedMember.id) ||
+          (selectedMember.phone && b.visitorPhone === selectedMember.phone) ||
+          (selectedMember.email && b.visitorEmail && b.visitorEmail.toLowerCase() === selectedMember.email.toLowerCase()) ||
+          (selectedMember.name && b.visitorName && b.visitorName.toLowerCase() === selectedMember.name.toLowerCase())
+        );
+
+        const totalVisitsCalculated = Math.max(selectedMember.totalVisits || 0, memberVisits.length);
+        const isReturning = totalVisitsCalculated > 1;
+
+        return (
+          <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 animate-fade-in">
+            <div className="bg-white border-2 border-[#173F35] rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 max-h-[92vh] overflow-y-auto">
+              <button
+                onClick={() => setSelectedMember(null)}
+                className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 rounded-xl"
+                aria-label="Close Profile"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Profile Header */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+                <div className="flex items-center space-x-3.5">
+                  <div className="w-14 h-14 rounded-2xl bg-[#173F35] text-[#F8F5EC] flex items-center justify-center font-bold text-xl font-cinzel shadow-sm">
+                    {selectedMember.name.substring(0, 2).toUpperCase()}
+                  </div>
+                  <div>
+                    <div className="flex items-center space-x-2">
+                      <h2 className="font-cinzel text-xl font-bold text-slate-900">{selectedMember.name}</h2>
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${
+                        isReturning ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-slate-100 text-slate-700'
+                      }`}>
+                        {isReturning ? `Returning Pilgrim (${totalVisitsCalculated} visits)` : 'First-Time Pilgrim'}
+                      </span>
+                    </div>
+                    <div className="text-xs text-slate-500 font-mono mt-0.5">
+                      Member ID: {selectedMember.id} • Registered: {selectedMember.createdAt ? new Date(selectedMember.createdAt).toLocaleDateString() : 'Active Member'}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Quick Action: Re-admit Returning Visitor */}
+                <button
+                  onClick={() => {
+                    setWalkInName(selectedMember.name);
+                    setWalkInPhone(selectedMember.phone);
+                    setShowWalkInModal(true);
+                  }}
+                  className="px-4 py-2 rounded-xl bg-[#E5C158] hover:bg-[#d8b446] text-[#173F35] font-black text-xs uppercase tracking-wider transition shadow-sm border border-[#173F35] self-start sm:self-auto flex items-center space-x-1.5"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Admit for New Visit</span>
+                </button>
+              </div>
+
+              {/* Contact Information Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <span className="text-[10px] font-mono uppercase text-slate-400 block">Phone Number</span>
+                  <span className="font-bold text-slate-900">{selectedMember.phone || 'N/A'}</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <span className="text-[10px] font-mono uppercase text-slate-400 block">Email Address</span>
+                  <span className="font-bold text-slate-900 truncate block">{selectedMember.email || 'N/A'}</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <span className="text-[10px] font-mono uppercase text-slate-400 block">National ID / Passport</span>
+                  <span className="font-bold text-slate-900">{selectedMember.nationalId || 'Not on file'}</span>
+                </div>
+              </div>
+
+              {/* Chronological Visit History */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-cinzel text-base font-bold text-slate-900 flex items-center space-x-2">
+                    <History className="w-4 h-4 text-[#173F35]" />
+                    <span>Chronological Visit History</span>
+                  </h3>
+                  <span className="text-xs text-slate-500 font-mono">
+                    {memberVisits.length} recorded booking{memberVisits.length === 1 ? '' : 's'}
+                  </span>
+                </div>
+
+                {memberVisits.length > 0 ? (
+                  <div className="overflow-x-auto rounded-2xl border border-slate-200">
+                    <table className="w-full text-left text-xs">
+                      <thead className="bg-slate-100 text-slate-700 uppercase font-mono text-[10px] border-b border-slate-200">
+                        <tr>
+                          <th className="p-3">Visit Dates</th>
+                          <th className="p-3">Booking Ref</th>
+                          <th className="p-3">Assigned Bed</th>
+                          <th className="p-3">Admission Check-in</th>
+                          <th className="p-3">Departure Check-out</th>
+                          <th className="p-3">Status</th>
+                          <th className="p-3 text-right">KES</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 bg-white">
+                        {memberVisits.map(visit => {
+                          const checkInEvent = gateEvents.find(e => e.bookingReference === visit.bookingReference && e.eventType === 'check_in');
+                          const checkOutEvent = gateEvents.find(e => e.bookingReference === visit.bookingReference && e.eventType === 'check_out');
+
+                          return (
+                            <tr key={visit.id} className="hover:bg-slate-50 transition">
+                              <td className="p-3 font-semibold text-slate-900 whitespace-nowrap">
+                                <div>{visit.checkInDate}</div>
+                                <div className="text-[10px] text-slate-400 font-normal">to {visit.checkOutDate}</div>
+                              </td>
+                              <td className="p-3 font-mono font-bold text-[#173F35]">
+                                {visit.bookingReference}
+                              </td>
+                              <td className="p-3 text-slate-700">
+                                {visit.assignedRoomNumber ? `Room ${visit.assignedRoomNumber}, Bed ${visit.assignedBedNumber || '1'}` : 'Not assigned'}
+                              </td>
+                              <td className="p-3 text-slate-600 font-mono text-[11px]">
+                                {checkInEvent ? new Date(checkInEvent.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : (visit.status === 'checked_in' || visit.status === 'checked_out' ? 'Recorded' : 'Pending')}
+                              </td>
+                              <td className="p-3 text-slate-600 font-mono text-[11px]">
+                                {checkOutEvent ? new Date(checkOutEvent.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : (visit.status === 'checked_out' ? 'Recorded' : '—')}
+                              </td>
+                              <td className="p-3">
+                                <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+                                  visit.status === 'checked_in' ? 'bg-emerald-100 text-emerald-800' :
+                                  visit.status === 'checked_out' ? 'bg-slate-100 text-slate-700' :
+                                  visit.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
+                                  'bg-amber-100 text-amber-800'
+                                }`}>
+                                  {visit.status?.replace('_', ' ')}
+                                </span>
+                              </td>
+                              <td className="p-3 text-right font-mono font-bold text-slate-900">
+                                {visit.totalAmountKES?.toLocaleString()}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center text-xs text-slate-500">
+                    No completed visits recorded in the system yet for this member.
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* ======================================================== */}
+      {/* TAB: VISITOR COMMUNICATIONS & EMAIL AUTOMATION           */}
+      {/* ======================================================== */}
+      {adminTab === 'communications' && (
+        <div className="glass-panel p-6 rounded-3xl space-y-6 border-t-4 border-t-[#173F35] shadow-xs animate-fade-in">
+          <div>
+            <h2 className="font-cinzel text-lg font-bold text-slate-900 flex items-center space-x-2">
+              <Mail className="w-5 h-5 text-[#173F35]" />
+              <span>Visitor Communications & Email Automation Dashboard</span>
+            </h2>
+            <p className="text-xs text-slate-600 mt-1">
+              Automated Welcome and Departure Thank-You communications linked to QR gate check-in and checkout events.
+            </p>
+          </div>
+
+          {/* Workflow Architecture Card */}
+          <div className="p-5 rounded-2xl bg-[#F8F5EC] border border-[#173F35]/20 space-y-3">
+            <h3 className="font-cinzel text-xs font-bold text-[#173F35] uppercase tracking-wider flex items-center space-x-1.5">
+              <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
+              <span>Gate Admission & Email Lifecycle Specification</span>
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div className="p-3 bg-white rounded-xl border border-[#173F35]/15 space-y-1">
+                <span className="font-bold text-slate-900 block">1. Gate Check-In</span>
+                <p className="text-slate-600 text-[11px] leading-relaxed">
+                  Pilgrim scans QR pass at gate. Gate admission event is logged and triggers automated <strong>Welcome Email</strong> with mountain guidelines and schedule.
+                </p>
+              </div>
+              <div className="p-3 bg-white rounded-xl border border-[#173F35]/15 space-y-1">
+                <span className="font-bold text-slate-900 block">2. Retreat & Fasting</span>
+                <p className="text-slate-600 text-[11px] leading-relaxed">
+                  Pilgrim attends sanctuary services and prayer watches. Communication preferences determine SMS and email prayer updates.
+                </p>
+              </div>
+              <div className="p-3 bg-white rounded-xl border border-[#173F35]/15 space-y-1">
+                <span className="font-bold text-slate-900 block">3. Gate Check-Out</span>
+                <p className="text-slate-600 text-[11px] leading-relaxed">
+                  Departure is verified and logged. Triggers automated <strong>Thank-You Email</strong> with praise report submission link and blessing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Backend Dependency Status Note */}
+          <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs space-y-1">
+            <div className="font-bold flex items-center space-x-1.5">
+              <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+              <span>Backend Communication Integration Status</span>
+            </div>
+            <p className="leading-relaxed">
+              Email triggers are strictly managed by backend events. The dedicated endpoint <code>GET /admin/email-status</code> is pending backend implementation by the engineering lead. The dispatch table below shows real gate admission triggers recorded in the campus event log.
+            </p>
+          </div>
+
+          {/* Email Dispatch Triggers Log */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                Gate Event Email Dispatch Triggers ({gateEvents.length})
+              </h3>
+              <span className="text-[11px] text-slate-500 font-mono">
+                Real-time gate security synchronization
+              </span>
+            </div>
+
+            <div className="overflow-x-auto rounded-2xl border border-slate-200">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-slate-100 text-slate-700 uppercase font-mono text-[10px] border-b border-slate-200">
+                  <tr>
+                    <th className="p-3.5">Triggered Email Type</th>
+                    <th className="p-3.5">Associated Pilgrim</th>
+                    <th className="p-3.5">Booking Reference</th>
+                    <th className="p-3.5">Event Timestamp</th>
+                    <th className="p-3.5">Gate Officer</th>
+                    <th className="p-3.5">Delivery Pipeline Status</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 bg-white">
+                  {gateEvents.length > 0 ? (
+                    gateEvents.map((event: any) => {
+                      const isCheckIn = event.eventType === 'check_in';
+                      return (
+                        <tr key={event.id} className="hover:bg-slate-50 transition">
+                          <td className="p-3.5">
+                            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase inline-flex items-center space-x-1 ${
+                              isCheckIn 
+                                ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' 
+                                : 'bg-blue-100 text-blue-800 border border-blue-300'
+                            }`}>
+                              <Mail className="w-3 h-3" />
+                              <span>{isCheckIn ? 'Welcome & Orientation Email' : 'Thank-You & Departure Email'}</span>
+                            </span>
+                          </td>
+                          <td className="p-3.5 font-bold text-slate-900">
+                            {event.visitorName}
+                          </td>
+                          <td className="p-3.5 font-mono text-[#173F35] font-semibold">
+                            {event.bookingReference}
+                          </td>
+                          <td className="p-3.5 font-mono text-[11px] text-slate-600">
+                            {new Date(event.timestamp).toLocaleString()}
+                          </td>
+                          <td className="p-3.5 text-slate-600">
+                            {event.officerName || 'Duty Officer'}
+                          </td>
+                          <td className="p-3.5">
+                            <span className="text-[10px] text-emerald-700 font-mono font-bold bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
+                              Trigger Logged on Gate Event
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr>
+                      <td colSpan={6} className="p-8 text-center text-slate-400 text-xs">
+                        No gate check-in or checkout events recorded yet to trigger emails.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Visitor Communication Preferences Module */}
+          <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-4">
+            <div className="flex items-center space-x-2">
+              <Mail className="w-4 h-4 text-[#173F35]" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                Visitor Communication Preferences Control
+              </h3>
+            </div>
+            <p className="text-xs text-slate-600">
+              Configure communication channels for pilgrims during their stay at Heavens Gate.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-1">
+              <label className="flex items-center space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={commsPreferences.welcomeEmail}
+                  onChange={e => setCommsPreferences(prev => ({ ...prev, welcomeEmail: e.target.checked }))}
+                  className="rounded text-[#173F35] focus:ring-[#173F35] w-4 h-4"
+                />
+                <div>
+                  <strong className="text-slate-900 block">Automated Welcome Email</strong>
+                  <span className="text-[11px] text-slate-500">Send campus orientation upon gate check-in</span>
+                </div>
+              </label>
+
+              <label className="flex items-center space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={commsPreferences.departureEmail}
+                  onChange={e => setCommsPreferences(prev => ({ ...prev, departureEmail: e.target.checked }))}
+                  className="rounded text-[#173F35] focus:ring-[#173F35] w-4 h-4"
+                />
+                <div>
+                  <strong className="text-slate-900 block">Departure Thank-You Email</strong>
+                  <span className="text-[11px] text-slate-500">Send pastoral benediction & testimony invitation upon check-out</span>
+                </div>
+              </label>
+
+              <label className="flex items-center space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={commsPreferences.smsAlerts}
+                  onChange={e => setCommsPreferences(prev => ({ ...prev, smsAlerts: e.target.checked }))}
+                  className="rounded text-[#173F35] focus:ring-[#173F35] w-4 h-4"
+                />
+                <div>
+                  <strong className="text-slate-900 block">SMS Prayer Shift Alerts</strong>
+                  <span className="text-[11px] text-slate-500">Notify pilgrims 15 minutes before their registered prayer watch</span>
+                </div>
+              </label>
+
+              <label className="flex items-center space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={commsPreferences.prayerWatchReminder}
+                  onChange={e => setCommsPreferences(prev => ({ ...prev, prayerWatchReminder: e.target.checked }))}
+                  className="rounded text-[#173F35] focus:ring-[#173F35] w-4 h-4"
+                />
+                <div>
+                  <strong className="text-slate-900 block">Mountain Broadcast Push</strong>
+                  <span className="text-[11px] text-slate-500">Send urgent fasting schedule changes and announcements</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ======================================================== */}
       {/* TAB 3: BEDS & CAPACITIES INVENTORY                       */}
       {/* ======================================================== */}
       {adminTab === 'rooms' && (
+
         <div className="glass-panel p-6 rounded-3xl space-y-6 border-t-4 border-t-[#173F35] shadow-xs animate-fade-in">
           <div>
             <h2 className="font-cinzel text-lg font-bold text-slate-900 flex items-center space-x-2">

@@ -170,6 +170,15 @@ export const api = {
     });
     return res.json();
   },
+  async getMyMessages(identifier?: string) {
+    const query = identifier ? `?identifier=${encodeURIComponent(identifier)}` : '';
+    const res = await fetch(`${API_BASE}/messages/my-messages${query}`);
+    if (!res.ok) {
+      throw new Error(`HTTP_${res.status}: Failed to fetch my messages`);
+    }
+    return res.json();
+  },
+
 
   // Utilities
   async getMapFeatures() {
@@ -266,5 +275,13 @@ export const api = {
   async getGateEvents() {
     const res = await fetch(`${API_BASE}/admin/gate-events`);
     return res.json();
+  },
+  async getEmailStatus() {
+    const res = await fetch(`${API_BASE}/admin/email-status`);
+    if (!res.ok) {
+      throw new Error(`HTTP_${res.status}: Failed to fetch email dispatch status`);
+    }
+    return res.json();
   }
 };
+

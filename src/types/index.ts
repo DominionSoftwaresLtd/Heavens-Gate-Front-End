@@ -120,3 +120,47 @@ export interface TransportRoute {
   travelTime: string;
   advice: string;
 }
+
+export interface PrayerRequest {
+  id: string;
+  visitorId?: string;
+  visitorName: string;
+  phone: string;
+  email?: string;
+  requestText: string;
+  category: string;
+  isConfidential: boolean;
+  status: 'received' | 'assigned' | 'in_prayer' | 'answered';
+  assignedIntercessor?: string;
+  responseNote?: string;
+  createdAt: string;
+}
+
+export interface GateEvent {
+  id: string;
+  ticketId: string;
+  bookingReference: string;
+  visitorName: string;
+  eventType: 'check_in' | 'check_out' | 'denied';
+  timestamp: string;
+  officerName: string;
+  notes?: string;
+  checks?: {
+    dressCode?: boolean;
+    orientation?: boolean;
+    identity?: boolean;
+    luggageNoFood?: boolean;
+  };
+}
+
+export interface EmailDeliveryRecord {
+  id: string;
+  emailType: 'welcome' | 'thank_you' | 'booking_confirmation';
+  recipientName: string;
+  recipientEmail: string;
+  visitorOrVisitRef: string;
+  status: 'delivered' | 'sent' | 'pending' | 'failed';
+  timestamp: string;
+  failureReason?: string;
+}
+
